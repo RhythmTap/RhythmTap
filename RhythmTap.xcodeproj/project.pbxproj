@@ -15,6 +15,8 @@
 		D37932971C7B7FC1008B7B64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D37932951C7B7FC1008B7B64 /* LaunchScreen.storyboard */; };
 		D37932AD1C7B7FC1008B7B64 /* RhythmTapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37932AC1C7B7FC1008B7B64 /* RhythmTapUITests.swift */; };
 		D3D8A8AE1C7B82720017E533 /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D8A8AD1C7B82720017E533 /* HomeViewControllerTests.swift */; };
+		F3677B041C7B991E00AD7471 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3677B031C7B991E00AD7471 /* GameViewController.swift */; };
+		F3677B071C7B9C1600AD7471 /* Taps.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3677B061C7B9C1600AD7471 /* Taps.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		D37932AC1C7B7FC1008B7B64 /* RhythmTapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RhythmTapUITests.swift; sourceTree = "<group>"; };
 		D37932AE1C7B7FC1008B7B64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3D8A8AD1C7B82720017E533 /* HomeViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTests.swift; sourceTree = "<group>"; };
+		F3677B031C7B991E00AD7471 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		F3677B061C7B9C1600AD7471 /* Taps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Taps.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,7 @@
 		D37932881C7B7FC1008B7B64 /* RhythmTap */ = {
 			isa = PBXGroup;
 			children = (
+				F3677B051C7B9BFC00AD7471 /* Game View */,
 				D37932891C7B7FC1008B7B64 /* AppDelegate.swift */,
 				D379328B1C7B7FC1008B7B64 /* HomeViewController.swift */,
 				D379328D1C7B7FC1008B7B64 /* Main.storyboard */,
@@ -126,6 +131,15 @@
 				D37932AE1C7B7FC1008B7B64 /* Info.plist */,
 			);
 			path = RhythmTapUITests;
+			sourceTree = "<group>";
+		};
+		F3677B051C7B9BFC00AD7471 /* Game View */ = {
+			isa = PBXGroup;
+			children = (
+				F3677B031C7B991E00AD7471 /* GameViewController.swift */,
+				F3677B061C7B9C1600AD7471 /* Taps.swift */,
+			);
+			name = "Game View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,7 +276,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3677B041C7B991E00AD7471 /* GameViewController.swift in Sources */,
 				D379328C1C7B7FC1008B7B64 /* HomeViewController.swift in Sources */,
+				F3677B071C7B9C1600AD7471 /* Taps.swift in Sources */,
 				D379328A1C7B7FC1008B7B64 /* AppDelegate.swift in Sources */,
 				D37932921C7B7FC1008B7B64 /* RhythmTap.xcdatamodeld in Sources */,
 			);
