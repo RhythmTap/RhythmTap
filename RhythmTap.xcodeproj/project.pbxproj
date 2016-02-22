@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		D379328A1C7B7FC1008B7B64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37932891C7B7FC1008B7B64 /* AppDelegate.swift */; };
-		D379328C1C7B7FC1008B7B64 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D379328B1C7B7FC1008B7B64 /* ViewController.swift */; };
+		D379328C1C7B7FC1008B7B64 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D379328B1C7B7FC1008B7B64 /* HomeViewController.swift */; };
 		D379328F1C7B7FC1008B7B64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D379328D1C7B7FC1008B7B64 /* Main.storyboard */; };
 		D37932921C7B7FC1008B7B64 /* RhythmTap.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D37932901C7B7FC1008B7B64 /* RhythmTap.xcdatamodeld */; };
 		D37932941C7B7FC1008B7B64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D37932931C7B7FC1008B7B64 /* Assets.xcassets */; };
 		D37932971C7B7FC1008B7B64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D37932951C7B7FC1008B7B64 /* LaunchScreen.storyboard */; };
-		D37932A21C7B7FC1008B7B64 /* RhythmTapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37932A11C7B7FC1008B7B64 /* RhythmTapTests.swift */; };
 		D37932AD1C7B7FC1008B7B64 /* RhythmTapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37932AC1C7B7FC1008B7B64 /* RhythmTapUITests.swift */; };
+		D3D8A8AE1C7B82720017E533 /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D8A8AD1C7B82720017E533 /* HomeViewControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,18 +37,18 @@
 /* Begin PBXFileReference section */
 		D37932861C7B7FC1008B7B64 /* RhythmTap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RhythmTap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D37932891C7B7FC1008B7B64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D379328B1C7B7FC1008B7B64 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D379328B1C7B7FC1008B7B64 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D379328E1C7B7FC1008B7B64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D37932911C7B7FC1008B7B64 /* RhythmTap.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RhythmTap.xcdatamodel; sourceTree = "<group>"; };
 		D37932931C7B7FC1008B7B64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D37932961C7B7FC1008B7B64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D37932981C7B7FC1008B7B64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D379329D1C7B7FC1008B7B64 /* RhythmTapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RhythmTapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D37932A11C7B7FC1008B7B64 /* RhythmTapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RhythmTapTests.swift; sourceTree = "<group>"; };
 		D37932A31C7B7FC1008B7B64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D37932A81C7B7FC1008B7B64 /* RhythmTapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RhythmTapUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D37932AC1C7B7FC1008B7B64 /* RhythmTapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RhythmTapUITests.swift; sourceTree = "<group>"; };
 		D37932AE1C7B7FC1008B7B64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3D8A8AD1C7B82720017E533 /* HomeViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				D37932891C7B7FC1008B7B64 /* AppDelegate.swift */,
-				D379328B1C7B7FC1008B7B64 /* ViewController.swift */,
+				D379328B1C7B7FC1008B7B64 /* HomeViewController.swift */,
 				D379328D1C7B7FC1008B7B64 /* Main.storyboard */,
 				D37932931C7B7FC1008B7B64 /* Assets.xcassets */,
 				D37932951C7B7FC1008B7B64 /* LaunchScreen.storyboard */,
@@ -113,8 +113,8 @@
 		D37932A01C7B7FC1008B7B64 /* RhythmTapTests */ = {
 			isa = PBXGroup;
 			children = (
-				D37932A11C7B7FC1008B7B64 /* RhythmTapTests.swift */,
 				D37932A31C7B7FC1008B7B64 /* Info.plist */,
+				D3D8A8AD1C7B82720017E533 /* HomeViewControllerTests.swift */,
 			);
 			path = RhythmTapTests;
 			sourceTree = "<group>";
@@ -262,7 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D379328C1C7B7FC1008B7B64 /* ViewController.swift in Sources */,
+				D379328C1C7B7FC1008B7B64 /* HomeViewController.swift in Sources */,
 				D379328A1C7B7FC1008B7B64 /* AppDelegate.swift in Sources */,
 				D37932921C7B7FC1008B7B64 /* RhythmTap.xcdatamodeld in Sources */,
 			);
@@ -272,7 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D37932A21C7B7FC1008B7B64 /* RhythmTapTests.swift in Sources */,
+				D3D8A8AE1C7B82720017E533 /* HomeViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,6 +489,7 @@
 				D37932B31C7B7FC1008B7B64 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D37932B41C7B7FC1008B7B64 /* Build configuration list for PBXNativeTarget "RhythmTapTests" */ = {
 			isa = XCConfigurationList;
@@ -497,6 +498,7 @@
 				D37932B61C7B7FC1008B7B64 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D37932B71C7B7FC1008B7B64 /* Build configuration list for PBXNativeTarget "RhythmTapUITests" */ = {
 			isa = XCConfigurationList;
@@ -505,6 +507,7 @@
 				D37932B91C7B7FC1008B7B64 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
