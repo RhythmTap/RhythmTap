@@ -26,19 +26,19 @@ class AudioPlayerTests: XCTestCase {
     }
     
     func testThatAudioCanBePlayed() {
-        XCTAssert(self.audioPlayer.playAudioTrack())
+        XCTAssert(self.audioPlayer.play())
     }
     
     func testThatAudioIsPlaying() {
-        self.audioPlayer.playAudioTrack()
+        self.audioPlayer.play()
         
         XCTAssertNotNil(self.audioPlayer.avAudioPlayer)
         XCTAssert(self.audioPlayer.avAudioPlayer!.playing)
     }
     
     func testThatAudioCanStopPlaying() {
-        self.audioPlayer.playAudioTrack()
-        self.audioPlayer.stopPlaying()
+        self.audioPlayer.play()
+        self.audioPlayer.stop()
         
         XCTAssertFalse(self.audioPlayer.avAudioPlayer!.playing)
     }

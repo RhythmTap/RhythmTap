@@ -27,7 +27,7 @@ class AudioPlayer {
     
     
     // MARK: Interface
-    func playAudioTrack() -> Bool {
+    func play() -> Bool {
         
         do {
             if let path = NSBundle.mainBundle().pathForResource(self.audioTrack.file as String, ofType: self.audioTrack.audioFormat as String) {
@@ -44,7 +44,7 @@ class AudioPlayer {
         
     }
     
-    func stopPlaying() {
+    func stop() {
         if self.avAudioPlayer != nil {
             self.avAudioPlayer?.stop()
         }

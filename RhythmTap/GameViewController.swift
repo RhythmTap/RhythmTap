@@ -30,7 +30,7 @@ class GameViewController: UIViewController {
         
         counterLabel.text = String(tapCounter.getCount())
         
-        self.audioPlayer.playAudioTrack()
+        self.audioPlayer.play()
     }
     
     
