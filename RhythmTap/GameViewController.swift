@@ -15,6 +15,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var counterLabel: UILabel!
     
     let tapCounter = Taps.init()
+    let trackDirectory = "Tracks/"
     
     var audioPlayer: AudioPlayer!
     
@@ -22,7 +23,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let file = "Easy"
+        let file = self.trackDirectory + "Easy"
         let audioFormat = "wav"
         let audioTrack = AudioTrack(file: file, audioFormat: audioFormat)
         self.audioPlayer = AudioPlayer(audioTrack: audioTrack)

@@ -15,7 +15,7 @@ class AudioPlayerTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        let file = "Trivial"
+        let file = "Tracks/Trivial"
         let audioFormat = "wav"
         let audioTrack = AudioTrack(file: file, audioFormat: audioFormat)
         self.audioPlayer = AudioPlayer(audioTrack: audioTrack)

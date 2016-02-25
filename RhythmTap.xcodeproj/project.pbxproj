@@ -16,9 +16,8 @@
 		D37932AD1C7B7FC1008B7B64 /* RhythmTapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37932AC1C7B7FC1008B7B64 /* RhythmTapUITests.swift */; };
 		D3BED0071C7F66450047C2C5 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BED0061C7F66450047C2C5 /* AudioPlayer.swift */; };
 		D3BED0091C7F66730047C2C5 /* AudioPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BED0081C7F66730047C2C5 /* AudioPlayerTests.swift */; };
-		D3BED00C1C7F72920047C2C5 /* Easy.wav in Resources */ = {isa = PBXBuildFile; fileRef = D3BED00A1C7F72920047C2C5 /* Easy.wav */; };
-		D3BED00D1C7F72920047C2C5 /* Trivial.wav in Resources */ = {isa = PBXBuildFile; fileRef = D3BED00B1C7F72920047C2C5 /* Trivial.wav */; };
 		D3BED0101C7F732B0047C2C5 /* AudioTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BED00F1C7F732B0047C2C5 /* AudioTrack.swift */; };
+		D3BED0121C7F7AE50047C2C5 /* Tracks in Resources */ = {isa = PBXBuildFile; fileRef = D3BED0111C7F7AE50047C2C5 /* Tracks */; };
 		D3D8A8AE1C7B82720017E533 /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D8A8AD1C7B82720017E533 /* HomeViewControllerTests.swift */; };
 		F3677B041C7B991E00AD7471 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3677B031C7B991E00AD7471 /* GameViewController.swift */; };
 		F3677B071C7B9C1600AD7471 /* Taps.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3677B061C7B9C1600AD7471 /* Taps.swift */; };
@@ -57,9 +56,8 @@
 		D37932AE1C7B7FC1008B7B64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3BED0061C7F66450047C2C5 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		D3BED0081C7F66730047C2C5 /* AudioPlayerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayerTests.swift; sourceTree = "<group>"; };
-		D3BED00A1C7F72920047C2C5 /* Easy.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Easy.wav; path = ../../Tracks/Easy.wav; sourceTree = "<group>"; };
-		D3BED00B1C7F72920047C2C5 /* Trivial.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Trivial.wav; path = ../../Tracks/Trivial.wav; sourceTree = "<group>"; };
 		D3BED00F1C7F732B0047C2C5 /* AudioTrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioTrack.swift; sourceTree = "<group>"; };
+		D3BED0111C7F7AE50047C2C5 /* Tracks */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Tracks; sourceTree = SOURCE_ROOT; };
 		D3D8A8AD1C7B82720017E533 /* HomeViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTests.swift; sourceTree = "<group>"; };
 		F3677B031C7B991E00AD7471 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		F3677B061C7B9C1600AD7471 /* Taps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Taps.swift; sourceTree = "<group>"; };
@@ -113,7 +111,7 @@
 		D37932881C7B7FC1008B7B64 /* RhythmTap */ = {
 			isa = PBXGroup;
 			children = (
-				D3BED00E1C7F729A0047C2C5 /* Tracks */,
+				D3BED0111C7F7AE50047C2C5 /* Tracks */,
 				D3BED0051C7F64810047C2C5 /* Home View */,
 				F3677B051C7B9BFC00AD7471 /* Game View */,
 				D37932891C7B7FC1008B7B64 /* AppDelegate.swift */,
@@ -151,15 +149,6 @@
 				D379328B1C7B7FC1008B7B64 /* HomeViewController.swift */,
 			);
 			name = "Home View";
-			sourceTree = "<group>";
-		};
-		D3BED00E1C7F729A0047C2C5 /* Tracks */ = {
-			isa = PBXGroup;
-			children = (
-				D3BED00A1C7F72920047C2C5 /* Easy.wav */,
-				D3BED00B1C7F72920047C2C5 /* Trivial.wav */,
-			);
-			name = Tracks;
 			sourceTree = "<group>";
 		};
 		F3677B051C7B9BFC00AD7471 /* Game View */ = {
@@ -281,9 +270,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D37932971C7B7FC1008B7B64 /* LaunchScreen.storyboard in Resources */,
-				D3BED00D1C7F72920047C2C5 /* Trivial.wav in Resources */,
 				D37932941C7B7FC1008B7B64 /* Assets.xcassets in Resources */,
-				D3BED00C1C7F72920047C2C5 /* Easy.wav in Resources */,
+				D3BED0121C7F7AE50047C2C5 /* Tracks in Resources */,
 				D379328F1C7B7FC1008B7B64 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
