@@ -10,33 +10,43 @@ import UIKit
 
 class GameViewController: UIViewController {
     
+    // MARK: Properties
     @IBOutlet var gameView: UIView!
     @IBOutlet weak var counterLabel: UILabel!
     
     let tapCounter = Taps.init()
     
+    var audioPlayer: AudioPlayer!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let file = "Easy"
+        let audioFormat = "wav"
+        let audioTrack = AudioTrack(file: file, audioFormat: audioFormat)
+        self.audioPlayer = AudioPlayer(audioTrack: audioTrack)
+        
         counterLabel.text = String(tapCounter.getCount())
+        
+        self.audioPlayer.playAudioTrack()
     }
     
+    
+    // MARK: User Actions
     @IBAction func onTap(sender: UIButton) {
         tapCounter.increaseCount()
         counterLabel.text = String(tapCounter.getCount())
         gameView.backgroundColor = randomColour()
     }
     
+    
+    // MARK: Interface
     func randomColour() -> UIColor {
         let red = CGFloat(drand48())
         let blue = CGFloat(drand48())
         let green = CGFloat(drand48())
         return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     

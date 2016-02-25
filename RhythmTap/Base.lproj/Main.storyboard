@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oeI-Ms-Bkp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oeI-Ms-Bkp">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -103,16 +103,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3cG-yu-5tX">
-                                <rect key="frame" x="496" y="72" width="58" height="21"/>
+                                <rect key="frame" x="496" y="72" width="57" height="21"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taps: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IY0-Rc-FER">
-                                        <rect key="frame" x="0.0" y="0.0" width="48" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Taps: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IY0-Rc-FER">
+                                        <rect key="frame" x="0.0" y="0.0" width="47" height="21"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcI-mb-rJ9">
-                                        <rect key="frame" x="48" y="0.0" width="10" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcI-mb-rJ9">
+                                        <rect key="frame" x="47" y="0.0" width="10" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="10" id="nn7-wn-AvY"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -120,7 +123,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nk6-h0-iAV">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="20" y="72" width="560" height="508"/>
                                 <state key="normal" title="Tap!">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -131,12 +134,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Nk6-h0-iAV" firstAttribute="height" secondItem="dcV-rq-GxS" secondAttribute="height" id="7Mr-vs-ZpK"/>
-                            <constraint firstItem="3cG-yu-5tX" firstAttribute="top" secondItem="k3b-a1-lLq" secondAttribute="bottom" constant="8" id="IqI-JI-4xv"/>
-                            <constraint firstItem="Nk6-h0-iAV" firstAttribute="centerX" secondItem="dcV-rq-GxS" secondAttribute="centerX" id="NPR-U7-oug"/>
-                            <constraint firstItem="Nk6-h0-iAV" firstAttribute="centerY" secondItem="dcV-rq-GxS" secondAttribute="centerY" id="deh-h2-yQp"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="3cG-yu-5tX" secondAttribute="trailing" constant="26" id="keP-FV-BVW"/>
-                            <constraint firstItem="Nk6-h0-iAV" firstAttribute="width" secondItem="dcV-rq-GxS" secondAttribute="width" id="poL-9v-6AD"/>
+                            <constraint firstItem="Nk6-h0-iAV" firstAttribute="top" secondItem="3cG-yu-5tX" secondAttribute="top" id="4ej-4J-IP3"/>
+                            <constraint firstItem="Nk6-h0-iAV" firstAttribute="trailing" secondItem="dcV-rq-GxS" secondAttribute="trailingMargin" id="IiJ-cK-p3X"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3cG-yu-5tX" secondAttribute="trailing" constant="27" id="Uzh-vy-JCW"/>
+                            <constraint firstItem="Nk6-h0-iAV" firstAttribute="leading" secondItem="dcV-rq-GxS" secondAttribute="leadingMargin" id="YdS-fi-QeU"/>
+                            <constraint firstItem="Nk6-h0-iAV" firstAttribute="top" secondItem="k3b-a1-lLq" secondAttribute="bottom" constant="8" symbolic="YES" id="eKV-Ni-gup"/>
+                            <constraint firstItem="3cG-yu-5tX" firstAttribute="leading" secondItem="dcV-rq-GxS" secondAttribute="leading" constant="496" id="gAz-T0-g7c"/>
+                            <constraint firstAttribute="bottom" secondItem="Nk6-h0-iAV" secondAttribute="bottom" constant="20" symbolic="YES" id="hif-KF-m65"/>
+                            <constraint firstItem="Tzt-zX-m1T" firstAttribute="top" secondItem="3cG-yu-5tX" secondAttribute="bottom" constant="507" id="jxu-wt-J2h"/>
                         </constraints>
                     </view>
                     <connections>
@@ -146,7 +151,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LVa-ao-U3y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="211" y="431"/>
+            <point key="canvasLocation" x="203" y="443"/>
         </scene>
     </scenes>
 </document>
