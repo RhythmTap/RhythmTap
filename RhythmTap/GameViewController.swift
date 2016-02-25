@@ -27,10 +27,9 @@ class GameViewController: UIViewController {
         let audioFormat = "wav"
         let audioTrack = AudioTrack(file: file, audioFormat: audioFormat)
         self.audioPlayer = AudioPlayer(audioTrack: audioTrack)
+        self.audioPlayer.play()
         
         counterLabel.text = String(tapCounter.getCount())
-        
-        self.audioPlayer.play()
     }
     
     
@@ -49,6 +48,4 @@ class GameViewController: UIViewController {
         let green = CGFloat(drand48())
         return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
     }
-    
-    
 }
