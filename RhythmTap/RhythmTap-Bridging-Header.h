@@ -4,4 +4,6 @@
 
 - (void)processAudio;
 
+- (bool)playAudio: (NSString*)audioFile;
+
 @end

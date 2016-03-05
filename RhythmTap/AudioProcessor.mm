@@ -9,14 +9,16 @@
 #import <Foundation/Foundation.h>
 #include <pthread.h>
 #import "SuperpoweredAnalyzer.h"
-#import "RhythmTap-Bridging-Header.h"
 #import "SuperpoweredAdvancedAudioPlayer.h"
+#import "RhythmTap-Bridging-Header.h"
+
 
 @implementation AudioProcessor
 
-SuperpoweredOfflineAnalyzer *analyzer;
 SuperpoweredAdvancedAudioPlayer *player;
-SuperpoweredAdvancedAudioPlayerCallback playerCallback;
+SuperpoweredOfflineAnalyzer *analyzer;
+SuperpoweredAdvancedAudioPlayerCallback playerEventCallback;
+
 pthread_mutex_t mutex;
 unsigned int samplerate;
 float bpm;
@@ -36,13 +38,22 @@ int cachedPointCount = 4;
     
     // SuperPoweredAnalyzer is not an Obj-C class, so it needs to be instantiated like in C++
     analyzer = new SuperpoweredOfflineAnalyzer(samplerate, bpm, lengthSeconds);
-    //player = new SuperpoweredAdvancedAudioPlayer(this, playerCallback, samplerate, cachedPointCount);
-    
+    player = new SuperpoweredAdvancedAudioPlayer((__bridge void *)self, playerEventCallback, samplerate, 4);
     return self;
 }
 
+
+
 -(void) dealloc {
     delete analyzer;
+}
+
+-(bool) playAudio: (NSString*)audioFile {
+    NSString *fullPath = [[NSBundle mainBundle] pathForResource:audioFile ofType:@"wav"];
+    player->open([fullPath fileSystemRepresentation]);
+    bool synchronised = true;
+    player->play(synchronised);
+    return player->playing;
 }
 
 -(void) processAudio {

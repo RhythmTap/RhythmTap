@@ -28,5 +28,9 @@
     [super tearDown];
 }
 
+- (void)testThatAudioCanBePlayed {
+    NSString *audioFile = @"Easy";
+    XCTAssertTrue([self.audioProcessor playAudio:audioFile]);
+}
 
 @end
