@@ -474,9 +474,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Third",
-					Party,
+					"\"$(PROJECT_DIR)/Third Party\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = itsbriany.RhythmTap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -494,9 +492,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Third",
-					Party,
+					"\"$(PROJECT_DIR)/Third Party\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = itsbriany.RhythmTap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
