@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "SuperpoweredAdvancedAudioPlayer.h"
 #import "RhythmTap-Bridging-Header.h"
 
 @interface AudioProcessorTests : XCTestCase
@@ -29,8 +30,15 @@
 }
 
 - (void)testThatAudioCanBePlayed {
-    NSString *audioFile = @"Easy";
+    NSString *audioFile = @"Tracks/Easy";
     XCTAssertTrue([self.audioProcessor playAudio:audioFile]);
 }
 
 @end
+
+void playerEventCallbackA(void *clientData, SuperpoweredAdvancedAudioPlayerEvent event, void *value) {
+    if (event == SuperpoweredAdvancedAudioPlayerEvent_LoadSuccess) {
+        AudioProcessorTests *self = (__bridge AudioProcessorTests *)clientData;
+        [self.audioProcessor prepareAudioPlayer];
+    };
+}

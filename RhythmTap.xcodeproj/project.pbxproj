@@ -15,7 +15,7 @@
 		D37932AD1C7B7FC1008B7B64 /* RhythmTapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37932AC1C7B7FC1008B7B64 /* RhythmTapUITests.swift */; };
 		D37C77761C8A8FB500972147 /* libSuperpoweredAudioIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D37C77741C8A8FB500972147 /* libSuperpoweredAudioIOS.a */; };
 		D37C777A1C8A912600972147 /* AudioProcessor.mm in Sources */ = {isa = PBXBuildFile; fileRef = D37C77791C8A912600972147 /* AudioProcessor.mm */; };
-		D37C777C1C8A943F00972147 /* AudioProcessorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D37C777B1C8A943F00972147 /* AudioProcessorTests.m */; };
+		D37C777C1C8A943F00972147 /* AudioProcessorTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = D37C777B1C8A943F00972147 /* AudioProcessorTests.mm */; };
 		D3BED0071C7F66450047C2C5 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BED0061C7F66450047C2C5 /* AudioPlayer.swift */; };
 		D3BED0091C7F66730047C2C5 /* AudioPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BED0081C7F66730047C2C5 /* AudioPlayerTests.swift */; };
 		D3BED0101C7F732B0047C2C5 /* AudioTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BED00F1C7F732B0047C2C5 /* AudioTrack.swift */; };
@@ -60,7 +60,7 @@
 		D37C77751C8A8FB500972147 /* SuperpoweredAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuperpoweredAnalyzer.h; path = "Third Party/SuperpoweredAnalyzer.h"; sourceTree = "<group>"; };
 		D37C77781C8A912600972147 /* RhythmTap-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RhythmTap-Bridging-Header.h"; sourceTree = "<group>"; };
 		D37C77791C8A912600972147 /* AudioProcessor.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioProcessor.mm; sourceTree = "<group>"; };
-		D37C777B1C8A943F00972147 /* AudioProcessorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioProcessorTests.m; sourceTree = "<group>"; };
+		D37C777B1C8A943F00972147 /* AudioProcessorTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioProcessorTests.mm; sourceTree = "<group>"; };
 		D3BED0061C7F66450047C2C5 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		D3BED0081C7F66730047C2C5 /* AudioPlayerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayerTests.swift; sourceTree = "<group>"; };
 		D3BED00F1C7F732B0047C2C5 /* AudioTrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioTrack.swift; sourceTree = "<group>"; };
@@ -168,7 +168,7 @@
 				D37932A31C7B7FC1008B7B64 /* Info.plist */,
 				D3D8A8AD1C7B82720017E533 /* HomeViewControllerTests.swift */,
 				D3BED0081C7F66730047C2C5 /* AudioPlayerTests.swift */,
-				D37C777B1C8A943F00972147 /* AudioProcessorTests.m */,
+				D37C777B1C8A943F00972147 /* AudioProcessorTests.mm */,
 			);
 			path = RhythmTapTests;
 			sourceTree = "<group>";
@@ -399,7 +399,7 @@
 			files = (
 				D3D8A8AE1C7B82720017E533 /* HomeViewControllerTests.swift in Sources */,
 				D3BED0091C7F66730047C2C5 /* AudioPlayerTests.swift in Sources */,
-				D37C777C1C8A943F00972147 /* AudioProcessorTests.m in Sources */,
+				D37C777C1C8A943F00972147 /* AudioProcessorTests.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

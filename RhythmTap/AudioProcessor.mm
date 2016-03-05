@@ -12,7 +12,6 @@
 #import "SuperpoweredAdvancedAudioPlayer.h"
 #import "RhythmTap-Bridging-Header.h"
 
-
 @implementation AudioProcessor
 
 SuperpoweredAdvancedAudioPlayer *player;
@@ -51,13 +50,15 @@ int cachedPointCount = 4;
 -(bool) playAudio: (NSString*)audioFile {
     NSString *fullPath = [[NSBundle mainBundle] pathForResource:audioFile ofType:@"wav"];
     player->open([fullPath fileSystemRepresentation]);
-    bool synchronised = true;
+    bool synchronised = false;
     player->play(synchronised);
     return player->playing;
 }
 
--(void) processAudio {
-    
+-(void) prepareAudioPlayer {
+    player->setBpm(126.0f);
+    player->setFirstBeatMs(353);
+    player->setPosition(player->firstBeatMs, false, false);
 }
 
 @end
