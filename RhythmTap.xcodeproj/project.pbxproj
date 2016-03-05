@@ -14,6 +14,7 @@
 		D37932941C7B7FC1008B7B64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D37932931C7B7FC1008B7B64 /* Assets.xcassets */; };
 		D37932971C7B7FC1008B7B64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D37932951C7B7FC1008B7B64 /* LaunchScreen.storyboard */; };
 		D37932AD1C7B7FC1008B7B64 /* RhythmTapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37932AC1C7B7FC1008B7B64 /* RhythmTapUITests.swift */; };
+		D37C77721C8A8B8F00972147 /* libSuperpoweredAudioIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D37C77711C8A8B8F00972147 /* libSuperpoweredAudioIOS.a */; };
 		D3BED0071C7F66450047C2C5 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BED0061C7F66450047C2C5 /* AudioPlayer.swift */; };
 		D3BED0091C7F66730047C2C5 /* AudioPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BED0081C7F66730047C2C5 /* AudioPlayerTests.swift */; };
 		D3BED0101C7F732B0047C2C5 /* AudioTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BED00F1C7F732B0047C2C5 /* AudioTrack.swift */; };
@@ -54,6 +55,7 @@
 		D37932A81C7B7FC1008B7B64 /* RhythmTapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RhythmTapUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D37932AC1C7B7FC1008B7B64 /* RhythmTapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RhythmTapUITests.swift; sourceTree = "<group>"; };
 		D37932AE1C7B7FC1008B7B64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D37C77711C8A8B8F00972147 /* libSuperpoweredAudioIOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSuperpoweredAudioIOS.a; sourceTree = "<group>"; };
 		D3BED0061C7F66450047C2C5 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		D3BED0081C7F66730047C2C5 /* AudioPlayerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayerTests.swift; sourceTree = "<group>"; };
 		D3BED00F1C7F732B0047C2C5 /* AudioTrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioTrack.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D37C77721C8A8B8F00972147 /* libSuperpoweredAudioIOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +94,7 @@
 		D379327D1C7B7FC1008B7B64 = {
 			isa = PBXGroup;
 			children = (
+				D37C77731C8A8C1400972147 /* Third Party */,
 				D37932881C7B7FC1008B7B64 /* RhythmTap */,
 				D37932A01C7B7FC1008B7B64 /* RhythmTapTests */,
 				D37932AB1C7B7FC1008B7B64 /* RhythmTapUITests */,
@@ -141,6 +145,14 @@
 				D37932AE1C7B7FC1008B7B64 /* Info.plist */,
 			);
 			path = RhythmTapUITests;
+			sourceTree = "<group>";
+		};
+		D37C77731C8A8C1400972147 /* Third Party */ = {
+			isa = PBXGroup;
+			children = (
+				D37C77711C8A8B8F00972147 /* libSuperpoweredAudioIOS.a */,
+			);
+			name = "Third Party";
 			sourceTree = "<group>";
 		};
 		D3BED0051C7F64810047C2C5 /* Home View */ = {
@@ -446,6 +458,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = RhythmTap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = itsbriany.RhythmTap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -457,6 +473,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = RhythmTap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = itsbriany.RhythmTap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
