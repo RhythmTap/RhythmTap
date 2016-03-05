@@ -10,14 +10,18 @@
 #include <pthread.h>
 #import "SuperpoweredAnalyzer.h"
 #import "RhythmTap-Bridging-Header.h"
+#import "SuperpoweredAdvancedAudioPlayer.h"
 
 @implementation AudioProcessor
 
 SuperpoweredOfflineAnalyzer *analyzer;
+SuperpoweredAdvancedAudioPlayer *player;
+SuperpoweredAdvancedAudioPlayerCallback playerCallback;
 pthread_mutex_t mutex;
 unsigned int samplerate;
 float bpm;
 int lengthSeconds;
+int cachedPointCount = 4;
 
 - (id)init {
     self = [super init];
@@ -32,6 +36,7 @@ int lengthSeconds;
     
     // SuperPoweredAnalyzer is not an Obj-C class, so it needs to be instantiated like in C++
     analyzer = new SuperpoweredOfflineAnalyzer(samplerate, bpm, lengthSeconds);
+    //player = new SuperpoweredAdvancedAudioPlayer(this, playerCallback, samplerate, cachedPointCount);
     
     return self;
 }
