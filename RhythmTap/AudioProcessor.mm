@@ -36,6 +36,10 @@ int lengthSeconds;
     return self;
 }
 
+-(void) dealloc {
+    delete analyzer;
+}
+
 -(void) processAudio {
     
 }
