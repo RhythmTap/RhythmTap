@@ -13,7 +13,9 @@
 		D37932941C7B7FC1008B7B64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D37932931C7B7FC1008B7B64 /* Assets.xcassets */; };
 		D37932971C7B7FC1008B7B64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D37932951C7B7FC1008B7B64 /* LaunchScreen.storyboard */; };
 		D37932AD1C7B7FC1008B7B64 /* RhythmTapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37932AC1C7B7FC1008B7B64 /* RhythmTapUITests.swift */; };
-		D37C77721C8A8B8F00972147 /* libSuperpoweredAudioIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D37C77711C8A8B8F00972147 /* libSuperpoweredAudioIOS.a */; };
+		D37C77761C8A8FB500972147 /* libSuperpoweredAudioIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D37C77741C8A8FB500972147 /* libSuperpoweredAudioIOS.a */; };
+		D37C777A1C8A912600972147 /* AudioProcessor.mm in Sources */ = {isa = PBXBuildFile; fileRef = D37C77791C8A912600972147 /* AudioProcessor.mm */; };
+		D37C777C1C8A943F00972147 /* AudioProcessorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D37C777B1C8A943F00972147 /* AudioProcessorTests.m */; };
 		D3BED0071C7F66450047C2C5 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BED0061C7F66450047C2C5 /* AudioPlayer.swift */; };
 		D3BED0091C7F66730047C2C5 /* AudioPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BED0081C7F66730047C2C5 /* AudioPlayerTests.swift */; };
 		D3BED0101C7F732B0047C2C5 /* AudioTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BED00F1C7F732B0047C2C5 /* AudioTrack.swift */; };
@@ -54,7 +56,11 @@
 		D37932A81C7B7FC1008B7B64 /* RhythmTapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RhythmTapUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D37932AC1C7B7FC1008B7B64 /* RhythmTapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RhythmTapUITests.swift; sourceTree = "<group>"; };
 		D37932AE1C7B7FC1008B7B64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D37C77711C8A8B8F00972147 /* libSuperpoweredAudioIOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSuperpoweredAudioIOS.a; sourceTree = "<group>"; };
+		D37C77741C8A8FB500972147 /* libSuperpoweredAudioIOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSuperpoweredAudioIOS.a; path = "Third Party/libSuperpoweredAudioIOS.a"; sourceTree = "<group>"; };
+		D37C77751C8A8FB500972147 /* SuperpoweredAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuperpoweredAnalyzer.h; path = "Third Party/SuperpoweredAnalyzer.h"; sourceTree = "<group>"; };
+		D37C77781C8A912600972147 /* RhythmTap-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RhythmTap-Bridging-Header.h"; sourceTree = "<group>"; };
+		D37C77791C8A912600972147 /* AudioProcessor.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioProcessor.mm; sourceTree = "<group>"; };
+		D37C777B1C8A943F00972147 /* AudioProcessorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioProcessorTests.m; sourceTree = "<group>"; };
 		D3BED0061C7F66450047C2C5 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		D3BED0081C7F66730047C2C5 /* AudioPlayerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayerTests.swift; sourceTree = "<group>"; };
 		D3BED00F1C7F732B0047C2C5 /* AudioTrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioTrack.swift; sourceTree = "<group>"; };
@@ -70,7 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D37C77721C8A8B8F00972147 /* libSuperpoweredAudioIOS.a in Frameworks */,
+				D37C77761C8A8FB500972147 /* libSuperpoweredAudioIOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,7 +100,6 @@
 		D379327D1C7B7FC1008B7B64 = {
 			isa = PBXGroup;
 			children = (
-				D37C77731C8A8C1400972147 /* Third Party */,
 				D37932881C7B7FC1008B7B64 /* RhythmTap */,
 				D37932A01C7B7FC1008B7B64 /* RhythmTapTests */,
 				D37932AB1C7B7FC1008B7B64 /* RhythmTapUITests */,
@@ -115,6 +120,8 @@
 		D37932881C7B7FC1008B7B64 /* RhythmTap */ = {
 			isa = PBXGroup;
 			children = (
+				D37C77771C8A901000972147 /* Audio Processing */,
+				D37C77731C8A8C1400972147 /* Third Party */,
 				D3BED0111C7F7AE50047C2C5 /* Tracks */,
 				D3BED0051C7F64810047C2C5 /* Home View */,
 				F3677B051C7B9BFC00AD7471 /* Game View */,
@@ -134,6 +141,7 @@
 				D37932A31C7B7FC1008B7B64 /* Info.plist */,
 				D3D8A8AD1C7B82720017E533 /* HomeViewControllerTests.swift */,
 				D3BED0081C7F66730047C2C5 /* AudioPlayerTests.swift */,
+				D37C777B1C8A943F00972147 /* AudioProcessorTests.m */,
 			);
 			path = RhythmTapTests;
 			sourceTree = "<group>";
@@ -150,9 +158,20 @@
 		D37C77731C8A8C1400972147 /* Third Party */ = {
 			isa = PBXGroup;
 			children = (
-				D37C77711C8A8B8F00972147 /* libSuperpoweredAudioIOS.a */,
+				D37C77741C8A8FB500972147 /* libSuperpoweredAudioIOS.a */,
+				D37C77751C8A8FB500972147 /* SuperpoweredAnalyzer.h */,
 			);
 			name = "Third Party";
+			path = ..;
+			sourceTree = "<group>";
+		};
+		D37C77771C8A901000972147 /* Audio Processing */ = {
+			isa = PBXGroup;
+			children = (
+				D37C77791C8A912600972147 /* AudioProcessor.mm */,
+				D37C77781C8A912600972147 /* RhythmTap-Bridging-Header.h */,
+			);
+			name = "Audio Processing";
 			sourceTree = "<group>";
 		};
 		D3BED0051C7F64810047C2C5 /* Home View */ = {
@@ -314,6 +333,7 @@
 				F3677B071C7B9C1600AD7471 /* Taps.swift in Sources */,
 				D379328A1C7B7FC1008B7B64 /* AppDelegate.swift in Sources */,
 				D37932921C7B7FC1008B7B64 /* RhythmTap.xcdatamodeld in Sources */,
+				D37C777A1C8A912600972147 /* AudioProcessor.mm in Sources */,
 				D3BED0101C7F732B0047C2C5 /* AudioTrack.swift in Sources */,
 				D3BED0071C7F66450047C2C5 /* AudioPlayer.swift in Sources */,
 			);
@@ -325,6 +345,7 @@
 			files = (
 				D3D8A8AE1C7B82720017E533 /* HomeViewControllerTests.swift in Sources */,
 				D3BED0091C7F66730047C2C5 /* AudioPlayerTests.swift in Sources */,
+				D37C777C1C8A943F00972147 /* AudioProcessorTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,14 +469,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = RhythmTap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Third",
+					Party,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = itsbriany.RhythmTap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RhythmTap/RhythmTap-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -463,14 +489,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = RhythmTap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Third",
+					Party,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = itsbriany.RhythmTap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RhythmTap/RhythmTap-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -478,10 +508,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = RhythmTapTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = itsbriany.RhythmTapTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RhythmTap.app/RhythmTap";
 			};
 			name = Debug;
@@ -490,6 +522,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = RhythmTapTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = itsbriany.RhythmTapTests;
