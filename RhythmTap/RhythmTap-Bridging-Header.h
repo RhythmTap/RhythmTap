@@ -5,10 +5,12 @@
 
 @interface AudioProcessor: NSObject
 
-- (void)processAudio;
+/* Returns true if the audio IS playing */
+- (bool) playAudio: (NSString*) audioFile;
 
-- (bool)playAudio: (NSString*)audioFile;
+/* Returns true if the audio is NOT playing */
+- (bool) pauseAudio;
 
-- (void)prepareAudioPlayer;
+- (void) prepareAudioPlayer;
 
 @end

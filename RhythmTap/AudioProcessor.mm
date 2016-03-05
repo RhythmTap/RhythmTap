@@ -37,17 +37,17 @@ int cachedPointCount = 4;
     
     // SuperPoweredAnalyzer is not an Obj-C class, so it needs to be instantiated like in C++
     analyzer = new SuperpoweredOfflineAnalyzer(samplerate, bpm, lengthSeconds);
-    player = new SuperpoweredAdvancedAudioPlayer((__bridge void *)self, playerEventCallback, samplerate, 4);
+    player = new SuperpoweredAdvancedAudioPlayer((__bridge void *)self, playerEventCallback, samplerate, 0);
     return self;
 }
 
 
-
--(void) dealloc {
+- (void) dealloc {
     delete analyzer;
+    delete player;
 }
 
--(bool) playAudio: (NSString*)audioFile {
+- (bool) playAudio: (NSString*)audioFile {
     NSString *fullPath = [[NSBundle mainBundle] pathForResource:audioFile ofType:@"wav"];
     player->open([fullPath fileSystemRepresentation]);
     bool synchronised = false;
@@ -55,7 +55,12 @@ int cachedPointCount = 4;
     return player->playing;
 }
 
--(void) prepareAudioPlayer {
+- (bool) pauseAudio {
+    player->pause();
+    return player->playing ? false : true;
+}
+
+- (void) prepareAudioPlayer {
     player->setBpm(126.0f);
     player->setFirstBeatMs(353);
     player->setPosition(player->firstBeatMs, false, false);

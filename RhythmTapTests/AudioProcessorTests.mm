@@ -13,6 +13,7 @@
 @interface AudioProcessorTests : XCTestCase
 
 @property (nonatomic) AudioProcessor *audioProcessor;
+@property NSString *audioFile;
 
 @end
 
@@ -23,6 +24,7 @@
 - (void)setUp {
     [super setUp];
     self.audioProcessor = [[AudioProcessor alloc] init];
+    self.audioFile =  @"Tracks/Easy";
 }
 
 - (void)tearDown {
@@ -30,15 +32,13 @@
 }
 
 - (void)testThatAudioCanBePlayed {
-    NSString *audioFile = @"Tracks/Easy";
-    XCTAssertTrue([self.audioProcessor playAudio:audioFile]);
+    XCTAssertTrue([self.audioProcessor playAudio:self.audioFile]);
+}
+
+- (void)testThatAudioCanBePaused {
+    [self.audioProcessor playAudio:self.audioFile];
+    
+    XCTAssertTrue([self.audioProcessor pauseAudio]);
 }
 
 @end
-
-void playerEventCallbackA(void *clientData, SuperpoweredAdvancedAudioPlayerEvent event, void *value) {
-    if (event == SuperpoweredAdvancedAudioPlayerEvent_LoadSuccess) {
-        AudioProcessorTests *self = (__bridge AudioProcessorTests *)clientData;
-        [self.audioProcessor prepareAudioPlayer];
-    };
-}
