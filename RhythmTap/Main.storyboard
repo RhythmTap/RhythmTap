@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oeI-Ms-Bkp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oeI-Ms-Bkp">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -128,18 +128,38 @@
                                     <action selector="onTap:" destination="lra-IO-Lxw" eventType="touchUpInside" id="Wbs-X4-tcs"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QQU-2i-WaJ">
+                                <rect key="frame" x="466" y="101" width="119" height="21"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Correct Taps:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i32-rB-ibp">
+                                        <rect key="frame" x="0.0" y="0.0" width="109" height="21"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bil-8n-x18">
+                                        <rect key="frame" x="109" y="0.0" width="10" height="21"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Nk6-h0-iAV" firstAttribute="height" secondItem="dcV-rq-GxS" secondAttribute="height" id="7Mr-vs-ZpK"/>
                             <constraint firstItem="3cG-yu-5tX" firstAttribute="top" secondItem="k3b-a1-lLq" secondAttribute="bottom" constant="8" id="IqI-JI-4xv"/>
                             <constraint firstItem="Nk6-h0-iAV" firstAttribute="centerX" secondItem="dcV-rq-GxS" secondAttribute="centerX" id="NPR-U7-oug"/>
+                            <constraint firstItem="Nk6-h0-iAV" firstAttribute="top" secondItem="QQU-2i-WaJ" secondAttribute="bottom" constant="-122" id="Q27-Ay-7Hy"/>
                             <constraint firstItem="Nk6-h0-iAV" firstAttribute="centerY" secondItem="dcV-rq-GxS" secondAttribute="centerY" id="deh-h2-yQp"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3cG-yu-5tX" secondAttribute="trailing" constant="26" id="keP-FV-BVW"/>
+                            <constraint firstItem="i32-rB-ibp" firstAttribute="leading" secondItem="Nk6-h0-iAV" secondAttribute="trailing" constant="-134" id="le9-mD-HSA"/>
                             <constraint firstItem="Nk6-h0-iAV" firstAttribute="width" secondItem="dcV-rq-GxS" secondAttribute="width" id="poL-9v-6AD"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="correctTaps" destination="Bil-8n-x18" id="STC-0t-7Rh"/>
                         <outlet property="counterLabel" destination="dcI-mb-rJ9" id="BDB-Eo-eHL"/>
                         <outlet property="gameView" destination="dcV-rq-GxS" id="p59-U3-4nZ"/>
                     </connections>

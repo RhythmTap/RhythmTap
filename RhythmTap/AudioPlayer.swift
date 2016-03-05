@@ -9,20 +9,24 @@
 import Foundation
 import AVFoundation
 
-class AudioPlayer {
+class AudioPlayer: NSObject, AVAudioPlayerDelegate {
     
     // MARK: Properties
     var audioTrack: AudioTrack!
     var avAudioPlayer: AVAudioPlayer?
     
+    var gameViewController: GameViewController
+    
     
     // MARK: Initialization:
-    init(audioTrack: AudioTrack) {
+    init(audioTrack: AudioTrack, controller: GameViewController) {
         self.audioTrack = audioTrack
+        gameViewController = controller
     }
     
-    init() {
+    override init() {
         self.audioTrack = AudioTrack()
+        self.gameViewController = GameViewController()
     }
     
     
@@ -33,6 +37,7 @@ class AudioPlayer {
             if let path = NSBundle.mainBundle().pathForResource(self.audioTrack.file as String, ofType: self.audioTrack.audioFormat as String) {
                 let url = NSURL.fileURLWithPath(path)
                 self.avAudioPlayer = try AVAudioPlayer(contentsOfURL: url)
+                self.avAudioPlayer?.delegate = self
                 self.avAudioPlayer!.play()
                 return true
             }
@@ -48,6 +53,12 @@ class AudioPlayer {
         if self.avAudioPlayer != nil {
             self.avAudioPlayer?.stop()
         }
+    }
+    
+    //Stops the timer when the audio is done playing
+    func audioPlayerDidFinishPlaying(player: AVAudioPlayer,
+        successfully flag: Bool) {
+        gameViewController.timer.invalidate()
     }
     
 }
