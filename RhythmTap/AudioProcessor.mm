@@ -1,5 +1,5 @@
 //
-//  AudioProcessor.m
+//  AudioProcessor.mm
 //  RhythmTap
 //
 //  Created by Brian Yip on 2016-03-04.
