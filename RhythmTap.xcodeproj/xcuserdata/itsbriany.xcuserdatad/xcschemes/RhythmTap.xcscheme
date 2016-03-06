@@ -38,16 +38,6 @@
                ReferencedContainer = "container:RhythmTap.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D37932A71C7B7FC1008B7B64"
-               BuildableName = "RhythmTapUITests.xctest"
-               BlueprintName = "RhythmTapUITests"
-               ReferencedContainer = "container:RhythmTap.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
