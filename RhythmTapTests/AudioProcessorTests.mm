@@ -12,7 +12,7 @@
 
 @interface AdvancedAudioPlayerTests : XCTestCase
 
-@property (nonatomic) AdvancedAudioPlayer *advancedAudioPlayer;
+@property AdvancedAudioPlayer *advancedAudioPlayer;
 @property NSString *audioFile;
 
 @end

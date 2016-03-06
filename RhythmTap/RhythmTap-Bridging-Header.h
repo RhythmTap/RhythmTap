@@ -26,4 +26,13 @@ static unsigned int DefaultSampleRate = 44100;
 
 @interface AudioAnalyzer : NSObject
 
+/* Returns the opened track's duration in seconds */
+- (float)getTrackDurationInSeconds;
+
+/*
+ @param audioFile The audio file path. The path will be searched from NSBundle mainBundle
+ Returns true on success
+ */
+- (bool)open: (NSString*) audioFile;
+
 @end
