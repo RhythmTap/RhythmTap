@@ -15,6 +15,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var counterLabel: UILabel!
     @IBOutlet weak var correctTaps: UILabel!
     
+    @IBOutlet weak var countdownLabel: UILabel!
     let tapCounter = Taps.init()
     let trackDirectory = "Tracks/"
     var elapsedTime: NSTimeInterval = 0.0
@@ -22,9 +23,10 @@ class GameViewController: UIViewController {
     var audioPlayer: AudioPlayer!
     var startTime = NSTimeInterval()
     var timer:NSTimer = NSTimer()
+    var countdownTimer:NSTimer = NSTimer()
     
-    var count: Int = 0;
-    
+    var count: Int = 0
+    var countdown: Int = 3
     
     
     override func viewDidLoad() {
@@ -36,8 +38,10 @@ class GameViewController: UIViewController {
         self.audioPlayer = AudioPlayer(audioTrack: audioTrack, controller: self)
         timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "updateTime", userInfo: nil, repeats: true)
         startTime = NSDate.timeIntervalSinceReferenceDate()
-        self.audioPlayer.play()
+        countdownTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "updateCountdown", userInfo: nil, repeats: true)
+        //self.audioPlayer.play()
         
+        countdownLabel.text = String(countdown)
         counterLabel.text = String(tapCounter.getCount())
     }
     
@@ -47,6 +51,25 @@ class GameViewController: UIViewController {
         
         //Find the difference between current time and start time.
         elapsedTime = currentTime - startTime
+    }
+    
+    // Updates the beginning countdown every second
+    func updateCountdown() {
+        if countdown > 0 {  // if countdown still valid
+            countdown--
+            if countdown == 0 {
+                countdownLabel.text = "Go!" // on the last one, go
+            }
+            else {
+                countdownLabel.text = String(countdown) // update countdown
+            }
+        }
+        else {   // play music, hide label when finished counting down
+            countdownLabel.hidden = true
+            self.audioPlayer.play()
+            countdownTimer.invalidate()
+        }
+        
     }
     
     // MARK: User Actions
