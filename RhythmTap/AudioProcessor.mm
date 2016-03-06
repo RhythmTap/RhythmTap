@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#include <pthread.h>
 #import "SuperpoweredIOSAudioIO.h"
 #import "SuperpoweredAnalyzer.h"
 #import "SuperpoweredAdvancedAudioPlayer.h"
@@ -33,6 +32,7 @@ int lengthSeconds;
 int cachedPointCount = 0;
 
 
+
 /* Constructor */
 - (id)init {
     self = [super init];
@@ -53,11 +53,17 @@ int cachedPointCount = 0;
     return self;
 }
 
-/* Destructor */
+/* Destructor - Clean up memory */
 - (void) dealloc {
-    delete analyzer;
+//    delete analyzer;
     delete player;
-    free(stereoBuffer);
+    delete stereoBuffer;
+//    free(stereoBuffer);
+#if !__has_feature(objc_arc)
+//    [output release];
+//    [super dealloc];
+#endif
+    NSLog(@"The memory should be free now!");
 }
 
 /* Play the audio */
@@ -75,6 +81,7 @@ int cachedPointCount = 0;
 /* Pause the audio player */
 - (bool) pauseAudio {
     player->pause();
+    [output stop];
     return player->playing ? false : true;
 }
 
@@ -92,8 +99,12 @@ int cachedPointCount = 0;
 
 
 /* SuperpoweredIOSAudioDelegate Implementation */
-- (void)interruptionStarted {}
-- (void)recordPermissionRefused {}
+- (void)interruptionStarted {
+    NSLog(@"Audio Player Interrupted!");
+}
+- (void)recordPermissionRefused {
+    NSLog(@"Record Permission Refused!");
+}
 - (void)mapChannels:(multiOutputChannelMap *)outputMap inputMap:(multiInputChannelMap *)inputMap externalAudioDeviceName:(NSString *)externalAudioDeviceName outputsAndInputs:(NSString *)outputsAndInputs {}
 
 - (void)interruptionEnded { // If a player plays Apple Lossless audio files, then we need this. Otherwise unnecessary.
@@ -108,7 +119,21 @@ int cachedPointCount = 0;
     };
     
     // Let the audio player process the audio
-    bool silence = !player->process(stereoBuffer, false, numberOfSamples, volume, masterBpm, player->msElapsedSinceLastBeat);
+    // TODO The problem is the following:
+    // Play -> Good!
+    // Then, we tap play again; this time, the buffer is not here!
+    
+    // Maybe put a lock here?
+    
+    bool silence = true;
+    NSLog(@"%f", **buffers);
+        if (stereoBuffer != NULL) {
+            silence = !player->process(stereoBuffer, false, numberOfSamples, volume, masterBpm, player->msElapsedSinceLastBeat);
+        }
+    
+    
+    
+    
     
     // The stereoBuffer is ready now, let's put the finished audio into the requested buffers.
     // Think of each buffer as the left and right speaker of your device

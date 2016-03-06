@@ -15,39 +15,46 @@ class GameViewController: UIViewController {
     @IBOutlet weak var counterLabel: UILabel!
     @IBOutlet weak var correctTaps: UILabel!
     
-    let audioProcessor = AudioProcessor()
     let tapCounter = Taps.init()
     let trackDirectory = "Tracks/"
     var elapsedTime: NSTimeInterval = 0.0
     
-    var audioPlayer: AudioPlayer!
-    var startTime = NSTimeInterval()
-    var timer:NSTimer = NSTimer()
+    var audioProcessor: AudioProcessor?
+//    var startTime = NSTimeInterval()
+//    var timer:NSTimer = NSTimer()
     
     var count: Int = 0;
     
     
-    
+    /* Screen Loading overrides */
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let file = self.trackDirectory + "Easy"
-        let audioFormat = "wav"
-        let audioTrack = AudioTrack(file: file, audioFormat: audioFormat)
-        if audioProcessor.playAudio(audioTrack.file) {
-            print("Playing audio!")
+        if audioProcessor == nil {
+            audioProcessor = AudioProcessor()
+            let file = self.trackDirectory + "Easy"
+            let audioFormat = "wav"
+            let audioTrack = AudioTrack(file: file, audioFormat: audioFormat)
+            if audioProcessor!.playAudio("Tracks/Easy") {
+                print("Playing audio!")
+            }
         }
         
         counterLabel.text = String(tapCounter.getCount())
     }
     
-    func updateTime() {
-        
-        let currentTime = NSDate.timeIntervalSinceReferenceDate()
-        
-        //Find the difference between current time and start time.
-        elapsedTime = currentTime - startTime
+    override func viewWillDisappear(animated: Bool) {
+        self.audioProcessor?.pauseAudio()
     }
+    
+    
+//    func updateTime() {
+//        
+//        let currentTime = NSDate.timeIntervalSinceReferenceDate()
+//        
+//        //Find the difference between current time and start time.
+//        elapsedTime = currentTime - startTime
+//    }
     
     // MARK: User Actions
     @IBAction func onTap(sender: UIButton) {

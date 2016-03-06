@@ -11,6 +11,8 @@
 /* Returns true if the audio is NOT playing */
 - (bool) pauseAudio;
 
+- (void) dealloc;
+
 - (void) prepareAudioPlayer;
 
 @end
