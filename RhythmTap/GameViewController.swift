@@ -15,6 +15,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var counterLabel: UILabel!
     @IBOutlet weak var correctTaps: UILabel!
     
+    let audioProcessor = AudioProcessor()
     let tapCounter = Taps.init()
     let trackDirectory = "Tracks/"
     var elapsedTime: NSTimeInterval = 0.0
@@ -33,10 +34,9 @@ class GameViewController: UIViewController {
         let file = self.trackDirectory + "Easy"
         let audioFormat = "wav"
         let audioTrack = AudioTrack(file: file, audioFormat: audioFormat)
-        self.audioPlayer = AudioPlayer(audioTrack: audioTrack, controller: self)
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "updateTime", userInfo: nil, repeats: true)
-        startTime = NSDate.timeIntervalSinceReferenceDate()
-        self.audioPlayer.play()
+        if audioProcessor.playAudio(audioTrack.file) {
+            print("Playing audio!")
+        }
         
         counterLabel.text = String(tapCounter.getCount())
     }
