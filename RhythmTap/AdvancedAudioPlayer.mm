@@ -1,5 +1,5 @@
 //
-//  AudioProcessor.mm
+//  AdvancedAudioPlayer.mm
 //  RhythmTap
 //
 //  Created by Brian Yip on 2016-03-04.
@@ -13,23 +13,28 @@
 #import "SuperpoweredSimple.h"
 #import "RhythmTap-Bridging-Header.h"
 
-@implementation AudioProcessor
-
-// Private members
-id<SuperpoweredIOSAudioIODelegate>delegate;
-SuperpoweredIOSAudioIO *output;
-SuperpoweredAdvancedAudioPlayer *player;
-SuperpoweredOfflineAnalyzer *analyzer;
-SuperpoweredAdvancedAudioPlayerCallback playerEventCallback;
-
-float *stereoBuffer;
-float volume = 1.0f;
-double masterBpm = 0.0f;
-double masterMsElapsedSinceLastBeat = -1.0;
-unsigned int lastSamplerate = 0;
-float bpm;
-int lengthSeconds;
-int cachedPointCount = 0;
+@implementation AdvancedAudioPlayer {
+    
+    /* The IO buffer so that we can actually hear the audio */
+    SuperpoweredIOSAudioIO *output;
+    
+    /* The audio player */
+    SuperpoweredAdvancedAudioPlayer *player;
+    
+    /* A callback to recive events from the audio player */
+    SuperpoweredAdvancedAudioPlayerCallback playerEventCallback;
+    
+    
+    float *stereoBuffer;
+    float volume;
+    double masterBpm;
+    double masterMsElapsedSinceLastBeat;
+    unsigned int lastSamplerate;
+    unsigned int defaultSamplerate;
+    float bpm;
+    int lengthSeconds;
+    int cachedPointCount;
+}
 
 
 
@@ -38,31 +43,28 @@ int cachedPointCount = 0;
     self = [super init];
     if (!self) return nil;
     
+    self->volume = 1.0f;
+    self->masterBpm = 0.0f;
+    self->masterMsElapsedSinceLastBeat = -1.0;
+    self->lastSamplerate = 0;
+    self->cachedPointCount = 0;
+    
+    self->defaultSamplerate = 44100;
+    
     // Allocate memory for our stereo buffer
     if (posix_memalign((void **)&stereoBuffer, 16, 4096 + 128) != 0) abort(); // Allocating memory, aligned to 16.
     
-    // The standard sample rate for MP3 and WAV formats
-    unsigned int defaultSamplerate = 44100;
-    
-    // SuperPoweredAnalyzer is not an Obj-C class, so it needs to be instantiated like in C++
-    // analyzer = new SuperpoweredOfflineAnalyzer(defaultSamplerate, bpm, lengthSeconds);
-    
     // Use __bridge allocation so that this instance is not collected by ARC
-    player = new SuperpoweredAdvancedAudioPlayer((__bridge void *)self, playerEventCallback, defaultSamplerate, cachedPointCount);
+    player = new SuperpoweredAdvancedAudioPlayer((__bridge void *)self, playerEventCallback, self->defaultSamplerate, cachedPointCount);
     
     return self;
 }
 
 /* Destructor - Clean up memory */
 - (void) dealloc {
-//    delete analyzer;
-    delete player;
-    delete stereoBuffer;
-//    free(stereoBuffer);
-#if !__has_feature(objc_arc)
-//    [output release];
-//    [super dealloc];
-#endif
+    delete self->player;
+    free(self->stereoBuffer);
+    output = nil;
     NSLog(@"The memory should be free now!");
 }
 
@@ -85,6 +87,7 @@ int cachedPointCount = 0;
     return player->playing ? false : true;
 }
 
+/* Prepare the audio player */
 - (void) prepareAudioPlayer {
     player->setBpm(126.0f);
     player->setFirstBeatMs(353);
@@ -125,15 +128,7 @@ int cachedPointCount = 0;
     
     // Maybe put a lock here?
     
-    bool silence = true;
-    NSLog(@"%f", **buffers);
-        if (stereoBuffer != NULL) {
-            silence = !player->process(stereoBuffer, false, numberOfSamples, volume, masterBpm, player->msElapsedSinceLastBeat);
-        }
-    
-    
-    
-    
+    bool silence = !player->process(stereoBuffer, false, numberOfSamples, volume, masterBpm, player->msElapsedSinceLastBeat);
     
     // The stereoBuffer is ready now, let's put the finished audio into the requested buffers.
     // Think of each buffer as the left and right speaker of your device

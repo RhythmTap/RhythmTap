@@ -1,5 +1,5 @@
 //
-//  AudioProcessorTests.m
+//  AdvancedAudioPlayerTests.mm
 //  RhythmTap
 //
 //  Created by Brian Yip on 2016-03-05.
@@ -10,20 +10,20 @@
 #import "SuperpoweredAdvancedAudioPlayer.h"
 #import "RhythmTap-Bridging-Header.h"
 
-@interface AudioProcessorTests : XCTestCase
+@interface AdvancedAudioPlayerTests : XCTestCase
 
-@property (nonatomic) AudioProcessor *audioProcessor;
+@property (nonatomic) AdvancedAudioPlayer *advancedAudioPlayer;
 @property NSString *audioFile;
 
 @end
 
 
 
-@implementation AudioProcessorTests
+@implementation AdvancedAudioPlayerTests
 
 - (void)setUp {
     [super setUp];
-    self.audioProcessor = [[AudioProcessor alloc] init];
+    self.advancedAudioPlayer = [[AdvancedAudioPlayer alloc] init];
     self.audioFile =  @"Tracks/Easy";
 }
 
@@ -32,13 +32,13 @@
 }
 
 - (void)testThatAudioCanBePlayed {
-    XCTAssertTrue([self.audioProcessor playAudio:self.audioFile]);
+    XCTAssertTrue([self.advancedAudioPlayer playAudio:self.audioFile]);
 }
 
 - (void)testThatAudioCanBePaused {
-    [self.audioProcessor playAudio:self.audioFile];
+    [self.advancedAudioPlayer playAudio:self.audioFile];
     
-    XCTAssertTrue([self.audioProcessor pauseAudio]);
+    XCTAssertTrue([self.advancedAudioPlayer pauseAudio]);
 }
 
 @end

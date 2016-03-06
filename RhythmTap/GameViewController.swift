@@ -19,7 +19,7 @@ class GameViewController: UIViewController {
     let trackDirectory = "Tracks/"
     var elapsedTime: NSTimeInterval = 0.0
     
-    var audioProcessor: AudioProcessor?
+    var advancedAudioPlayer: AdvancedAudioPlayer?
 //    var startTime = NSTimeInterval()
 //    var timer:NSTimer = NSTimer()
     
@@ -30,12 +30,12 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if audioProcessor == nil {
-            audioProcessor = AudioProcessor()
+        if advancedAudioPlayer == nil {
+            advancedAudioPlayer = AdvancedAudioPlayer()
             let file = self.trackDirectory + "Easy"
             let audioFormat = "wav"
             let audioTrack = AudioTrack(file: file, audioFormat: audioFormat)
-            if audioProcessor!.playAudio("Tracks/Easy") {
+            if advancedAudioPlayer!.playAudio(audioTrack.file) {
                 print("Playing audio!")
             }
         }
@@ -44,29 +44,19 @@ class GameViewController: UIViewController {
     }
     
     override func viewWillDisappear(animated: Bool) {
-        self.audioProcessor?.pauseAudio()
+        if self.advancedAudioPlayer != nil {
+            self.advancedAudioPlayer?.pauseAudio()
+            self.advancedAudioPlayer = nil
+        }        
     }
     
-    
-//    func updateTime() {
-//        
-//        let currentTime = NSDate.timeIntervalSinceReferenceDate()
-//        
-//        //Find the difference between current time and start time.
-//        elapsedTime = currentTime - startTime
-//    }
     
     // MARK: User Actions
     @IBAction func onTap(sender: UIButton) {
         tapCounter.increaseCount()
         counterLabel.text = String(tapCounter.getCount())
         gameView.backgroundColor = randomColour()
-        if correctTap() {
-            correctTaps.text = String(count++)
-        
-        }
     }
-    
     
     // MARK: Interface
     func randomColour() -> UIColor {
@@ -74,15 +64,5 @@ class GameViewController: UIViewController {
         let blue = CGFloat(drand48())
         let green = CGFloat(drand48())
         return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
-    }
-    
-    //Checks to see if user tapped to the correct beat of 120 bpm
-    func correctTap() -> Bool {
-        if elapsedTime % (0.5) >= 0.40 || elapsedTime % (0.5) <= 0.1 {
-            return true
-        }
-        else{
-            return false
-        }
     }
 }
