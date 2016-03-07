@@ -8,7 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "SuperpoweredDecoder.h"
-#import "RhythmTap-Bridging-Header.h"
+#import "AudioAnalyzer.h"
 
 @interface AudioAnalyzerTests : XCTestCase
 @property AudioAnalyzer *analyzer;
@@ -19,8 +19,8 @@
 
 - (void)setUp {
     [super setUp];
-    self.analyzer = [[AudioAnalyzer alloc] init];
     self.trackName = @"Tracks/Easy";
+    self.analyzer = [[AudioAnalyzer alloc] init:self.trackName];
 }
 
 - (void)tearDown {

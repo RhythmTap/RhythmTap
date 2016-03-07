@@ -85,6 +85,7 @@
 		D3BED0111C7F7AE50047C2C5 /* Tracks */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Tracks; sourceTree = SOURCE_ROOT; };
 		D3C058D41C8CD3BA00308BF9 /* AudioAnalyzer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioAnalyzer.mm; sourceTree = "<group>"; };
 		D3C058D61C8CDBF800308BF9 /* AudioAnalyzerTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioAnalyzerTests.mm; sourceTree = "<group>"; };
+		D3C058D81C8CE7D100308BF9 /* AudioAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioAnalyzer.h; sourceTree = "<group>"; };
 		D3D8A8AD1C7B82720017E533 /* HomeViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTests.swift; sourceTree = "<group>"; };
 		D3DC7F081C8B462400DE3F09 /* Superpowered3BandEQ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Superpowered3BandEQ.h; path = "Third Party/Superpowered3BandEQ.h"; sourceTree = "<group>"; };
 		D3DC7F091C8B462400DE3F09 /* SuperpoweredAdvancedAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuperpoweredAdvancedAudioPlayer.h; path = "Third Party/SuperpoweredAdvancedAudioPlayer.h"; sourceTree = "<group>"; };
@@ -255,6 +256,7 @@
 				D37C77791C8A912600972147 /* AdvancedAudioPlayer.mm */,
 				D37C77781C8A912600972147 /* RhythmTap-Bridging-Header.h */,
 				D3C058D41C8CD3BA00308BF9 /* AudioAnalyzer.mm */,
+				D3C058D81C8CE7D100308BF9 /* AudioAnalyzer.h */,
 			);
 			name = "Audio Processing";
 			sourceTree = "<group>";
