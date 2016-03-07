@@ -12,31 +12,34 @@
 
 @interface AudioAnalyzerTests : XCTestCase
 @property AudioAnalyzer *analyzer;
-@property NSString *trackName;
+@property AudioTrack *audioTrack;
 @end
 
 @implementation AudioAnalyzerTests
 
 - (void)setUp {
     [super setUp];
-    self.trackName = @"Tracks/Easy";
-    self.analyzer = [[AudioAnalyzer alloc] init:self.trackName];
+    NSString *file = @"Tracks/Easy";
+    NSString *audioFormat = @"wav";
+    self.audioTrack =  [[AudioTrack alloc] init:file audioFormat:audioFormat];
+    self.analyzer = [[AudioAnalyzer alloc] init:self.audioTrack];
 }
 
 - (void)tearDown {
     [super tearDown];
     self.analyzer = nil;
-}
-
-- (void)testThatAudioCanBeOpened {
-    XCTAssertTrue([self.analyzer open:(self.trackName)]);
+    self.audioTrack = nil;
 }
 
 - (void)testDefaultTrackDurationCanBeFetched {
-    [self.analyzer open:self.trackName];
     float expectedTrackDuration = 8.00f;
     
     XCTAssertEqual(self.analyzer.getTrackDurationInSeconds, expectedTrackDuration);
+}
+
+- (void)testThatBpmCanBeFetched {
+    float expectedBpm = 120.0f;
+    XCTAssertEqual([self.analyzer getBpm], expectedBpm);
 }
 
 

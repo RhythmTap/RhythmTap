@@ -25,8 +25,8 @@
     [super setUp];
     NSString *file = @"Tracks/Easy";
     NSString *audioFormat = @"wav";
-    self.advancedAudioPlayer = [[AdvancedAudioPlayer alloc] init];
     self.audioTrack =  [[AudioTrack alloc] init:file audioFormat:audioFormat];
+    self.advancedAudioPlayer = [[AdvancedAudioPlayer alloc] init];
 }
 
 - (void)tearDown {
