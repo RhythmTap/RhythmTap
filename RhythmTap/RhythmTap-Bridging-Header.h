@@ -1,4 +1,5 @@
 #import <Foundation/Foundation.h>
+#import "AudioTrack.h"
 
 /* This interface can be used in Swift */
 
@@ -12,7 +13,7 @@ static unsigned int DefaultSampleRate = 44100;
 @interface AdvancedAudioPlayer: NSObject
 
 /* Returns true if the audio IS playing */
-- (bool) playAudio: (NSString*) audioFile;
+- (bool) playAudio: (AudioTrack*) audioTrack;
 
 /* Returns true if the audio is NOT playing */
 - (bool) pauseAudio;

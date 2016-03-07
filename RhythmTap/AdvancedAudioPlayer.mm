@@ -69,8 +69,8 @@
 }
 
 /* Play the audio */
-- (bool) playAudio: (NSString*)audioFile {
-    NSString *fullPath = [[NSBundle mainBundle] pathForResource:audioFile ofType:@"wav"];
+- (bool) playAudio: (AudioTrack*)audioTrack {
+    NSString *fullPath = [[NSBundle mainBundle] pathForResource:audioTrack.file ofType:audioTrack.audioFormat];
     player->open([fullPath fileSystemRepresentation]);
     [self prepareIO];
     

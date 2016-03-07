@@ -34,8 +34,8 @@ class GameViewController: UIViewController {
             advancedAudioPlayer = AdvancedAudioPlayer()
             let file = self.trackDirectory + "Easy"
             let audioFormat = "wav"
-            let audioTrack = AudioTrack(file: file, audioFormat: audioFormat)
-            if advancedAudioPlayer!.playAudio(audioTrack.file) {
+            let audioTrack = AudioTrack(file, audioFormat: audioFormat)
+            if advancedAudioPlayer!.playAudio(audioTrack) {
                 print("Playing audio!")
             }
         }

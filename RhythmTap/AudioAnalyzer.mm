@@ -59,6 +59,11 @@
     return false;
 }
 
+/* Get the BPM for a given audio file */
+- (float) getBpm: (NSString*) audioFile {
+    return 1.0f;
+}
+
 /* Private Interface */
 
 /* Returns true if the source's length in seconds > 0 */

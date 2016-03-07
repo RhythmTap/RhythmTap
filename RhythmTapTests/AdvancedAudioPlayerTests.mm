@@ -13,7 +13,7 @@
 @interface AdvancedAudioPlayerTests : XCTestCase
 
 @property AdvancedAudioPlayer *advancedAudioPlayer;
-@property NSString *audioFile;
+@property AudioTrack *audioTrack;
 
 @end
 
@@ -23,8 +23,10 @@
 
 - (void)setUp {
     [super setUp];
+    NSString *file = @"Tracks/Easy";
+    NSString *audioFormat = @"wav";
     self.advancedAudioPlayer = [[AdvancedAudioPlayer alloc] init];
-    self.audioFile =  @"Tracks/Easy";
+    self.audioTrack =  [[AudioTrack alloc] init:file audioFormat:audioFormat];
 }
 
 - (void)tearDown {
@@ -32,11 +34,11 @@
 }
 
 - (void)testThatAudioCanBePlayed {
-    XCTAssertTrue([self.advancedAudioPlayer playAudio:self.audioFile]);
+    XCTAssertTrue([self.advancedAudioPlayer playAudio:self.audioTrack]);
 }
 
 - (void)testThatAudioCanBePaused {
-    [self.advancedAudioPlayer playAudio:self.audioFile];
+    [self.advancedAudioPlayer playAudio:self.audioTrack];
     
     XCTAssertTrue([self.advancedAudioPlayer pauseAudio]);
 }
