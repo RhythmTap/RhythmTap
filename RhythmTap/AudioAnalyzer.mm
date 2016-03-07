@@ -96,6 +96,10 @@
     float bpm;
     analyzer->getresults(NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, &bpm, NULL, NULL);
     
+    // Clean up memory
+    free(intBuffer);
+    free(floatBuffer);
+    
     return bpm;
 }
 

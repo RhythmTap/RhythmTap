@@ -19,26 +19,21 @@ class GameViewController: UIViewController {
     let trackDirectory = "Tracks/"
     var elapsedTime: NSTimeInterval = 0.0
     
-    var advancedAudioPlayer: AdvancedAudioPlayer?
-//    var startTime = NSTimeInterval()
-//    var timer:NSTimer = NSTimer()
-    
-    var count: Int = 0;
-    
+    var advancedAudioPlayer: AdvancedAudioPlayer!
     
     /* Screen Loading overrides */
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if advancedAudioPlayer == nil {
-            advancedAudioPlayer = AdvancedAudioPlayer()
-            let file = self.trackDirectory + "Easy"
-            let audioFormat = "wav"
-            let audioTrack = AudioTrack(file, audioFormat: audioFormat)
-            if advancedAudioPlayer!.playAudio(audioTrack) {
+        let file = self.trackDirectory + "Easy"
+        let audioFormat = "wav"
+        let audioTrack = AudioTrack(file, audioFormat: audioFormat)
+        
+        advancedAudioPlayer = AdvancedAudioPlayer()
+        advancedAudioPlayer.prepareAudioPlayer(audioTrack)
+        if advancedAudioPlayer.playAudio(audioTrack) {
                 print("Playing audio!")
-            }
-        }
+         }
         
         counterLabel.text = String(tapCounter.getCount())
     }

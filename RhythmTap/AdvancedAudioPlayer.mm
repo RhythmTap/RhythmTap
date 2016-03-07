@@ -21,22 +21,27 @@
     /* The audio player */
     SuperpoweredAdvancedAudioPlayer *player;
     
-    /* A callback to recive events from the audio player */
-    SuperpoweredAdvancedAudioPlayerCallback playerEventCallback;
-    
-    
     float *stereoBuffer;
     float volume;
     double masterBpm;
     double masterMsElapsedSinceLastBeat;
     unsigned int lastSamplerate;
-    unsigned int defaultSamplerate;
-    float bpm;
     int lengthSeconds;
     int cachedPointCount;
 }
 
-
+/* Handle when the player finishes playing the track */
+static void playerEventCallback(void *clientData, SuperpoweredAdvancedAudioPlayerEvent event, void *value) {
+    AdvancedAudioPlayer *self = (__bridge AdvancedAudioPlayer *)clientData;
+    if (event == SuperpoweredAdvancedAudioPlayerEvent_LoadSuccess) {
+        NSLog(@"AdvancedAudioPlayer is ready");
+    } else if (event == SuperpoweredAdvancedAudioPlayerEvent_LoadError) {
+        NSLog(@"AvancedAudioPlayer failed to load");
+    } else if (event == SuperpoweredAdvancedAudioPlayerEvent_EOF && !self->player->looping) {
+        NSLog(@"AvancedAudioPlayer finished playing song");
+        self->player->pause();
+    }
+}
 
 /* Constructor */
 - (id)init {
@@ -49,13 +54,11 @@
     self->lastSamplerate = 0;
     self->cachedPointCount = 0;
     
-    self->defaultSamplerate = 44100;
-    
     // Allocate memory for our stereo buffer
     if (posix_memalign((void **)&stereoBuffer, 16, 4096 + 128) != 0) abort(); // Allocating memory, aligned to 16.
     
     // Use __bridge allocation so that this instance is not collected by ARC
-    player = new SuperpoweredAdvancedAudioPlayer((__bridge void *)self, playerEventCallback, self->defaultSamplerate, cachedPointCount);
+    player = new SuperpoweredAdvancedAudioPlayer((__bridge void *)self, playerEventCallback, DefaultSampleRate, cachedPointCount);
     
     return self;
 }
@@ -70,13 +73,8 @@
 
 /* Play the audio */
 - (bool) playAudio: (AudioTrack*)audioTrack {
-    NSString *fullPath = [[NSBundle mainBundle] pathForResource:audioTrack.file ofType:audioTrack.audioFormat];
-    player->open([fullPath fileSystemRepresentation]);
-    [self prepareIO];
-    
     bool synchronised = false;
     player->play(synchronised);
-    
     return player->playing;
 }
 
@@ -88,10 +86,20 @@
 }
 
 /* Prepare the audio player */
-- (void) prepareAudioPlayer {
-    player->setBpm(126.0f);
-    player->setFirstBeatMs(353);
-    player->setPosition(player->firstBeatMs, false, false);
+- (void) prepareAudioPlayer: (AudioTrack*)audioTrack {
+    NSString *fullPath = [[NSBundle mainBundle] pathForResource:audioTrack.file ofType:audioTrack.audioFormat];
+    player->open([fullPath fileSystemRepresentation]);
+    
+    AudioAnalyzer *analyzer = [[AudioAnalyzer alloc] init:audioTrack];
+    float bpm = analyzer.getBpm;
+    
+    self->masterBpm = bpm;
+    bool stopPlayback = true;
+    player->setBpm(bpm);
+    player->setFirstBeatMs(0);
+    player->setPosition(player->firstBeatMs, stopPlayback, false);
+    
+    [self prepareIO];
 }
 
 /* Prepare the audio IO for playback */
