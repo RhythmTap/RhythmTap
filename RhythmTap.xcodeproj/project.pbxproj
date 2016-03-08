@@ -53,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D34C09591C8E239E00B2BA00 /* AdvancedAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedAudioPlayer.h; sourceTree = "<group>"; };
 		D37932861C7B7FC1008B7B64 /* RhythmTap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RhythmTap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D37932891C7B7FC1008B7B64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D379328B1C7B7FC1008B7B64 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -251,6 +252,7 @@
 		D37C77771C8A901000972147 /* Audio Processing */ = {
 			isa = PBXGroup;
 			children = (
+				D34C09591C8E239E00B2BA00 /* AdvancedAudioPlayer.h */,
 				D37C77791C8A912600972147 /* AdvancedAudioPlayer.mm */,
 				D37C77781C8A912600972147 /* RhythmTap-Bridging-Header.h */,
 				D3C058D41C8CD3BA00308BF9 /* AudioAnalyzer.mm */,

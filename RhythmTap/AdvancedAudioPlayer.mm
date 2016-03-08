@@ -39,7 +39,10 @@ static void playerEventCallback(void *clientData, SuperpoweredAdvancedAudioPlaye
         NSLog(@"AvancedAudioPlayer failed to load");
     } else if (event == SuperpoweredAdvancedAudioPlayerEvent_EOF && !self->player->looping) {
         NSLog(@"AvancedAudioPlayer finished playing song");
-        self->player->pause();
+        bool isAudioPaused = self.pauseAudio;
+        if (!isAudioPaused) {
+            NSLog(@"Failed to pause audio!");
+        }
     }
 }
 
@@ -92,12 +95,14 @@ static void playerEventCallback(void *clientData, SuperpoweredAdvancedAudioPlaye
     
     AudioAnalyzer *analyzer = [[AudioAnalyzer alloc] init:audioTrack];
     float bpm = analyzer.getBpm;
+    double closestBeatMs = player->closestBeatMs(0, 0);
     
     self->masterBpm = bpm;
     bool stopPlayback = true;
     player->setBpm(bpm);
-    player->setFirstBeatMs(0);
+    player->setFirstBeatMs(closestBeatMs);
     player->setPosition(player->firstBeatMs, stopPlayback, false);
+    player->fixDoubleOrHalfBPM = true;
     
     [self prepareIO];
 }
@@ -129,13 +134,6 @@ static void playerEventCallback(void *clientData, SuperpoweredAdvancedAudioPlaye
         player->setSamplerate(samplerate);
     };
     
-    // Let the audio player process the audio
-    // TODO The problem is the following:
-    // Play -> Good!
-    // Then, we tap play again; this time, the buffer is not here!
-    
-    // Maybe put a lock here?
-    
     bool silence = !player->process(stereoBuffer, false, numberOfSamples, volume, masterBpm, player->msElapsedSinceLastBeat);
     
     // The stereoBuffer is ready now, let's put the finished audio into the requested buffers.
@@ -143,6 +141,36 @@ static void playerEventCallback(void *clientData, SuperpoweredAdvancedAudioPlaye
     SuperpoweredDeInterleave(stereoBuffer, buffers[0], buffers[1], numberOfSamples);
     
     return !silence;
+}
+
+/* Properties */
+/* Indicates if the player is playing or paused */
+- (bool)isPlaying {
+    return player->playing;
+}
+
+/* The actual bpm of the track (as bpm changes with the current tempo)*/
+- (double)getCurrentBpm {
+    return player->currentBpm;
+}
+
+/* Which beat has just happened (1 [1.0f-1.999f], 2 [2.0f-2.999f], 3 [3.0f-3.99f], 4 [4.0f-4.99f]). A value of 0 means "don't know". */
+- (float)getBeatIndex {
+    return player->beatIndex;
+}
+
+/* Tells where the first beat (the beatgrid) begins. Must be correct for syncing. */
+- (double)getFirstBeatMs {
+    return player->firstBeatMs;
+}
+
+
+/* Developer Diagnostics */
+- (void) logBeats {
+    if (ceil(player->beatIndex)) {
+        NSLog(@"Current BPM: %f", player->currentBpm);
+        NSLog(@"Current Beat Index: %f", player->beatIndex);
+    }
 }
 
 @end

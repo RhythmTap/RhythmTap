@@ -21,7 +21,7 @@ class GameViewController: UIViewController {
     
     var advancedAudioPlayer: AdvancedAudioPlayer!
     
-    /* Screen Loading overrides */
+    // Screen Loading overrides
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,8 +48,10 @@ class GameViewController: UIViewController {
     
     // MARK: User Actions
     @IBAction func onTap(sender: UIButton) {
-        tapCounter.increaseCount()
-        counterLabel.text = String(tapCounter.getCount())
+        if checkTap() {
+            tapCounter.increaseCount()
+            counterLabel.text = String(tapCounter.getCount())
+        }
         gameView.backgroundColor = randomColour()
     }
     
@@ -59,5 +61,21 @@ class GameViewController: UIViewController {
         let blue = CGFloat(drand48())
         let green = CGFloat(drand48())
         return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
+    }
+    
+    // MARK: Private Interface
+    /*
+        Returns true if the tap is valid
+    */
+    func checkTap() -> Bool {
+        // Multiply beat index by 100 because the beat index is a float. Modular arithmetic
+        // requires integers
+        let upperBoundTolerance:Float = 90.0;
+        let lowerBoundTolerance:Float = 10.0;
+        if (advancedAudioPlayer.getBeatIndex() * 100) % 100 >= upperBoundTolerance || (advancedAudioPlayer.getBeatIndex() * 100) % 100 <= lowerBoundTolerance {
+            print(advancedAudioPlayer.getBeatIndex())
+            return true;
+        }
+        return false;
     }
 }

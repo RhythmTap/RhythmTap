@@ -10,11 +10,15 @@
 
 @interface AudioAnalyzer : NSObject
 
+/**** Properties ****/
+
 /* Use this for the progress bar in the UI when analyzing audio */
 @property double progress;
 
 /* The audio track that is being analyzed */
 @property AudioTrack *audioTrack;
+
+
 
 
 /* Initialize and open an audio file */
