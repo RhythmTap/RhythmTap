@@ -42,6 +42,11 @@ static void playerEventCallback(void *clientData, SuperpoweredAdvancedAudioPlaye
         bool isAudioPaused = self.pauseAudio;
         if (!isAudioPaused) {
             NSLog(@"Failed to pause audio!");
+            return;
+        }
+        if (self->_delegate) {
+            [self->_delegate onTrackFinish];
+            NSLog(@"It works!");
         }
     }
 }

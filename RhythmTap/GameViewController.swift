@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     
     // MARK: Properties
     @IBOutlet var gameView: UIView!
@@ -35,6 +35,11 @@ class GameViewController: UIViewController {
     }
     
     
+    // MARK: AdvancedAudioPlayerDelegate Implementation
+    // This happens as soon as the track finishes playing
+    func onTrackFinish() {
+        print("GameViewController: Good!!!")
+    }
     
     // MARK: User Actions
     @IBAction func onTap(sender: UIButton) {
@@ -82,6 +87,7 @@ class GameViewController: UIViewController {
         let audioTrack = AudioTrack(file, audioFormat: audioFormat)
         advancedAudioPlayer = AdvancedAudioPlayer()
         advancedAudioPlayer.prepareAudioPlayer(audioTrack)
+        advancedAudioPlayer.delegate = self
     }
     
     func setupCountdownTimer() {
