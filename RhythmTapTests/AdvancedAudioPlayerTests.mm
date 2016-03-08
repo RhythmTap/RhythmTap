@@ -34,11 +34,11 @@
 }
 
 - (void)testThatAudioCanBePlayed {
-    XCTAssertTrue([self.advancedAudioPlayer playAudio:self.audioTrack]);
+    XCTAssertTrue([self.advancedAudioPlayer playAudio]);
 }
 
 - (void)testThatAudioCanBePaused {
-    [self.advancedAudioPlayer playAudio:self.audioTrack];
+    [self.advancedAudioPlayer playAudio];
     
     XCTAssertTrue([self.advancedAudioPlayer pauseAudio]);
 }

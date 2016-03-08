@@ -75,7 +75,7 @@ static void playerEventCallback(void *clientData, SuperpoweredAdvancedAudioPlaye
 }
 
 /* Play the audio */
-- (bool) playAudio: (AudioTrack*)audioTrack {
+- (bool) playAudio {
     bool synchronised = false;
     player->play(synchronised);
     return player->playing;

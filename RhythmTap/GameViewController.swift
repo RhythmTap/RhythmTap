@@ -14,38 +14,26 @@ class GameViewController: UIViewController {
     @IBOutlet var gameView: UIView!
     @IBOutlet weak var counterLabel: UILabel!
     @IBOutlet weak var correctTaps: UILabel!
-    
     @IBOutlet weak var countdownLabel: UILabel!
+    
     let tapCounter = Taps.init()
     let trackDirectory = "Tracks/"
+    
     var elapsedTime: NSTimeInterval = 0.0
-    
     var advancedAudioPlayer: AdvancedAudioPlayer!
+    var startTime = NSTimeInterval()
+    var timer:NSTimer = NSTimer()
+    var countdownTimer:NSTimer = NSTimer()
+    var countdown: Int = 3
     
-    // Screen Loading overrides
+    
+    // MARK: View Handlers
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let file = self.trackDirectory + "Easy"
-        let audioFormat = "wav"
-        let audioTrack = AudioTrack(file, audioFormat: audioFormat)
-        
-        advancedAudioPlayer = AdvancedAudioPlayer()
-        advancedAudioPlayer.prepareAudioPlayer(audioTrack)
-        if advancedAudioPlayer.playAudio(audioTrack) {
-                print("Playing audio!")
-         }
-        
-        countdownLabel.text = String(countdown)
-        counterLabel.text = String(tapCounter.getCount())
+        setupAdvancedAudioPlayer()
+        setupCountdownTimer()
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        if self.advancedAudioPlayer != nil {
-            self.advancedAudioPlayer?.pauseAudio()
-            self.advancedAudioPlayer = nil
-        }        
-    }
     
     
     // MARK: User Actions
@@ -57,6 +45,8 @@ class GameViewController: UIViewController {
         gameView.backgroundColor = randomColour()
     }
     
+    
+    
     // MARK: Interface
     func randomColour() -> UIColor {
         let red = CGFloat(drand48())
@@ -65,10 +55,43 @@ class GameViewController: UIViewController {
         return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
     }
     
+    // Updates the beginning countdown every second
+    func updateCountdown() {
+        if countdown > 0 {  // if countdown still valid
+            countdown--
+            if countdown == 0 {
+                countdownLabel.text = "Go!" // on the last one, go
+            }
+            else {
+                countdownLabel.text = String(countdown) // update countdown
+            }
+        }
+        else {   // play music, hide label when finished counting down
+            countdownLabel.hidden = true
+            self.advancedAudioPlayer.playAudio()
+            countdownTimer.invalidate()
+        }
+    }
+    
+    
+    
     // MARK: Private Interface
-    /*
-        Returns true if the tap is valid
-    */
+    func setupAdvancedAudioPlayer() {
+        let file = self.trackDirectory + "Easy"
+        let audioFormat = "wav"
+        let audioTrack = AudioTrack(file, audioFormat: audioFormat)
+        advancedAudioPlayer = AdvancedAudioPlayer()
+        advancedAudioPlayer.prepareAudioPlayer(audioTrack)
+    }
+    
+    func setupCountdownTimer() {
+        countdownTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "updateCountdown", userInfo: nil, repeats: true)
+        countdownLabel.text = String(countdown)
+        counterLabel.text = String(tapCounter.getCount())
+    }
+    
+    
+    // Returns true if the tap is valid
     func checkTap() -> Bool {
         // Multiply beat index by 100 because the beat index is a float. Modular arithmetic
         // requires integers

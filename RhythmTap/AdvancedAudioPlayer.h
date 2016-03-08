@@ -13,7 +13,7 @@
 @interface AdvancedAudioPlayer: NSObject
 
 /* Returns true if the audio IS playing */
-- (bool)playAudio: (AudioTrack*)audioTrack;
+- (bool)playAudio;
 
 /* Returns true if the audio is NOT playing */
 - (bool)pauseAudio;
