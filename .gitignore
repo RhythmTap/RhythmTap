@@ -15,7 +15,7 @@ DerivedData
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
-xcuserdata
+**/*xcuserdata*
 
 ## Other
 *.xccheckout
@@ -64,5 +64,4 @@ fastlane/screenshots
 
 # Mac Stuff
 .DS_Store
-*/.DS_Store
-*/*/.DS_Store
+**/*.DS_Store
