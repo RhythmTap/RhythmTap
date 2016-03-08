@@ -15,6 +15,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var counterLabel: UILabel!
     @IBOutlet weak var correctTaps: UILabel!
     
+    @IBOutlet weak var countdownLabel: UILabel!
     let tapCounter = Taps.init()
     let trackDirectory = "Tracks/"
     var elapsedTime: NSTimeInterval = 0.0
@@ -35,6 +36,7 @@ class GameViewController: UIViewController {
                 print("Playing audio!")
          }
         
+        countdownLabel.text = String(countdown)
         counterLabel.text = String(tapCounter.getCount())
     }
     
