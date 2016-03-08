@@ -56,9 +56,9 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
     }
     
     //Stops the timer when the audio is done playing
-    func audioPlayerDidFinishPlaying(player: AVAudioPlayer,
-        successfully flag: Bool) {
-        gameViewController.timer.invalidate()
-    }
-    
+//    func audioPlayerDidFinishPlaying(player: AVAudioPlayer,
+//        successfully flag: Bool) {
+//        gameViewController.timer.invalidate()
+//    }
+//    
 }

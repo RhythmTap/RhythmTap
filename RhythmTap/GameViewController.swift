@@ -19,47 +19,41 @@ class GameViewController: UIViewController {
     let trackDirectory = "Tracks/"
     var elapsedTime: NSTimeInterval = 0.0
     
-    var audioPlayer: AudioPlayer!
-    var startTime = NSTimeInterval()
-    var timer:NSTimer = NSTimer()
+    var advancedAudioPlayer: AdvancedAudioPlayer!
     
-    var count: Int = 0;
-    
-    
-    
+    // Screen Loading overrides
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let file = self.trackDirectory + "Easy"
         let audioFormat = "wav"
-        let audioTrack = AudioTrack(file: file, audioFormat: audioFormat)
-        self.audioPlayer = AudioPlayer(audioTrack: audioTrack, controller: self)
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "updateTime", userInfo: nil, repeats: true)
-        startTime = NSDate.timeIntervalSinceReferenceDate()
-        self.audioPlayer.play()
+        let audioTrack = AudioTrack(file, audioFormat: audioFormat)
+        
+        advancedAudioPlayer = AdvancedAudioPlayer()
+        advancedAudioPlayer.prepareAudioPlayer(audioTrack)
+        if advancedAudioPlayer.playAudio(audioTrack) {
+                print("Playing audio!")
+         }
         
         counterLabel.text = String(tapCounter.getCount())
     }
     
-    func updateTime() {
-        
-        let currentTime = NSDate.timeIntervalSinceReferenceDate()
-        
-        //Find the difference between current time and start time.
-        elapsedTime = currentTime - startTime
+    override func viewWillDisappear(animated: Bool) {
+        if self.advancedAudioPlayer != nil {
+            self.advancedAudioPlayer?.pauseAudio()
+            self.advancedAudioPlayer = nil
+        }        
     }
+    
     
     // MARK: User Actions
     @IBAction func onTap(sender: UIButton) {
-        tapCounter.increaseCount()
-        counterLabel.text = String(tapCounter.getCount())
-        gameView.backgroundColor = randomColour()
-        if correctTap() {
-            correctTaps.text = String(count++)
-        
+        if checkTap() {
+            tapCounter.increaseCount()
+            counterLabel.text = String(tapCounter.getCount())
         }
+        gameView.backgroundColor = randomColour()
     }
-    
     
     // MARK: Interface
     func randomColour() -> UIColor {
@@ -69,13 +63,19 @@ class GameViewController: UIViewController {
         return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
     }
     
-    //Checks to see if user tapped to the correct beat of 120 bpm
-    func correctTap() -> Bool {
-        if elapsedTime % (0.5) >= 0.40 || elapsedTime % (0.5) <= 0.1 {
-            return true
+    // MARK: Private Interface
+    /*
+        Returns true if the tap is valid
+    */
+    func checkTap() -> Bool {
+        // Multiply beat index by 100 because the beat index is a float. Modular arithmetic
+        // requires integers
+        let upperBoundTolerance:Float = 90.0;
+        let lowerBoundTolerance:Float = 10.0;
+        if (advancedAudioPlayer.getBeatIndex() * 100) % 100 >= upperBoundTolerance || (advancedAudioPlayer.getBeatIndex() * 100) % 100 <= lowerBoundTolerance {
+            print(advancedAudioPlayer.getBeatIndex())
+            return true;
         }
-        else{
-            return false
-        }
+        return false;
     }
 }

@@ -1,14 +1,13 @@
-#import <Foundation/Foundation.h>
-#ifdef __cplusplus
-# include "SuperpoweredAdvancedAudioPlayer.h"
-#endif
+#import "AdvancedAudioPlayer.h"
+#import "AudioTrack.h"
+#import "AudioAnalyzer.h"
 
-@interface AudioProcessor: NSObject
+/* 
+ This interface can be used in Swift. For more details about the interfaces, refer to
+ their header files.
+*/
 
-- (void)processAudio;
 
-- (bool)playAudio: (NSString*)audioFile;
-
-- (void)prepareAudioPlayer;
-
-@end
+/* Audio Standards */
+/* The standard sample rate in KHz for MP3 and WAV formats */
+static unsigned int DefaultSampleRate = 44100;
