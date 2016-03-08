@@ -24,16 +24,31 @@
 }
 
 /* Constructor */
-- (id)init: (AudioTrack*) audioTrack {
+- (id)init {
     self = [super init];
     if (!self) return nil;
-    
-    self.audioTrack = audioTrack;
     
     /* Used to extract metadata */
     decoder = new SuperpoweredDecoder();
     
-    bool isAudioFileOpened = [self open:self.audioTrack];
+    /* Must be 0 to detect the track's bpm */
+    float detectBpm = 0;
+    analyzer = new SuperpoweredOfflineAnalyzer(DefaultSampleRate, detectBpm, decoder->durationSeconds);
+    
+    return self;
+}
+
+/* Same as default constructor, except that it also opens the provided audio track
+   @param audioTrack The audio track to analyze
+ */
+- (id)init: (AudioTrack*) audioTrack {
+    self = [super init];
+    if (!self) return nil;
+    
+    /* Used to extract metadata */
+    decoder = new SuperpoweredDecoder();
+    
+    bool isAudioFileOpened = [self open:audioTrack];
     if (!isAudioFileOpened) {
         NSLog(@"AudioAnalyzer Warning: Could not open audio file!");
     }
@@ -45,6 +60,8 @@
     return self;
 }
 
+
+
 /* Destructor - Clean up memory */
 - (void) dealloc {
     delete decoder;
@@ -54,7 +71,7 @@
 /* Interface */
 - (float)getTrackDurationInSeconds {
     // Let the decoder open the audio track
-    if (![self open:self.audioTrack]) {
+    if (![self open:self->_audioTrack]) {
         NSLog(@"Could not open audio track");
         return 0.0f;
     }
@@ -65,7 +82,7 @@
 - (float) getBpm {
     
     // Let the decoder open the audio track
-    if (![self open:self.audioTrack]) {
+    if (![self open:self->_audioTrack]) {
         NSLog(@"Could not open audio track");
         return 0.0f;
     }
@@ -89,8 +106,10 @@
         analyzer->process(floatBuffer, samplesDecoded);
         
         // Update the progress indicator.
-        self.progress = (double)decoder->samplePosition / (double)decoder->durationSamples;
+        [self.delegate onFetchBpm:decoder->samplePosition finishPosition:decoder->durationSamples];
     }
+    // Callback to alert that BPM processing is done
+    [self.delegate doneFetchingBpm];
     
     // Use bpm as an input argument
     float bpm;
@@ -104,6 +123,7 @@
 }
 
 - (bool)open:(AudioTrack*)audioTrack {
+    self->_audioTrack = audioTrack;
     NSString *fullpathToFile = [[NSBundle mainBundle] pathForResource:audioTrack.file ofType:audioTrack.audioFormat];
     const char *result = decoder->open([fullpathToFile cStringUsingEncoding:NSUTF8StringEncoding]);
     if (result == NULL) {

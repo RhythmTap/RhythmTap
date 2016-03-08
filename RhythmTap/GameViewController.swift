@@ -41,6 +41,7 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
         print("GameViewController: Good!!!")
     }
     
+    
     // MARK: User Actions
     @IBAction func onTap(sender: UIButton) {
         if checkTap() {
@@ -82,11 +83,13 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     
     // MARK: Private Interface
     func setupAdvancedAudioPlayer() {
+        let audioAnalyzer = AudioAnalyzer()
+        
         let file = self.trackDirectory + "Easy"
         let audioFormat = "wav"
         let audioTrack = AudioTrack(file, audioFormat: audioFormat)
         advancedAudioPlayer = AdvancedAudioPlayer()
-        advancedAudioPlayer.prepareAudioPlayer(audioTrack)
+        advancedAudioPlayer.prepareAudioPlayer(audioAnalyzer, trackToAnalyze: audioTrack)
         advancedAudioPlayer.delegate = self
     }
     

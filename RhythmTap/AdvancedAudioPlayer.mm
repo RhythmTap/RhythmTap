@@ -15,6 +15,7 @@
 
 @implementation AdvancedAudioPlayer {
     
+    
     /* The IO buffer so that we can actually hear the audio */
     SuperpoweredIOSAudioIO *output;
     
@@ -51,7 +52,7 @@ static void playerEventCallback(void *clientData, SuperpoweredAdvancedAudioPlaye
     }
 }
 
-/* Constructor */
+/**** Constructor ****/
 - (id)init {
     self = [super init];
     if (!self) return nil;
@@ -71,12 +72,17 @@ static void playerEventCallback(void *clientData, SuperpoweredAdvancedAudioPlaye
     return self;
 }
 
-/* Destructor - Clean up memory */
+/**** Destructor - Clean up memory ****/
 - (void) dealloc {
     delete self->player;
     free(self->stereoBuffer);
     output = nil;
     NSLog(@"The memory should be free now!");
+}
+
+/* Set the audio analyzer's delegate */
+- (void)setAudioAnalyzerDelegate:(UIViewController *)viewController {
+
 }
 
 /* Play the audio */
@@ -94,11 +100,14 @@ static void playerEventCallback(void *clientData, SuperpoweredAdvancedAudioPlaye
 }
 
 /* Prepare the audio player */
-- (void) prepareAudioPlayer: (AudioTrack*)audioTrack {
+- (void) prepareAudioPlayer: (AudioAnalyzer*)analyzer trackToAnalyze:(AudioTrack*)audioTrack {
     NSString *fullPath = [[NSBundle mainBundle] pathForResource:audioTrack.file ofType:audioTrack.audioFormat];
     player->open([fullPath fileSystemRepresentation]);
+    if (![analyzer open:audioTrack]) {
+        NSLog(@"Failed to open %@", audioTrack.file);
+        return;
+    }
     
-    AudioAnalyzer *analyzer = [[AudioAnalyzer alloc] init:audioTrack];
     float bpm = analyzer.getBpm;
     double closestBeatMs = player->closestBeatMs(0, 0);
     
@@ -119,7 +128,7 @@ static void playerEventCallback(void *clientData, SuperpoweredAdvancedAudioPlaye
 }
 
 
-/* SuperpoweredIOSAudioDelegate Implementation */
+/**** SuperpoweredIOSAudioDelegate Implementation ****/
 - (void)interruptionStarted {
     NSLog(@"Audio Player Interrupted!");
 }

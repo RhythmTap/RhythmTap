@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+#import "AudioAnalyzer.h"
 #import "AudioTrack.h"
 
 
@@ -26,7 +27,6 @@
 /* Object conforming to protocol must be of type UIViewController */
 @property (nonatomic, weak) UIViewController <AdvancedAudioPlayerDelegate>* delegate;
 
-
 /* Returns true if the audio IS playing */
 - (bool)playAudio;
 
@@ -36,7 +36,7 @@
 /* Prepare the audio player
  @param bpm The track's bpm
  */
-- (void)prepareAudioPlayer: (AudioTrack*)audioTrack;
+- (void)prepareAudioPlayer: (AudioAnalyzer*)analyzer trackToAnalyze:(AudioTrack*)audioTrack;
 
 
 

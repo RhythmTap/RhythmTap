@@ -8,16 +8,25 @@
 
 #import "AudioTrack.h"
 
+
+@protocol AudioAnalyzerDelegate <NSObject>
+
+/* Called when BPM is completely analyzed */
+- (void)doneFetchingBpm;
+
+/* Called every time a sample is processed when analyzing BPM */
+- (void)onFetchBpm: (double)decoderSamplePosition finishPosition:(double)decoderDurationSamples;
+
+@end
+
+
 @interface AudioAnalyzer : NSObject
 
 /**** Properties ****/
-
-/* Use this for the progress bar in the UI when analyzing audio */
-@property double progress;
+@property (nonatomic, weak) id<AudioAnalyzerDelegate> delegate;
 
 /* The audio track that is being analyzed */
 @property AudioTrack *audioTrack;
-
 
 
 
@@ -29,5 +38,8 @@
 
 /* Returns the audio track's BPM on success and 0 on failure */
 - (float)getBpm;
+
+/* Open the provided audio track for analysis */
+- (bool)open: (AudioTrack*)audioTrack;
 
 @end
