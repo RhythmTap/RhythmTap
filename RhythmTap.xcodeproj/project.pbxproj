@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08A12D081C907B4400A13D96 /* LevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A12D071C907B4400A13D96 /* LevelViewController.swift */; };
+		08A12D0A1C907D6200A13D96 /* LevelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A12D091C907D6200A13D96 /* LevelViewCell.swift */; };
 		D379328A1C7B7FC1008B7B64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37932891C7B7FC1008B7B64 /* AppDelegate.swift */; };
 		D379328C1C7B7FC1008B7B64 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D379328B1C7B7FC1008B7B64 /* HomeViewController.swift */; };
 		D37932921C7B7FC1008B7B64 /* RhythmTap.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D37932901C7B7FC1008B7B64 /* RhythmTap.xcdatamodeld */; };
@@ -53,6 +55,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		08A12D071C907B4400A13D96 /* LevelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelViewController.swift; sourceTree = "<group>"; };
+		08A12D091C907D6200A13D96 /* LevelViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelViewCell.swift; sourceTree = "<group>"; };
 		D34C09591C8E239E00B2BA00 /* AdvancedAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedAudioPlayer.h; sourceTree = "<group>"; };
 		D37932861C7B7FC1008B7B64 /* RhythmTap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RhythmTap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D37932891C7B7FC1008B7B64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -152,6 +156,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		08A12D061C907B1500A13D96 /* Level View */ = {
+			isa = PBXGroup;
+			children = (
+				08A12D071C907B4400A13D96 /* LevelViewController.swift */,
+				08A12D091C907D6200A13D96 /* LevelViewCell.swift */,
+			);
+			name = "Level View";
+			sourceTree = "<group>";
+		};
 		D379327D1C7B7FC1008B7B64 = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +188,7 @@
 		D37932881C7B7FC1008B7B64 /* RhythmTap */ = {
 			isa = PBXGroup;
 			children = (
+				08A12D061C907B1500A13D96 /* Level View */,
 				D3BB53811C8BAA73005DD54B /* Frameworks */,
 				D37C77771C8A901000972147 /* Audio Processing */,
 				D37C77731C8A8C1400972147 /* Third Party */,
@@ -434,6 +448,8 @@
 				D379328C1C7B7FC1008B7B64 /* HomeViewController.swift in Sources */,
 				F3677B071C7B9C1600AD7471 /* Taps.swift in Sources */,
 				D379328A1C7B7FC1008B7B64 /* AppDelegate.swift in Sources */,
+				08A12D081C907B4400A13D96 /* LevelViewController.swift in Sources */,
+				08A12D0A1C907D6200A13D96 /* LevelViewCell.swift in Sources */,
 				D3C058DB1C8D1F1100308BF9 /* AudioTrack.m in Sources */,
 				D37932921C7B7FC1008B7B64 /* RhythmTap.xcdatamodeld in Sources */,
 				D37C777A1C8A912600972147 /* AdvancedAudioPlayer.mm in Sources */,
