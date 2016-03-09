@@ -16,7 +16,8 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     @IBOutlet weak var correctTaps: UILabel!
     @IBOutlet weak var countdownLabel: UILabel!
     
-    let tapCounter = Taps.init()
+    let correctTapCounter = Taps.init()
+    let incorrectTapCounter = Taps.init()
     let trackDirectory = "Tracks/"
     
     var elapsedTime: NSTimeInterval = 0.0
@@ -25,6 +26,7 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     var timer:NSTimer = NSTimer()
     var countdownTimer:NSTimer = NSTimer()
     var countdown: Int = 3
+    var songFinished: Bool = false
     
     
     // MARK: View Handlers
@@ -39,18 +41,33 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     // This happens as soon as the track finishes playing
     func onTrackFinish() {
         print("GameViewController: Good!!!")
+        songFinished = true
+        self.performSegueWithIdentifier("showScore", sender: self)
     }
     
     // MARK: User Actions
     @IBAction func onTap(sender: UIButton) {
-        if checkTap() {
-            tapCounter.increaseCount()
-            counterLabel.text = String(tapCounter.getCount())
+        //Increments correct taps if user tapped on correct beat and the song isnt over
+        if checkTap() && !songFinished {
+            correctTapCounter.increaseCount()
+            correctTaps.text = String(correctTapCounter.getCount())
+        }
+        //If the user did not tap a correct tap, it was incorrect
+        else {
+            incorrectTapCounter.increaseCount()
+            counterLabel.text = String(incorrectTapCounter.getCount())
+            
         }
         gameView.backgroundColor = randomColour()
     }
     
-    
+    //Deals with the transitions between views
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let dest = segue.destinationViewController as? ScoreViewController {
+            dest.correctTaps = Float(correctTaps.text!)!
+            dest.incorrectTaps = Float(counterLabel.text!)!
+        }
+    }
     
     // MARK: Interface
     func randomColour() -> UIColor {
@@ -93,7 +110,7 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     func setupCountdownTimer() {
         countdownTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "updateCountdown", userInfo: nil, repeats: true)
         countdownLabel.text = String(countdown)
-        counterLabel.text = String(tapCounter.getCount())
+        counterLabel.text = String(correctTapCounter.getCount())
     }
     
     
@@ -109,4 +126,5 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
         }
         return false;
     }
+    
 }

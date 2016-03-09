@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		133E80F51C907A3700D39E45 /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133E80F41C907A3700D39E45 /* ScoreViewController.swift */; };
 		D379328A1C7B7FC1008B7B64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37932891C7B7FC1008B7B64 /* AppDelegate.swift */; };
 		D379328C1C7B7FC1008B7B64 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D379328B1C7B7FC1008B7B64 /* HomeViewController.swift */; };
 		D37932921C7B7FC1008B7B64 /* RhythmTap.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D37932901C7B7FC1008B7B64 /* RhythmTap.xcdatamodeld */; };
@@ -53,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		133E80F41C907A3700D39E45 /* ScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
 		D34C09591C8E239E00B2BA00 /* AdvancedAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedAudioPlayer.h; sourceTree = "<group>"; };
 		D37932861C7B7FC1008B7B64 /* RhythmTap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RhythmTap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D37932891C7B7FC1008B7B64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -152,6 +154,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		133E80F31C907A0C00D39E45 /* Score View */ = {
+			isa = PBXGroup;
+			children = (
+				133E80F41C907A3700D39E45 /* ScoreViewController.swift */,
+			);
+			name = "Score View";
+			sourceTree = "<group>";
+		};
 		D379327D1C7B7FC1008B7B64 = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +185,7 @@
 		D37932881C7B7FC1008B7B64 /* RhythmTap */ = {
 			isa = PBXGroup;
 			children = (
+				133E80F31C907A0C00D39E45 /* Score View */,
 				D3BB53811C8BAA73005DD54B /* Frameworks */,
 				D37C77771C8A901000972147 /* Audio Processing */,
 				D37C77731C8A8C1400972147 /* Third Party */,
@@ -431,6 +442,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3677B041C7B991E00AD7471 /* GameViewController.swift in Sources */,
+				133E80F51C907A3700D39E45 /* ScoreViewController.swift in Sources */,
 				D379328C1C7B7FC1008B7B64 /* HomeViewController.swift in Sources */,
 				F3677B071C7B9C1600AD7471 /* Taps.swift in Sources */,
 				D379328A1C7B7FC1008B7B64 /* AppDelegate.swift in Sources */,

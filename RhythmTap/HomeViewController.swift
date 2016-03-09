@@ -16,6 +16,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.hidesBackButton = true
+        
         startButton.layer.cornerRadius = 5
         levelButton.layer.cornerRadius = 5
     }
