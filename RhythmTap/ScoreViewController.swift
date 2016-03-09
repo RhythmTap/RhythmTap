@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Foundation
+import CoreData
 
 class ScoreViewController: UIViewController {
     
@@ -17,6 +19,10 @@ class ScoreViewController: UIViewController {
     @IBOutlet weak var correctTapsLabel: UILabel!
     @IBOutlet weak var incorrectTapsLabel: UILabel!
     
+    let managedContext = (UIApplication.sharedApplication().delegate as!
+        AppDelegate).managedObjectContext
+    var scores = [NSManagedObject]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,11 +31,50 @@ class ScoreViewController: UIViewController {
         correctTapsLabel.text = String(Int(correctTaps))
         incorrectTapsLabel.text = String(Int(incorrectTaps))
         
+        let fetchRequest = NSFetchRequest(entityName: "Score")
+        do {
+            // fetch scores into results
+            let results = try managedContext.executeFetchRequest(fetchRequest)
+            scores = results as! [NSManagedObject]
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        
         self.navigationItem.hidesBackButton = true
-
-        // Do any additional setup after loading the view.
+        print(scores)
+        //newHighScore()
+        getHighScore()
+        
     }
 
+    func newHighScore() {
+        let pastScore =  NSEntityDescription.entityForName("Score", inManagedObjectContext:managedContext)
+        let newScore = NSManagedObject(entity: pastScore!, insertIntoManagedObjectContext: managedContext)
+        newScore.setValue(correctTaps, forKey: "highScore")
+        newScore.setValue(1, forKey: "level")
+        newScore.setValue("easy", forKey: "difficulty")
+        
+        //4
+        do {
+            try managedContext.save()
+            //5
+            scores.append(newScore)
+        } catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        }
+    }
+    
+    func getHighScore() {
+        let entries : NSArray = scores
+        
+        // search for the value in name or country
+        let predicate = NSPredicate(format: "level = %@ AND difficulty = %@", 1, "easy")
+        
+        // filter results accordingly
+        var searchScores = entries.filteredArrayUsingPredicate(predicate)
+        print(searchScores[0])
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

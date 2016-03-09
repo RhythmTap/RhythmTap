@@ -34,6 +34,8 @@
 		F3163A8E1C7F8B21000F9884 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3163A8D1C7F8B21000F9884 /* Main.storyboard */; };
 		F3677B041C7B991E00AD7471 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3677B031C7B991E00AD7471 /* GameViewController.swift */; };
 		F3677B071C7B9C1600AD7471 /* Taps.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3677B061C7B9C1600AD7471 /* Taps.swift */; };
+		F3B7E5381C9095CE00AFD87E /* LevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B7E5371C9095CE00AFD87E /* LevelViewController.swift */; };
+		F3B7E53A1C9095D900AFD87E /* LevelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B7E5391C9095D900AFD87E /* LevelViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +121,8 @@
 		F3163A8D1C7F8B21000F9884 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		F3677B031C7B991E00AD7471 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		F3677B061C7B9C1600AD7471 /* Taps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Taps.swift; sourceTree = "<group>"; };
+		F3B7E5371C9095CE00AFD87E /* LevelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelViewController.swift; sourceTree = "<group>"; };
+		F3B7E5391C9095D900AFD87E /* LevelViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +189,7 @@
 		D37932881C7B7FC1008B7B64 /* RhythmTap */ = {
 			isa = PBXGroup;
 			children = (
+				F3B7E5361C9095C100AFD87E /* Level View */,
 				133E80F31C907A0C00D39E45 /* Score View */,
 				D3BB53811C8BAA73005DD54B /* Frameworks */,
 				D37C77771C8A901000972147 /* Audio Processing */,
@@ -304,6 +309,15 @@
 				D3BED0061C7F66450047C2C5 /* AudioPlayer.swift */,
 			);
 			name = "Game View";
+			sourceTree = "<group>";
+		};
+		F3B7E5361C9095C100AFD87E /* Level View */ = {
+			isa = PBXGroup;
+			children = (
+				F3B7E5391C9095D900AFD87E /* LevelViewCell.swift */,
+				F3B7E5371C9095CE00AFD87E /* LevelViewController.swift */,
+			);
+			name = "Level View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -444,10 +458,10 @@
 				F3677B041C7B991E00AD7471 /* GameViewController.swift in Sources */,
 				133E80F51C907A3700D39E45 /* ScoreViewController.swift in Sources */,
 				D379328C1C7B7FC1008B7B64 /* HomeViewController.swift in Sources */,
+				F3B7E53A1C9095D900AFD87E /* LevelViewCell.swift in Sources */,
+				F3B7E5381C9095CE00AFD87E /* LevelViewController.swift in Sources */,
 				F3677B071C7B9C1600AD7471 /* Taps.swift in Sources */,
 				D379328A1C7B7FC1008B7B64 /* AppDelegate.swift in Sources */,
-				08A12D081C907B4400A13D96 /* LevelViewController.swift in Sources */,
-				08A12D0A1C907D6200A13D96 /* LevelViewCell.swift in Sources */,
 				D3C058DB1C8D1F1100308BF9 /* AudioTrack.m in Sources */,
 				D37932921C7B7FC1008B7B64 /* RhythmTap.xcdatamodeld in Sources */,
 				D37C777A1C8A912600972147 /* AdvancedAudioPlayer.mm in Sources */,
