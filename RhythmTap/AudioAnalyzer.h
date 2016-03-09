@@ -6,7 +6,7 @@
 //  Copyright © 2016 Brian Yip. All rights reserved.
 //
 
-#import "AudioTrack.h"
+#import "RhythmTap-Bridging-Header.h"
 
 
 @protocol AudioAnalyzerDelegate <NSObject>
@@ -20,6 +20,8 @@
 @end
 
 
+/* Use forward declaration to use Swift types in Objective-C Header files */
+@class AudioTrack;
 @interface AudioAnalyzer : NSObject
 
 /**** Properties ****/

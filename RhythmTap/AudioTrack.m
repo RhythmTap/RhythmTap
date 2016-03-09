@@ -1,28 +1,28 @@
+////
+////  AudioTrack.m
+////  RhythmTap
+////
+////  Created by Brian Yip on 2016-03-06.
+////  Copyright © 2016 Brian Yip. All rights reserved.
+////
 //
-//  AudioTrack.m
-//  RhythmTap
+//#import <Foundation/Foundation.h>
+//#import "AudioTrack.h"
 //
-//  Created by Brian Yip on 2016-03-06.
-//  Copyright © 2016 Brian Yip. All rights reserved.
+//@implementation AudioTrack : NSObject 
 //
-
-#import <Foundation/Foundation.h>
-#import "AudioTrack.h"
-
-@implementation AudioTrack : NSObject 
-
-- (id)init {
-    self = [super init];
-    self->_file = @"";
-    self->_audioFormat = @"";
-    return self;
-}
-
-- (id)init: (NSString*)file audioFormat:(NSString*)format {
-    self = [super init];
-    self->_file = file;
-    self->_audioFormat = format;
-    return self;
-}
-
-@end
+//- (id)init {
+//    self = [super init];
+//    self.file = @"";
+//    self.audioFormat = @"";
+//    return self;
+//}
+//
+//- (id)init: (NSString*)file audioFormat:(NSString*)format {
+//    self = [super init];
+//    self.file = file;
+//    self.audioFormat = format;
+//    return self;
+//}
+//
+//@end

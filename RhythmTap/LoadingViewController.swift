@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class LoadingViewController: UIViewController, AudioAnalyzerDelegate {
     
@@ -16,7 +17,6 @@ class LoadingViewController: UIViewController, AudioAnalyzerDelegate {
     let gameViewSegueIdentifier = "GameViewSegue"
     let trackDirectory = "Tracks/"
     let advancedAudioPlayer = AdvancedAudioPlayer()
-    let audioAnalyzer = AudioAnalyzer()
     
     
     // View actions
@@ -58,10 +58,15 @@ class LoadingViewController: UIViewController, AudioAnalyzerDelegate {
     
     // MARK: Private Interface
     private func setupAdvancedAudioPlayer() {
+        
+        //The solution is to port the analyzer to ObjC land because it is not possible to convert Swift strings to ObjC strings
+        
+        
+        let file = self.trackDirectory + "lycka"
+        let audioFormat = "mp3"
+        let audioTrack = AudioTrack(file: file, audioFormat: audioFormat)
+        let audioAnalyzer = AudioAnalyzer(audioTrack)
         audioAnalyzer.delegate = self
-        let file = NSString(string: self.trackDirectory + "lycka")
-        let audioFormat = NSString(string: "mp3")
-        let audioTrack = AudioTrack(file as String, audioFormat: audioFormat as String)
         advancedAudioPlayer.prepareAudioPlayer(audioAnalyzer, trackToAnalyze: audioTrack)
     }
     

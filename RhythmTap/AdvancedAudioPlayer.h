@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import "AudioAnalyzer.h"
-#import "AudioTrack.h"
 
 
 
@@ -21,7 +20,9 @@
 @end
 
 
-
+/* Use forward declaration to use Swift types in Objective-C Header files */
+@class AudioTrack;
+@class AudioAnalyzer;
 @interface AdvancedAudioPlayer: NSObject
 
 /* Object conforming to protocol must be of type UIViewController */

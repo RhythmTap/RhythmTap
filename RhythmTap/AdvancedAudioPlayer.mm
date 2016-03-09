@@ -7,11 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+
 #import "SuperpoweredIOSAudioIO.h"
 #import "SuperpoweredAnalyzer.h"
 #import "SuperpoweredAdvancedAudioPlayer.h"
 #import "SuperpoweredSimple.h"
+
+#import "RhythmTap-Swift.h"
 #import "RhythmTap-Bridging-Header.h"
+
 
 @implementation AdvancedAudioPlayer {
     

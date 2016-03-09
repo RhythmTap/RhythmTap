@@ -12,8 +12,9 @@
 #import "SuperpoweredAnalyzer.h"
 #import "SuperpoweredSimple.h"
 
-#import "AudioAnalyzer.h"
+#import "RhythmTap-Swift.h"
 #import "RhythmTap-Bridging-Header.h"
+
 
 @implementation AudioAnalyzer {
     /* Processes audio */
@@ -52,7 +53,7 @@
     if (!isAudioFileOpened) {
         NSLog(@"AudioAnalyzer Warning: Could not open audio file!");
     }
-    
+        
     /* Must be 0 to detect the track's bpm */
     float detectBpm = 0;
     analyzer = new SuperpoweredOfflineAnalyzer(DefaultSampleRate, detectBpm, decoder->durationSeconds);
