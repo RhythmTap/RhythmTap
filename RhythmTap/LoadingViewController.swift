@@ -58,8 +58,8 @@ class LoadingViewController: UIViewController, AudioAnalyzerDelegate {
     
     // MARK: Private Interface
     private func setupAdvancedAudioPlayer() {
-        let file = self.trackDirectory + "lycka"
-        let audioFormat = "mp3"
+        let file = self.trackDirectory + "Easy"
+        let audioFormat = "wav"
         let audioTrack = AudioTrack(file: file, audioFormat: audioFormat)
         let audioAnalyzer = AudioAnalyzer(audioTrack)
         audioAnalyzer.delegate = self
