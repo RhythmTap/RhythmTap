@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-#import "AudioTrack.h"
+#import "AudioAnalyzer.h"
 
 
 
@@ -20,12 +20,13 @@
 @end
 
 
-
+/* Use forward declaration to use Swift types in Objective-C Header files */
+@class AudioTrack;
+@class AudioAnalyzer;
 @interface AdvancedAudioPlayer: NSObject
 
 /* Object conforming to protocol must be of type UIViewController */
 @property (nonatomic, weak) UIViewController <AdvancedAudioPlayerDelegate>* delegate;
-
 
 /* Returns true if the audio IS playing */
 - (bool)playAudio;
@@ -34,9 +35,10 @@
 - (bool)pauseAudio;
 
 /* Prepare the audio player
- @param bpm The track's bpm
+ @param delegate A reference to the caller implementing AudioAnalyzerDelegate
+ @param audioTrack The audio track that will be played
  */
-- (void)prepareAudioPlayer: (AudioTrack*)audioTrack;
+- (void)prepareAudioPlayer: (id<AudioAnalyzerDelegate>)delegate audioTrackToPrepare:(AudioTrack*)audioTrack;
 
 
 

@@ -7,11 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+
 #import "SuperpoweredIOSAudioIO.h"
 #import "SuperpoweredAnalyzer.h"
 #import "SuperpoweredAdvancedAudioPlayer.h"
 #import "SuperpoweredSimple.h"
+
+#import "RhythmTap-Swift.h"
 #import "RhythmTap-Bridging-Header.h"
+
 
 @implementation AdvancedAudioPlayer {
     
@@ -51,7 +55,7 @@ static void playerEventCallback(void *clientData, SuperpoweredAdvancedAudioPlaye
     }
 }
 
-/* Constructor */
+/**** Constructor ****/
 - (id)init {
     self = [super init];
     if (!self) return nil;
@@ -71,7 +75,7 @@ static void playerEventCallback(void *clientData, SuperpoweredAdvancedAudioPlaye
     return self;
 }
 
-/* Destructor - Clean up memory */
+/**** Destructor - Clean up memory ****/
 - (void) dealloc {
     delete self->player;
     free(self->stereoBuffer);
@@ -94,22 +98,43 @@ static void playerEventCallback(void *clientData, SuperpoweredAdvancedAudioPlaye
 }
 
 /* Prepare the audio player */
-- (void) prepareAudioPlayer: (AudioTrack*)audioTrack {
-    NSString *fullPath = [[NSBundle mainBundle] pathForResource:audioTrack.file ofType:audioTrack.audioFormat];
+- (void) prepareAudioPlayer: (id<AudioAnalyzerDelegate>)delegate audioTrackToPrepare:(AudioTrack*)audioTrack {
+    NSString *fullPath = [audioTrack getFullBundlePath];
     player->open([fullPath fileSystemRepresentation]);
     
+    // For some reason, the analyzer must be in the same scope as the callback block :/
     AudioAnalyzer *analyzer = [[AudioAnalyzer alloc] init:audioTrack];
-    float bpm = analyzer.getBpm;
-    double closestBeatMs = player->closestBeatMs(0, 0);
     
-    self->masterBpm = bpm;
-    bool stopPlayback = true;
-    player->setBpm(bpm);
-    player->setFirstBeatMs(closestBeatMs);
-    player->setPosition(player->firstBeatMs, stopPlayback, false);
-    player->fixDoubleOrHalfBPM = true;
+    // Set the delegate so that we can call back to the caller
+    analyzer.delegate = delegate;
     
-    [self prepareIO];
+    
+    /* This needs to be pushed to a background thread so that the main thread's resources
+       are not consumed by audio processing computations. This allows UI tasks to still be
+       active, such as loading a progress bar. */
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        void(^callback)(float) = ^void(float bpm){
+            
+            double closestBeatMs = player->closestBeatMs(0, 0);
+            self->masterBpm = bpm;
+            bool stopPlayback = true;
+            player->setBpm(bpm);
+            player->setFirstBeatMs(closestBeatMs);
+            player->setPosition(player->firstBeatMs, stopPlayback, false);
+            player->fixDoubleOrHalfBPM = true;
+            
+            // All SuperpoweredIO functions should be executed on the main thread
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self prepareIO];
+            });
+            
+            // Callback to the delegate because the analyzer has finished processing the BPM
+            [analyzer.delegate doneFetchingBpm];
+        };
+        
+        [analyzer asyncProcessBpm:callback];
+    });
+
 }
 
 /* Prepare the audio IO for playback */
@@ -119,7 +144,7 @@ static void playerEventCallback(void *clientData, SuperpoweredAdvancedAudioPlaye
 }
 
 
-/* SuperpoweredIOSAudioDelegate Implementation */
+/**** SuperpoweredIOSAudioDelegate Implementation ****/
 - (void)interruptionStarted {
     NSLog(@"Audio Player Interrupted!");
 }

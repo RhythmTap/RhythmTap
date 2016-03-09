@@ -22,6 +22,7 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     
     var elapsedTime: NSTimeInterval = 0.0
     var advancedAudioPlayer: AdvancedAudioPlayer!
+    var audioAnalyzer: AudioAnalyzer!
     var startTime = NSTimeInterval()
     var timer:NSTimer = NSTimer()
     var countdownTimer:NSTimer = NSTimer()
@@ -44,6 +45,7 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
         songFinished = true
         self.performSegueWithIdentifier("showScore", sender: self)
     }
+    
     
     // MARK: User Actions
     @IBAction func onTap(sender: UIButton) {
@@ -99,11 +101,8 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     
     // MARK: Private Interface
     func setupAdvancedAudioPlayer() {
-        let file = self.trackDirectory + "Easy"
-        let audioFormat = "wav"
-        let audioTrack = AudioTrack(file, audioFormat: audioFormat)
-        advancedAudioPlayer = AdvancedAudioPlayer()
-        advancedAudioPlayer.prepareAudioPlayer(audioTrack)
+        // Need to set the bpm and such
+        //advancedAudioPlayer.prepareAudioPlayer(audioAnalyzer, trackToAnalyze: audioTrack)
         advancedAudioPlayer.delegate = self
     }
     

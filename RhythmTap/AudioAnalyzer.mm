@@ -12,8 +12,9 @@
 #import "SuperpoweredAnalyzer.h"
 #import "SuperpoweredSimple.h"
 
-#import "AudioAnalyzer.h"
+#import "RhythmTap-Swift.h"
 #import "RhythmTap-Bridging-Header.h"
+
 
 @implementation AudioAnalyzer {
     /* Processes audio */
@@ -24,19 +25,12 @@
 }
 
 /* Constructor */
-- (id)init: (AudioTrack*) audioTrack {
+- (id)init {
     self = [super init];
     if (!self) return nil;
     
-    self.audioTrack = audioTrack;
-    
     /* Used to extract metadata */
     decoder = new SuperpoweredDecoder();
-    
-    bool isAudioFileOpened = [self open:self.audioTrack];
-    if (!isAudioFileOpened) {
-        NSLog(@"AudioAnalyzer Warning: Could not open audio file!");
-    }
     
     /* Must be 0 to detect the track's bpm */
     float detectBpm = 0;
@@ -44,6 +38,32 @@
     
     return self;
 }
+
+/* Same as default constructor, except that it also opens the provided audio track
+   @param audioTrack The audio track to analyze
+ */
+- (id)init: (AudioTrack*) audioTrack {
+    self = [super init];
+    if (!self) return nil;
+    
+    /* Used to extract metadata */
+    decoder = new SuperpoweredDecoder();
+    
+    NSLog(@"AudioTrack: %@ %@", audioTrack.file, audioTrack.audioFormat);
+    
+    bool isAudioFileOpened = [self open:audioTrack];
+    if (!isAudioFileOpened) {
+        NSLog(@"AudioAnalyzer Warning: Could not open audio file!");
+    }
+        
+    /* Must be 0 to detect the track's bpm */
+    float detectBpm = 0;
+    analyzer = new SuperpoweredOfflineAnalyzer(DefaultSampleRate, detectBpm, decoder->durationSeconds);
+    
+    return self;
+}
+
+
 
 /* Destructor - Clean up memory */
 - (void) dealloc {
@@ -54,7 +74,7 @@
 /* Interface */
 - (float)getTrackDurationInSeconds {
     // Let the decoder open the audio track
-    if (![self open:self.audioTrack]) {
+    if (![self open:self->_audioTrack]) {
         NSLog(@"Could not open audio track");
         return 0.0f;
     }
@@ -62,12 +82,11 @@
 }
 
 /* Get the BPM for a given audio file */
-- (float) getBpm {
+- (void)asyncProcessBpm: (void(^)(float bpm))callback {
     
     // Let the decoder open the audio track
-    if (![self open:self.audioTrack]) {
+    if (![self open:self->_audioTrack]) {
         NSLog(@"Could not open audio track");
-        return 0.0f;
     }
     
     // Create a buffer for the 16-bit integer samples coming from the decoder.
@@ -88,23 +107,30 @@
         // Analyze the sample
         analyzer->process(floatBuffer, samplesDecoded);
         
-        // Update the progress indicator.
-        self.progress = (double)decoder->samplePosition / (double)decoder->durationSamples;
+        // Update the progress indicator on the main thread.
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.delegate onFetchBpm:decoder->samplePosition finishPosition:decoder->durationSamples];
+        });
     }
     
-    // Use bpm as an input argument
-    float bpm;
-    analyzer->getresults(NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, &bpm, NULL, NULL);
-    
-    // Clean up memory
-    free(intBuffer);
-    free(floatBuffer);
-    
-    return bpm;
+    // Callback to alert that BPM processing is done on the main thread
+    // It is now safe to read the BPM
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // Use bpm as an input argument
+        float bpm;
+        analyzer->getresults(NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, &bpm, NULL, NULL);
+        
+        // Clean up memory
+        free(intBuffer);
+        free(floatBuffer);
+        
+        callback(bpm);
+    });
 }
 
 - (bool)open:(AudioTrack*)audioTrack {
-    NSString *fullpathToFile = [[NSBundle mainBundle] pathForResource:audioTrack.file ofType:audioTrack.audioFormat];
+    self->_audioTrack = audioTrack;
+    NSString *fullpathToFile = [audioTrack getFullBundlePath];
     const char *result = decoder->open([fullpathToFile cStringUsingEncoding:NSUTF8StringEncoding]);
     if (result == NULL) {
         return true;

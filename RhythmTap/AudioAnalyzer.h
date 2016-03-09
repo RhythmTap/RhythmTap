@@ -6,28 +6,44 @@
 //  Copyright © 2016 Brian Yip. All rights reserved.
 //
 
-#import "AudioTrack.h"
+#import "RhythmTap-Bridging-Header.h"
 
+
+@protocol AudioAnalyzerDelegate <NSObject>
+
+/* Called when BPM is completely analyzed */
+- (void)doneFetchingBpm;
+
+/* Called every time a sample is processed when analyzing BPM */
+- (void)onFetchBpm: (double)decodedSamples finishPosition:(double)totalSamples;
+
+@end
+
+
+/* Use forward declaration to use Swift types in Objective-C Header files */
+@class AudioTrack;
 @interface AudioAnalyzer : NSObject
 
 /**** Properties ****/
-
-/* Use this for the progress bar in the UI when analyzing audio */
-@property double progress;
+@property (nonatomic, weak) id<AudioAnalyzerDelegate> delegate;
 
 /* The audio track that is being analyzed */
 @property AudioTrack *audioTrack;
 
 
 
-
 /* Initialize and open an audio file */
 - (id)init: (AudioTrack*) audioFile;
+
+/* Processes the audio track's BPM on success and 0 on failure
+   @param callback A callback function that accepts the processed BPM as a parameter
+ */
+- (void)asyncProcessBpm: (void(^)(float bpm))callback;
 
 /* Returns the opened track's duration in seconds */
 - (float)getTrackDurationInSeconds;
 
-/* Returns the audio track's BPM on success and 0 on failure */
-- (float)getBpm;
+/* Open the provided audio track for analysis */
+- (bool)open: (AudioTrack*)audioTrack;
 
 @end

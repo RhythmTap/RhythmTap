@@ -7,7 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		133E80F51C907A3700D39E45 /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133E80F41C907A3700D39E45 /* ScoreViewController.swift */; };
+		D310609D1C9085BA0048A5C2 /* AdvancedAudioPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D310609C1C9085BA0048A5C2 /* AdvancedAudioPlayerTests.swift */; };
+		D310609F1C90873C0048A5C2 /* AudioAnalyzerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D310609E1C90873C0048A5C2 /* AudioAnalyzerTests.swift */; };
+		D31060A21C90D7E80048A5C2 /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31060A11C90D7E80048A5C2 /* ScoreViewController.swift */; };
+		D31060A61C90D99D0048A5C2 /* LevelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31060A41C90D99D0048A5C2 /* LevelViewCell.swift */; };
+		D31060A71C90D99D0048A5C2 /* LevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31060A51C90D99D0048A5C2 /* LevelViewController.swift */; };
+		D336D2881C8F370600C8BB36 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D336D2871C8F370600C8BB36 /* LoadingViewController.swift */; };
+		D34EB92F1C90725F009954BD /* AudioTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34EB92E1C90725F009954BD /* AudioTrack.swift */; };
 		D379328A1C7B7FC1008B7B64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37932891C7B7FC1008B7B64 /* AppDelegate.swift */; };
 		D379328C1C7B7FC1008B7B64 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D379328B1C7B7FC1008B7B64 /* HomeViewController.swift */; };
 		D37932921C7B7FC1008B7B64 /* RhythmTap.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D37932901C7B7FC1008B7B64 /* RhythmTap.xcdatamodeld */; };
@@ -16,7 +22,6 @@
 		D37932AD1C7B7FC1008B7B64 /* RhythmTapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37932AC1C7B7FC1008B7B64 /* RhythmTapUITests.swift */; };
 		D37C77761C8A8FB500972147 /* libSuperpoweredAudioIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D37C77741C8A8FB500972147 /* libSuperpoweredAudioIOS.a */; };
 		D37C777A1C8A912600972147 /* AdvancedAudioPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = D37C77791C8A912600972147 /* AdvancedAudioPlayer.mm */; };
-		D37C777C1C8A943F00972147 /* AdvancedAudioPlayerTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = D37C777B1C8A943F00972147 /* AdvancedAudioPlayerTests.mm */; };
 		D3BB53831C8BAA90005DD54B /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3BB53821C8BAA90005DD54B /* CoreMedia.framework */; };
 		D3BB53851C8BAA97005DD54B /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3BB53841C8BAA97005DD54B /* MediaPlayer.framework */; };
 		D3BB53871C8BAAA0005DD54B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3BB53861C8BAAA0005DD54B /* AVFoundation.framework */; };
@@ -28,8 +33,6 @@
 		D3BED0071C7F66450047C2C5 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BED0061C7F66450047C2C5 /* AudioPlayer.swift */; };
 		D3BED0121C7F7AE50047C2C5 /* Tracks in Resources */ = {isa = PBXBuildFile; fileRef = D3BED0111C7F7AE50047C2C5 /* Tracks */; };
 		D3C058D51C8CD3BA00308BF9 /* AudioAnalyzer.mm in Sources */ = {isa = PBXBuildFile; fileRef = D3C058D41C8CD3BA00308BF9 /* AudioAnalyzer.mm */; };
-		D3C058D71C8CDBF800308BF9 /* AudioAnalyzerTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = D3C058D61C8CDBF800308BF9 /* AudioAnalyzerTests.mm */; };
-		D3C058DB1C8D1F1100308BF9 /* AudioTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C058DA1C8D1F1100308BF9 /* AudioTrack.m */; };
 		D3D8A8AE1C7B82720017E533 /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D8A8AD1C7B82720017E533 /* HomeViewControllerTests.swift */; };
 		F3163A8E1C7F8B21000F9884 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3163A8D1C7F8B21000F9884 /* Main.storyboard */; };
 		F3677B041C7B991E00AD7471 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3677B031C7B991E00AD7471 /* GameViewController.swift */; };
@@ -56,8 +59,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		133E80F41C907A3700D39E45 /* ScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
+		D310609C1C9085BA0048A5C2 /* AdvancedAudioPlayerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedAudioPlayerTests.swift; sourceTree = "<group>"; };
+		D310609E1C90873C0048A5C2 /* AudioAnalyzerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioAnalyzerTests.swift; sourceTree = "<group>"; };
+		D31060A11C90D7E80048A5C2 /* ScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
+		D31060A41C90D99D0048A5C2 /* LevelViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelViewCell.swift; sourceTree = "<group>"; };
+		D31060A51C90D99D0048A5C2 /* LevelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelViewController.swift; sourceTree = "<group>"; };
+		D336D2871C8F370600C8BB36 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		D34C09591C8E239E00B2BA00 /* AdvancedAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedAudioPlayer.h; sourceTree = "<group>"; };
+		D34EB92E1C90725F009954BD /* AudioTrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioTrack.swift; sourceTree = "<group>"; };
 		D37932861C7B7FC1008B7B64 /* RhythmTap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RhythmTap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D37932891C7B7FC1008B7B64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D379328B1C7B7FC1008B7B64 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -74,7 +83,6 @@
 		D37C77751C8A8FB500972147 /* SuperpoweredAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuperpoweredAnalyzer.h; path = "Third Party/SuperpoweredAnalyzer.h"; sourceTree = "<group>"; };
 		D37C77781C8A912600972147 /* RhythmTap-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RhythmTap-Bridging-Header.h"; sourceTree = "<group>"; };
 		D37C77791C8A912600972147 /* AdvancedAudioPlayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AdvancedAudioPlayer.mm; sourceTree = "<group>"; };
-		D37C777B1C8A943F00972147 /* AdvancedAudioPlayerTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AdvancedAudioPlayerTests.mm; sourceTree = "<group>"; };
 		D3BB53821C8BAA90005DD54B /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		D3BB53841C8BAA97005DD54B /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		D3BB53861C8BAAA0005DD54B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -86,10 +94,7 @@
 		D3BED0061C7F66450047C2C5 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		D3BED0111C7F7AE50047C2C5 /* Tracks */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Tracks; sourceTree = SOURCE_ROOT; };
 		D3C058D41C8CD3BA00308BF9 /* AudioAnalyzer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioAnalyzer.mm; sourceTree = "<group>"; };
-		D3C058D61C8CDBF800308BF9 /* AudioAnalyzerTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioAnalyzerTests.mm; sourceTree = "<group>"; };
 		D3C058D81C8CE7D100308BF9 /* AudioAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioAnalyzer.h; sourceTree = "<group>"; };
-		D3C058D91C8D1EAD00308BF9 /* AudioTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioTrack.h; sourceTree = "<group>"; };
-		D3C058DA1C8D1F1100308BF9 /* AudioTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioTrack.m; sourceTree = "<group>"; };
 		D3D8A8AD1C7B82720017E533 /* HomeViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTests.swift; sourceTree = "<group>"; };
 		D3DC7F081C8B462400DE3F09 /* Superpowered3BandEQ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Superpowered3BandEQ.h; path = "Third Party/Superpowered3BandEQ.h"; sourceTree = "<group>"; };
 		D3DC7F091C8B462400DE3F09 /* SuperpoweredAdvancedAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuperpoweredAdvancedAudioPlayer.h; path = "Third Party/SuperpoweredAdvancedAudioPlayer.h"; sourceTree = "<group>"; };
@@ -158,12 +163,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		133E80F31C907A0C00D39E45 /* Score View */ = {
+		D31060A01C90D7D10048A5C2 /* Score View */ = {
 			isa = PBXGroup;
 			children = (
-				133E80F41C907A3700D39E45 /* ScoreViewController.swift */,
+				D31060A11C90D7E80048A5C2 /* ScoreViewController.swift */,
 			);
 			name = "Score View";
+			sourceTree = "<group>";
+		};
+		D31060A31C90D98F0048A5C2 /* Level View */ = {
+			isa = PBXGroup;
+			children = (
+				D31060A41C90D99D0048A5C2 /* LevelViewCell.swift */,
+				D31060A51C90D99D0048A5C2 /* LevelViewController.swift */,
+			);
+			name = "Level View";
+			sourceTree = "<group>";
+		};
+		D336D2891C8F372800C8BB36 /* Loading View */ = {
+			isa = PBXGroup;
+			children = (
+				D336D2871C8F370600C8BB36 /* LoadingViewController.swift */,
+			);
+			name = "Loading View";
 			sourceTree = "<group>";
 		};
 		D379327D1C7B7FC1008B7B64 = {
@@ -195,6 +217,7 @@
 				D37C77771C8A901000972147 /* Audio Processing */,
 				D37C77731C8A8C1400972147 /* Third Party */,
 				D3BED0111C7F7AE50047C2C5 /* Tracks */,
+				D336D2891C8F372800C8BB36 /* Loading View */,
 				D3BED0051C7F64810047C2C5 /* Home View */,
 				F3677B051C7B9BFC00AD7471 /* Game View */,
 				D37932891C7B7FC1008B7B64 /* AppDelegate.swift */,
@@ -212,8 +235,8 @@
 			children = (
 				D37932A31C7B7FC1008B7B64 /* Info.plist */,
 				D3D8A8AD1C7B82720017E533 /* HomeViewControllerTests.swift */,
-				D37C777B1C8A943F00972147 /* AdvancedAudioPlayerTests.mm */,
-				D3C058D61C8CDBF800308BF9 /* AudioAnalyzerTests.mm */,
+				D310609C1C9085BA0048A5C2 /* AdvancedAudioPlayerTests.swift */,
+				D310609E1C90873C0048A5C2 /* AudioAnalyzerTests.swift */,
 			);
 			path = RhythmTapTests;
 			sourceTree = "<group>";
@@ -268,13 +291,12 @@
 		D37C77771C8A901000972147 /* Audio Processing */ = {
 			isa = PBXGroup;
 			children = (
+				D34EB92E1C90725F009954BD /* AudioTrack.swift */,
 				D34C09591C8E239E00B2BA00 /* AdvancedAudioPlayer.h */,
 				D37C77791C8A912600972147 /* AdvancedAudioPlayer.mm */,
 				D37C77781C8A912600972147 /* RhythmTap-Bridging-Header.h */,
 				D3C058D41C8CD3BA00308BF9 /* AudioAnalyzer.mm */,
 				D3C058D81C8CE7D100308BF9 /* AudioAnalyzer.h */,
-				D3C058D91C8D1EAD00308BF9 /* AudioTrack.h */,
-				D3C058DA1C8D1F1100308BF9 /* AudioTrack.m */,
 			);
 			name = "Audio Processing";
 			sourceTree = "<group>";
@@ -456,7 +478,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3677B041C7B991E00AD7471 /* GameViewController.swift in Sources */,
-				133E80F51C907A3700D39E45 /* ScoreViewController.swift in Sources */,
 				D379328C1C7B7FC1008B7B64 /* HomeViewController.swift in Sources */,
 				F3B7E53A1C9095D900AFD87E /* LevelViewCell.swift in Sources */,
 				F3B7E5381C9095CE00AFD87E /* LevelViewController.swift in Sources */,
@@ -466,8 +487,10 @@
 				D37932921C7B7FC1008B7B64 /* RhythmTap.xcdatamodeld in Sources */,
 				D37C777A1C8A912600972147 /* AdvancedAudioPlayer.mm in Sources */,
 				D3C058D51C8CD3BA00308BF9 /* AudioAnalyzer.mm in Sources */,
+				D336D2881C8F370600C8BB36 /* LoadingViewController.swift in Sources */,
 				D3BB53911C8BADD0005DD54B /* SuperpoweredIOSAudioIO.mm in Sources */,
 				D3BED0071C7F66450047C2C5 /* AudioPlayer.swift in Sources */,
+				D31060A21C90D7E80048A5C2 /* ScoreViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,9 +498,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D310609F1C90873C0048A5C2 /* AudioAnalyzerTests.swift in Sources */,
 				D3D8A8AE1C7B82720017E533 /* HomeViewControllerTests.swift in Sources */,
-				D3C058D71C8CDBF800308BF9 /* AudioAnalyzerTests.mm in Sources */,
-				D37C777C1C8A943F00972147 /* AdvancedAudioPlayerTests.mm in Sources */,
+				D310609D1C9085BA0048A5C2 /* AdvancedAudioPlayerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,6 +559,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -580,6 +605,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -602,12 +629,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = RhythmTap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(PROJECT_DIR)/Third Party\"",
 				);
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = itsbriany.RhythmTap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "RhythmTap/RhythmTap-Bridging-Header.h";
@@ -620,12 +650,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = RhythmTap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(PROJECT_DIR)/Third Party\"",
 				);
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = itsbriany.RhythmTap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "RhythmTap/RhythmTap-Bridging-Header.h";
