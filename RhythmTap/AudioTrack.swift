@@ -24,4 +24,11 @@ import Foundation
         self.audioFormat = audioFormat
     }
     
+    func getFullBundlePath() -> String {
+        if let fullpathToFile = NSBundle.mainBundle().pathForResource(file, ofType:audioFormat) {
+            return fullpathToFile
+        }
+        return "Could not find " + file + "." + audioFormat + " in main bundle"
+    }
+    
 }

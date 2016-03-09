@@ -49,6 +49,8 @@
     /* Used to extract metadata */
     decoder = new SuperpoweredDecoder();
     
+    NSLog(@"AudioTrack: %@ %@", audioTrack.file, audioTrack.audioFormat);
+    
     bool isAudioFileOpened = [self open:audioTrack];
     if (!isAudioFileOpened) {
         NSLog(@"AudioAnalyzer Warning: Could not open audio file!");
@@ -115,20 +117,20 @@
     // It is now safe to read the BPM
     dispatch_async(dispatch_get_main_queue(), ^{
         // Use bpm as an input argument
-        float *bpm = (float*) malloc(sizeof(float));
-        analyzer->getresults(NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, bpm, NULL, NULL);
+        float bpm;
+        analyzer->getresults(NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, &bpm, NULL, NULL);
         
         // Clean up memory
         free(intBuffer);
         free(floatBuffer);
         
-        callback(*bpm);
+        callback(bpm);
     });
 }
 
 - (bool)open:(AudioTrack*)audioTrack {
     self->_audioTrack = audioTrack;
-    NSString *fullpathToFile = [[NSBundle mainBundle] pathForResource:audioTrack.file ofType:audioTrack.audioFormat];
+    NSString *fullpathToFile = [audioTrack getFullBundlePath];
     const char *result = decoder->open([fullpathToFile cStringUsingEncoding:NSUTF8StringEncoding]);
     if (result == NULL) {
         return true;

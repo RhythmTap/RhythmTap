@@ -85,13 +85,13 @@ class SwiftAudioAnalyzerTests: XCTestCase {
     func testThatBpmCanBeFetchedDefaultConstructorDifferentThread() {
         let expectedBpm:Float = 120.0
         let analyzer = AudioAnalyzer()
+        analyzer.open(self.audioTrack)
         
         // Set the expectation timer
         self.testThatBpmCanBeFetchedDefaultConstructorDifferentThreadExpectation = expectationWithDescription("BPM should have been set")
         
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-            analyzer.open(self.audioTrack)
             let callback: (Float) -> (Void) = { bpm in
                 self.testThatBpmCanBeFetchedDefaultConstructorDifferentThreadExpectation.fulfill()
                 XCTAssertEqual(bpm, expectedBpm)

@@ -35,9 +35,10 @@
 - (bool)pauseAudio;
 
 /* Prepare the audio player
- @param bpm The track's bpm
+ @param delegate A reference to the caller implementing AudioAnalyzerDelegate
+ @param audioTrack The audio track that will be played
  */
-- (void)prepareAudioPlayer: (AudioAnalyzer*)analyzer trackToAnalyze:(AudioTrack*)audioTrack;
+- (void)prepareAudioPlayer: (id<AudioAnalyzerDelegate>)delegate audioTrackToPrepare:(AudioTrack*)audioTrack;
 
 
 

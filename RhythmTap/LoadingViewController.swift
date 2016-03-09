@@ -58,16 +58,12 @@ class LoadingViewController: UIViewController, AudioAnalyzerDelegate {
     
     // MARK: Private Interface
     private func setupAdvancedAudioPlayer() {
-        
-        //The solution is to port the analyzer to ObjC land because it is not possible to convert Swift strings to ObjC strings
-        
-        
         let file = self.trackDirectory + "lycka"
         let audioFormat = "mp3"
         let audioTrack = AudioTrack(file: file, audioFormat: audioFormat)
         let audioAnalyzer = AudioAnalyzer(audioTrack)
         audioAnalyzer.delegate = self
-        advancedAudioPlayer.prepareAudioPlayer(audioAnalyzer, trackToAnalyze: audioTrack)
+        advancedAudioPlayer.prepareAudioPlayer(self, audioTrackToPrepare: audioTrack)
     }
     
     private func updateProgressBar(progress: Float) {
