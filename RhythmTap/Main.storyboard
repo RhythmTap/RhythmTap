@@ -83,8 +83,32 @@
                     <view key="view" contentMode="scaleToFill" id="pK3-Gb-d66">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prepare yourself!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VYB-jB-Uk4">
+                                <rect key="frame" x="20" y="154" width="560" height="114"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="OEr-Ak-oKy">
+                                <rect key="frame" x="20" y="299" width="560" height="2"/>
+                            </progressView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="OEr-Ak-oKy" firstAttribute="top" secondItem="VYB-jB-Uk4" secondAttribute="bottom" constant="31" id="0JC-pN-9NC"/>
+                            <constraint firstItem="VYB-jB-Uk4" firstAttribute="top" secondItem="Iht-3F-hwX" secondAttribute="bottom" constant="90" id="Pzs-LD-2ev"/>
+                            <constraint firstItem="OEr-Ak-oKy" firstAttribute="trailing" secondItem="VYB-jB-Uk4" secondAttribute="trailing" id="Qoy-l4-Qhz"/>
+                            <constraint firstItem="VYB-jB-Uk4" firstAttribute="trailing" secondItem="pK3-Gb-d66" secondAttribute="trailingMargin" id="S17-MR-IQa"/>
+                            <constraint firstItem="OEr-Ak-oKy" firstAttribute="leading" secondItem="VYB-jB-Uk4" secondAttribute="leading" id="VBB-CH-BKV"/>
+                            <constraint firstItem="OEr-Ak-oKy" firstAttribute="centerY" secondItem="pK3-Gb-d66" secondAttribute="centerY" id="VbF-me-SIa"/>
+                            <constraint firstItem="VYB-jB-Uk4" firstAttribute="leading" secondItem="pK3-Gb-d66" secondAttribute="leadingMargin" id="WJO-dI-Rvs"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="progressBar" destination="OEr-Ak-oKy" id="ufz-9b-qeA"/>
+                        <segue destination="lra-IO-Lxw" kind="show" identifier="GameViewSegue" id="hnO-SU-i5E"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tHT-rF-Xk1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -198,7 +222,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LVa-ao-U3y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1230" y="339"/>
+            <point key="canvasLocation" x="1220" y="471"/>
         </scene>
     </scenes>
 </document>

@@ -15,7 +15,6 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         startButton.layer.cornerRadius = 5
         levelButton.layer.cornerRadius = 5
     }

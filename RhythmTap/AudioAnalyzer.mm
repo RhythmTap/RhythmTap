@@ -79,12 +79,11 @@
 }
 
 /* Get the BPM for a given audio file */
-- (float) getBpm {
+- (void)asyncProcessBpm: (void(^)(float bpm))callback {
     
     // Let the decoder open the audio track
     if (![self open:self->_audioTrack]) {
         NSLog(@"Could not open audio track");
-        return 0.0f;
     }
     
     // Create a buffer for the 16-bit integer samples coming from the decoder.
@@ -105,21 +104,25 @@
         // Analyze the sample
         analyzer->process(floatBuffer, samplesDecoded);
         
-        // Update the progress indicator.
-        [self.delegate onFetchBpm:decoder->samplePosition finishPosition:decoder->durationSamples];
+        // Update the progress indicator on the main thread.
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.delegate onFetchBpm:decoder->samplePosition finishPosition:decoder->durationSamples];
+        });
     }
-    // Callback to alert that BPM processing is done
-    [self.delegate doneFetchingBpm];
     
-    // Use bpm as an input argument
-    float bpm;
-    analyzer->getresults(NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, &bpm, NULL, NULL);
-    
-    // Clean up memory
-    free(intBuffer);
-    free(floatBuffer);
-    
-    return bpm;
+    // Callback to alert that BPM processing is done on the main thread
+    // It is now safe to read the BPM
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // Use bpm as an input argument
+        float *bpm = (float*) malloc(sizeof(float));
+        analyzer->getresults(NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, bpm, NULL, NULL);
+        
+        // Clean up memory
+        free(intBuffer);
+        free(floatBuffer);
+        
+        callback(*bpm);
+    });
 }
 
 - (bool)open:(AudioTrack*)audioTrack {

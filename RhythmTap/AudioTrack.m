@@ -13,15 +13,15 @@
 
 - (id)init {
     self = [super init];
-    self.file = @"";
-    self.audioFormat = @"";
+    self->_file = @"";
+    self->_audioFormat = @"";
     return self;
 }
 
 - (id)init: (NSString*)file audioFormat:(NSString*)format {
     self = [super init];
-    self.file = file;
-    self.audioFormat = format;
+    self->_file = file;
+    self->_audioFormat = format;
     return self;
 }
 

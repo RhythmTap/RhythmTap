@@ -108,16 +108,28 @@ static void playerEventCallback(void *clientData, SuperpoweredAdvancedAudioPlaye
         return;
     }
     
-    float bpm = analyzer.getBpm;
-    double closestBeatMs = player->closestBeatMs(0, 0);
-    
-    self->masterBpm = bpm;
-    bool stopPlayback = true;
-    player->setBpm(bpm);
-    player->setFirstBeatMs(closestBeatMs);
-    player->setPosition(player->firstBeatMs, stopPlayback, false);
-    player->fixDoubleOrHalfBPM = true;
-    
+    /* This needs to be pushed to a background thread so that the main thread's resources
+       are not consumed by audio processing computations. This allows UI tasks to still be
+       active, such as loading a progress bar. */
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        void(^callback)(float bpm);
+        callback = ^void(float bpm) {
+            double closestBeatMs = player->closestBeatMs(0, 0);
+            
+            self->masterBpm = bpm;
+            bool stopPlayback = true;
+            player->setBpm(bpm);
+            player->setFirstBeatMs(closestBeatMs);
+            player->setPosition(player->firstBeatMs, stopPlayback, false);
+            player->fixDoubleOrHalfBPM = true;
+            
+            // Callback to the delegate because the analyzer has finished processing the BPM
+            [analyzer.delegate doneFetchingBpm];
+        };
+        
+        [analyzer asyncProcessBpm:callback];
+    });
+
     [self prepareIO];
 }
 

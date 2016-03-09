@@ -15,7 +15,7 @@
 - (void)doneFetchingBpm;
 
 /* Called every time a sample is processed when analyzing BPM */
-- (void)onFetchBpm: (double)decoderSamplePosition finishPosition:(double)decoderDurationSamples;
+- (void)onFetchBpm: (double)decodedSamples finishPosition:(double)totalSamples;
 
 @end
 
@@ -33,11 +33,13 @@
 /* Initialize and open an audio file */
 - (id)init: (AudioTrack*) audioFile;
 
+/* Processes the audio track's BPM on success and 0 on failure
+   @param callback A callback function that accepts the processed BPM as a parameter
+ */
+- (void)asyncProcessBpm: (void(^)(float bpm))callback;
+
 /* Returns the opened track's duration in seconds */
 - (float)getTrackDurationInSeconds;
-
-/* Returns the audio track's BPM on success and 0 on failure */
-- (float)getBpm;
 
 /* Open the provided audio track for analysis */
 - (bool)open: (AudioTrack*)audioTrack;
