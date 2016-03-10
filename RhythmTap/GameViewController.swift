@@ -15,6 +15,7 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     @IBOutlet weak var counterLabel: UILabel!
     @IBOutlet weak var correctTaps: UILabel!
     @IBOutlet weak var countdownLabel: UILabel!
+    @IBOutlet weak var tapButton: UILabel!
     
     let correctTapCounter = Taps.init()
     let incorrectTapCounter = Taps.init()
@@ -35,6 +36,7 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
         super.viewDidLoad()
         setupAdvancedAudioPlayer()
         setupCountdownTimer()
+        tapButton.enabled = false
     }
     
     
@@ -91,6 +93,7 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
         }
         else {   // play music, hide label when finished counting down
             countdownLabel.hidden = true
+            tapButton.enabled = true
             self.advancedAudioPlayer.playAudio()
             countdownTimer.invalidate()
         }
@@ -114,8 +117,8 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     func checkTap() -> Bool {
         // Multiply beat index by 100 because the beat index is a float. Modular arithmetic
         // requires integers
-        let upperBoundTolerance:Float = 90.0;
-        let lowerBoundTolerance:Float = 10.0;
+        let upperBoundTolerance:Float = 80.0;
+        let lowerBoundTolerance:Float = 20.0;
         if (advancedAudioPlayer.getBeatIndex() * 100) % 100 >= upperBoundTolerance || (advancedAudioPlayer.getBeatIndex() * 100) % 100 <= lowerBoundTolerance {
             print(advancedAudioPlayer.getBeatIndex())
             return true;
