@@ -14,6 +14,7 @@ class ScoreViewController: UIViewController {
     
     var correctTaps: Float = 0
     var incorrectTaps: Float = 0
+    var score: Float!
 
     @IBOutlet weak var accuracyLabel: UILabel!
     @IBOutlet weak var correctTapsLabel: UILabel!
@@ -25,6 +26,8 @@ class ScoreViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        score = (correctTaps * 2) - incorrectTaps
         
         //Accuracy is currently not valid, need to have expected taps value. Placeholder for now
         accuracyLabel.text = String(correctTaps) + "%"
@@ -41,13 +44,33 @@ class ScoreViewController: UIViewController {
         }
         
         self.navigationItem.hidesBackButton = true
-        print(scores)
-        //newHighScore()
-        getHighScore()
-        
+
+        let scoreResult = getHighScore()
+
+        if String(scoreResult) == "" {
+            newLevelScore()
+            print("New high score!")
+        }
+        else {
+            let scoreObject = scoreResult as! NSManagedObject
+            let scoreValue = scoreObject.valueForKey("highScore")
+            if Float(scoreValue! as! NSNumber) < score {
+                newHighScore(scoreObject)
+            }
+        }
     }
 
-    func newHighScore() {
+    func newHighScore(scoreObject: NSManagedObject) {
+        scoreObject.setValue(score, forKey: "highScore")
+        do {
+            try scoreObject.managedObjectContext?.save()
+        } catch {
+            let saveError = error as NSError
+            print(saveError)
+        }
+    }
+    
+    func newLevelScore() {
         let pastScore =  NSEntityDescription.entityForName("Score", inManagedObjectContext:managedContext)
         let newScore = NSManagedObject(entity: pastScore!, insertIntoManagedObjectContext: managedContext)
         newScore.setValue(correctTaps, forKey: "highScore")
@@ -64,15 +87,20 @@ class ScoreViewController: UIViewController {
         }
     }
     
-    func getHighScore() {
+    func getHighScore() -> AnyObject {
         let entries : NSArray = scores
         
-        // search for the value in name or country
-        let predicate = NSPredicate(format: "level = %@ AND difficulty = %@", 1, "easy")
+        // search for the value
+        let predicate = NSPredicate(format: "level = %i AND difficulty = %@", 1, "easy")
         
         // filter results accordingly
         var searchScores = entries.filteredArrayUsingPredicate(predicate)
-        print(searchScores[0])
+        if searchScores.count != 0 {
+            return searchScores[0]
+        }
+        else {
+            return ""
+        }
     }
     
     override func didReceiveMemoryWarning() {
