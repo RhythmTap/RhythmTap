@@ -41,7 +41,6 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     // MARK: AdvancedAudioPlayerDelegate Implementation
     // This happens as soon as the track finishes playing
     func onTrackFinish() {
-        print("GameViewController: Good!!!")
         songFinished = true
         self.performSegueWithIdentifier("showScore", sender: self)
     }
@@ -101,8 +100,6 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     
     // MARK: Private Interface
     func setupAdvancedAudioPlayer() {
-        // Need to set the bpm and such
-        //advancedAudioPlayer.prepareAudioPlayer(audioAnalyzer, trackToAnalyze: audioTrack)
         advancedAudioPlayer.delegate = self
     }
     
