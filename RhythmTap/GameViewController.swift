@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     
@@ -59,6 +60,7 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
         //If the user did not tap a correct tap, it was incorrect
         else {
             incorrectTapCounter.increaseCount()
+            AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
             counterLabel.text = String(incorrectTapCounter.getCount())
             
         }

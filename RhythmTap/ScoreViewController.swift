@@ -27,14 +27,14 @@ class ScoreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        score = (correctTaps * 2) - incorrectTaps
+        score = (correctTaps * 2) - incorrectTaps   // arbitrary scoring system
         
         //Accuracy is currently not valid, need to have expected taps value. Placeholder for now
         accuracyLabel.text = String(correctTaps) + "%"
         correctTapsLabel.text = String(Int(correctTaps))
         incorrectTapsLabel.text = String(Int(incorrectTaps))
         
-        let fetchRequest = NSFetchRequest(entityName: "Score")
+        let fetchRequest = NSFetchRequest(entityName: "Score")  // get entity
         do {
             // fetch scores into results
             let results = try managedContext.executeFetchRequest(fetchRequest)
@@ -47,41 +47,47 @@ class ScoreViewController: UIViewController {
 
         let scoreResult = getHighScore()
 
-        if String(scoreResult) == "" {
+        if String(scoreResult) == "" {  // if this level hasn't been played
             newLevelScore()
-            print("New high score!")
+            print("New high score!" + String(score))
         }
-        else {
+        else {  // if this level has been played
             let scoreObject = scoreResult as! NSManagedObject
-            let scoreValue = scoreObject.valueForKey("highScore")
+            let scoreValue = scoreObject.valueForKey("highScore")   // get high score
             if Float(scoreValue! as! NSNumber) < score {
-                newHighScore(scoreObject)
+                newHighScore(scoreObject) // establish new high score
+            }
+            else {
+                print("High score: " + String(scoreValue))  // show current high score
             }
         }
     }
 
+    // establishes a new high score for this level and difficulty
     func newHighScore(scoreObject: NSManagedObject) {
-        scoreObject.setValue(score, forKey: "highScore")
+        print("New high score!" + String(score))
+        scoreObject.setValue(score, forKey: "highScore")    // set value
         do {
-            try scoreObject.managedObjectContext?.save()
+            try scoreObject.managedObjectContext?.save()    // save change
         } catch {
             let saveError = error as NSError
             print(saveError)
         }
     }
     
+    // establishes a high score for this level and difficulty
     func newLevelScore() {
-        let pastScore =  NSEntityDescription.entityForName("Score", inManagedObjectContext:managedContext)
-        let newScore = NSManagedObject(entity: pastScore!, insertIntoManagedObjectContext: managedContext)
-        newScore.setValue(correctTaps, forKey: "highScore")
-        newScore.setValue(1, forKey: "level")
-        newScore.setValue("easy", forKey: "difficulty")
+        let scoreEntity =  NSEntityDescription.entityForName("Score", inManagedObjectContext:managedContext)  // get object containing score
+        let newScore = NSManagedObject(entity: scoreEntity!, insertIntoManagedObjectContext: managedContext)  // create new row
+        newScore.setValue(score, forKey: "highScore") // set high score
+        newScore.setValue(1, forKey: "level")   // set level
+        newScore.setValue("easy", forKey: "difficulty") // set difficulty
         
         //4
         do {
             try managedContext.save()
             //5
-            scores.append(newScore)
+            scores.append(newScore) // save addition
         } catch let error as NSError  {
             print("Could not save \(error), \(error.userInfo)")
         }
@@ -95,10 +101,10 @@ class ScoreViewController: UIViewController {
         
         // filter results accordingly
         var searchScores = entries.filteredArrayUsingPredicate(predicate)
-        if searchScores.count != 0 {
+        if searchScores.count != 0 {    // if there exists a score, update
             return searchScores[0]
         }
-        else {
+        else {  // otherwise, return nothing
             return ""
         }
     }
