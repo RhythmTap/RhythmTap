@@ -30,7 +30,9 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     var countdownTimer:NSTimer = NSTimer()
     var countdown: Int = 3
     var songFinished: Bool = false
-    
+    var accuracy:Float = 0.0
+    var taps:Int = 0
+
     
     // MARK: View Handlers
     override func viewDidLoad() {
@@ -47,11 +49,15 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
         songFinished = true
         self.performSegueWithIdentifier("showScore", sender: self)
     }
-    
-    
+
+    // This happens as soon as the advanced audio player passes a beat index
+
+
+
     // MARK: User Actions
     @IBAction func onTap(sender: UIButton) {
         //Increments correct taps if user tapped on correct beat and the song isnt over
+        taps++
         if checkTap() && !songFinished {
             correctTapCounter.increaseCount()
             correctTaps.text = String(correctTapCounter.getCount())
@@ -71,6 +77,7 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
         if let dest = segue.destinationViewController as? ScoreViewController {
             dest.correctTaps = Float(correctTaps.text!)!
             dest.incorrectTaps = Float(counterLabel.text!)!
+            dest.tapAccuracy =  accuracy / Float(taps)
         }
     }
     
@@ -104,28 +111,44 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     
     
     // MARK: Private Interface
-    func setupAdvancedAudioPlayer() {
+    private func setupAdvancedAudioPlayer() {
         advancedAudioPlayer.delegate = self
     }
     
-    func setupCountdownTimer() {
+    private func setupCountdownTimer() {
         countdownTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "updateCountdown", userInfo: nil, repeats: true)
         countdownLabel.text = String(countdown)
         counterLabel.text = String(correctTapCounter.getCount())
     }
     
     
-    // Returns true if the tap is valid
-    func checkTap() -> Bool {
+    // Returns true if the tap is valid and checks how accurate the tap was
+    private func checkTap() -> Bool {
+
+        let currentTapAccuracy = 100.0 - getOffBeatPercentage()
+        accuracy += currentTapAccuracy
+        print(currentTapAccuracy)
+
+
         // Multiply beat index by 100 because the beat index is a float. Modular arithmetic
         // requires integers
-        let upperBoundTolerance:Float = 80.0;
-        let lowerBoundTolerance:Float = 20.0;
+        let upperBoundTolerance:Float = 90.0;
+        let lowerBoundTolerance:Float = 10.0;
         if (advancedAudioPlayer.getBeatIndex() * 100) % 100 >= upperBoundTolerance || (advancedAudioPlayer.getBeatIndex() * 100) % 100 <= lowerBoundTolerance {
-            print(advancedAudioPlayer.getBeatIndex())
             return true;
         }
         return false;
+
+    }
+
+    // Checks how offbeat your tap was
+    private func getOffBeatPercentage() -> Float {
+        var offBeat:Float = (advancedAudioPlayer.getBeatIndex() * 100) % 100
+        if offBeat >= 50 {
+            offBeat = (100 - offBeat) * 2
+            return offBeat
+        }
+        return offBeat * 2
     }
     
 }

@@ -14,6 +14,7 @@ class ScoreViewController: UIViewController {
     
     var correctTaps: Float = 0
     var incorrectTaps: Float = 0
+    var tapAccuracy: Float!
     var score: Float!
 
     @IBOutlet weak var accuracyLabel: UILabel!
@@ -30,7 +31,7 @@ class ScoreViewController: UIViewController {
         score = (correctTaps * 2) - incorrectTaps   // arbitrary scoring system
         
         //Accuracy is currently not valid, need to have expected taps value. Placeholder for now
-        accuracyLabel.text = String(correctTaps) + "%"
+        accuracyLabel.text = String(tapAccuracy) + "%"
         correctTapsLabel.text = String(Int(correctTaps))
         incorrectTapsLabel.text = String(Int(incorrectTaps))
         

@@ -144,7 +144,6 @@ static void playerEventCallback(void *clientData, SuperpoweredAdvancedAudioPlaye
     [output start];
 }
 
-
 /**** SuperpoweredIOSAudioDelegate Implementation ****/
 - (void)interruptionStarted {
     NSLog(@"Audio Player Interrupted!");
@@ -170,7 +169,7 @@ static void playerEventCallback(void *clientData, SuperpoweredAdvancedAudioPlaye
     // The stereoBuffer is ready now, let's put the finished audio into the requested buffers.
     // Think of each buffer as the left and right speaker of your device
     SuperpoweredDeInterleave(stereoBuffer, buffers[0], buffers[1], numberOfSamples);
-    
+
     return !silence;
 }
 
