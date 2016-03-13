@@ -66,16 +66,17 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
         //If the user did not tap a correct tap, it was incorrect
         else {
             incorrectTapCounter.increaseCount()
-            AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
             counterLabel.text = String(incorrectTapCounter.getCount())
-            jiggleButton(sender)
+            incorrectResponse(sender)
             
         }
         gameView.backgroundColor = randomColour()
     }
     
-    func jiggleButton(sender: UIButton) {
+    func incorrectResponse(sender: UIButton) {
+        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))  // phone vibrate
         let bounds = sender.bounds
+        // button jiggles
         UIView.animateWithDuration(0.1, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 10, options: [], animations: {
             sender.bounds = CGRect(x: bounds.origin.x - 20, y: bounds.origin.y, width: bounds.size.width + 60, height: bounds.size.height)
             }, completion: nil)

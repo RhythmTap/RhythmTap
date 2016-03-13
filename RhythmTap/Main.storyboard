@@ -195,7 +195,7 @@
                                                     <color key="titleColor" red="0.61144834609999998" green="0.63385416670000005" blue="0.62127327320000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="BYZ-38-t0r" kind="show" identifier="backToHome" id="Dra-yN-Zjc"/>
+                                                    <action selector="shake:" destination="CfU-Ss-0d8" eventType="touchUpInside" id="QKR-22-gEy"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -296,7 +296,9 @@
                     <connections>
                         <outlet property="accuracyLabel" destination="5Rg-eP-d2b" id="LSn-XR-WsC"/>
                         <outlet property="correctTapsLabel" destination="v6g-3b-JdD" id="pPE-ds-O0W"/>
+                        <outlet property="homeButton" destination="P0U-HE-hM7" id="qOu-jb-H2z"/>
                         <outlet property="incorrectTapsLabel" destination="kid-iS-4CT" id="trb-RW-hYc"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="backToHome" id="68v-4o-Ogo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PwF-K7-I7e" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -434,7 +436,7 @@
                         <outlet property="counterLabel" destination="dcI-mb-rJ9" id="BDB-Eo-eHL"/>
                         <outlet property="gameView" destination="dcV-rq-GxS" id="p59-U3-4nZ"/>
                         <outlet property="tapButton" destination="41w-fd-Mx1" id="rpQ-oU-eBM"/>
-                        <segue destination="CfU-Ss-0d8" kind="presentation" identifier="showScore" id="YZn-kk-qFK"/>
+                        <segue destination="CfU-Ss-0d8" kind="show" identifier="showScore" id="YZn-kk-qFK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LVa-ao-U3y" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -443,6 +445,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Dra-yN-Zjc"/>
+        <segue reference="68v-4o-Ogo"/>
     </inferredMetricsTieBreakers>
 </document>

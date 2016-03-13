@@ -16,10 +16,13 @@ class ScoreViewController: UIViewController {
     var incorrectTaps: Float = 0
     var tapAccuracy: Float!
     var score: Float!
+    
+    let transitionManager = TransitionManager()
 
     @IBOutlet weak var accuracyLabel: UILabel!
     @IBOutlet weak var correctTapsLabel: UILabel!
     @IBOutlet weak var incorrectTapsLabel: UILabel!
+    @IBOutlet weak var homeButton: UIButton!
     
     let managedContext = (UIApplication.sharedApplication().delegate as!
         AppDelegate).managedObjectContext
@@ -27,7 +30,7 @@ class ScoreViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        homeButton.tag = 1
         score = (correctTaps * 2) - incorrectTaps   // arbitrary scoring system
         
         //Accuracy is currently not valid, need to have expected taps value. Placeholder for now
@@ -66,6 +69,18 @@ class ScoreViewController: UIViewController {
         }
     }
 
+    @IBAction func shake(sender: UIButton) {
+        var segueName = ""
+        if sender.tag == 1 {
+            segueName = "backToHome"
+        }
+        
+        let bounds = sender.bounds
+        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 10, options: [], animations: {
+            sender.bounds = CGRect(x: bounds.origin.x - 20, y: bounds.origin.y, width: bounds.size.width + 60, height: bounds.size.height)
+            }, completion: {(finished: Bool) -> Void in self.performSegueWithIdentifier(segueName, sender: sender)})
+    }
+    
     // establishes a new high score for this level and difficulty
     func newHighScore(scoreObject: NSManagedObject) {
         print("New high score!" + String(score))
@@ -119,6 +134,11 @@ class ScoreViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        self.transitionManager.presenting = false
+        let toViewController = segue.destinationViewController as UIViewController
+        toViewController.transitioningDelegate = self.transitionManager
+    }
 
     /*
     // MARK: - Navigation

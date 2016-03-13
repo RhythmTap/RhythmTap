@@ -10,6 +10,8 @@ import UIKit
 
 class TransitionManager: NSObject, UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate  {
     
+    var presenting = true
+    
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         
         // get reference to our fromView, toView and the container view
@@ -22,7 +24,12 @@ class TransitionManager: NSObject, UIViewControllerAnimatedTransitioning, UIView
         let offScreenLeft = CGAffineTransformMakeTranslation(-container!.frame.width, 0)
         
         // start the toView to the right of the screen
-        toView.transform = offScreenRight
+        if (self.presenting){
+            toView.transform = offScreenRight
+        }
+        else {
+            toView.transform = offScreenLeft
+        }
         
         // add the both views to our view controller
         container!.addSubview(toView)
@@ -32,7 +39,12 @@ class TransitionManager: NSObject, UIViewControllerAnimatedTransitioning, UIView
         
         // start animation
         UIView.animateWithDuration(duration, animations: {
-            fromView.transform = offScreenLeft
+            if (self.presenting){
+                fromView.transform = offScreenLeft
+            }
+            else {
+                fromView.transform = offScreenRight
+            }
             toView.transform = CGAffineTransformIdentity
             }, completion: { finished in transitionContext.completeTransition(true)
         })
@@ -45,11 +57,13 @@ class TransitionManager: NSObject, UIViewControllerAnimatedTransitioning, UIView
     
     // when presenting a ViewController
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        //self.presenting = true
         return self
     }
     
     // rwhen dismissing a ViewController
     func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        self.presenting = false
         return self
     }
     
