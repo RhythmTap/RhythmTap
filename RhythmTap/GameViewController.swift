@@ -38,6 +38,7 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
         setupAdvancedAudioPlayer()
         setupCountdownTimer()
         tapButton.enabled = false
+        self.navigationController?.navigationBarHidden = true
     }
     
     
@@ -61,9 +62,17 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
             incorrectTapCounter.increaseCount()
             AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
             counterLabel.text = String(incorrectTapCounter.getCount())
+            jiggleButton(sender)
             
         }
         gameView.backgroundColor = randomColour()
+    }
+    
+    func jiggleButton(sender: UIButton) {
+        let bounds = sender.bounds
+        UIView.animateWithDuration(0.1, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 10, options: [], animations: {
+            sender.bounds = CGRect(x: bounds.origin.x - 20, y: bounds.origin.y, width: bounds.size.width + 60, height: bounds.size.height)
+            }, completion: nil)
     }
     
     //Deals with the transitions between views

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oeI-Ms-Bkp">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -52,7 +53,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1x6-LU-idY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="941" y="-710"/>
+            <point key="canvasLocation" x="873" y="-445"/>
         </scene>
         <!--Home-->
         <scene sceneID="tne-QT-ifu">
@@ -84,7 +85,7 @@
                                     <color key="titleColor" red="0.61144834608741994" green="0.63385416666666661" blue="0.62127327319516978" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="azz-Rn-kOc" kind="show" id="r6t-fb-4Ye"/>
+                                    <action selector="shake:" destination="BYZ-38-t0r" eventType="touchUpInside" id="d0d-o8-3YF"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ocv-zj-jft">
@@ -99,7 +100,7 @@
                                     <color key="titleColor" red="0.61144834609999998" green="0.63385416670000005" blue="0.62127327320000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="pbO-2h-FRj" kind="show" identifier="levelView" id="cJE-jy-jAj"/>
+                                    <action selector="shake:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ORX-hw-STI"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -116,7 +117,10 @@
                     <navigationItem key="navigationItem" title="Home" id="CRe-lc-IA0"/>
                     <connections>
                         <outlet property="levelButton" destination="Ocv-zj-jft" id="teh-xv-LME"/>
+                        <outlet property="rhythmTap" destination="NWd-S6-mQ3" id="foI-aA-bfz"/>
                         <outlet property="startButton" destination="4ei-Ll-AQ7" id="OAU-sI-lGr"/>
+                        <segue destination="pbO-2h-FRj" kind="presentation" identifier="levelView" id="woz-l2-Bby"/>
+                        <segue destination="azz-Rn-kOc" kind="presentation" identifier="gameView" id="QKj-bv-gAJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -135,7 +139,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prepare yourself!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VYB-jB-Uk4">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VYB-jB-Uk4">
                                 <rect key="frame" x="20" y="154" width="560" height="114"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -163,7 +167,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tHT-rF-Xk1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1725" y="-356"/>
+            <point key="canvasLocation" x="1006" y="445"/>
         </scene>
         <!--Score View Controller-->
         <scene sceneID="2dr-bN-vBF">
@@ -430,7 +434,7 @@
                         <outlet property="counterLabel" destination="dcI-mb-rJ9" id="BDB-Eo-eHL"/>
                         <outlet property="gameView" destination="dcV-rq-GxS" id="p59-U3-4nZ"/>
                         <outlet property="tapButton" destination="41w-fd-Mx1" id="rpQ-oU-eBM"/>
-                        <segue destination="CfU-Ss-0d8" kind="show" identifier="showScore" id="YZn-kk-qFK"/>
+                        <segue destination="CfU-Ss-0d8" kind="presentation" identifier="showScore" id="YZn-kk-qFK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LVa-ao-U3y" userLabel="First Responder" sceneMemberID="firstResponder"/>
