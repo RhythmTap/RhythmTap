@@ -65,3 +65,6 @@ fastlane/screenshots
 # Mac Stuff
 .DS_Store
 **/*.DS_Store
+
+# AppCode
+.idea

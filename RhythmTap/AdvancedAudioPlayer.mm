@@ -9,12 +9,10 @@
 #import <Foundation/Foundation.h>
 
 #import "SuperpoweredIOSAudioIO.h"
-#import "SuperpoweredAnalyzer.h"
 #import "SuperpoweredAdvancedAudioPlayer.h"
 #import "SuperpoweredSimple.h"
 
 #import "RhythmTap-Swift.h"
-#import "RhythmTap-Bridging-Header.h"
 
 
 @implementation AdvancedAudioPlayer {
@@ -49,8 +47,11 @@ static void playerEventCallback(void *clientData, SuperpoweredAdvancedAudioPlaye
             return;
         }
         if (self->_delegate) {
-            [self->_delegate onTrackFinish];
-            NSLog(@"It works!");
+            // A ViewController implements the delegate, which means that changes will possibly be made to the UI
+            // It is best to keep all UI functionality on the main thread.
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self->_delegate onTrackFinish];
+            });
         }
     }
 }

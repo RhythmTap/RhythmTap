@@ -41,8 +41,10 @@ class ScoreViewController: UIViewController {
             scores = results as! [NSManagedObject]
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
+        } catch {
+            print("Failed to fetch request")
         }
-        
+
         self.navigationItem.hidesBackButton = true
 
         let scoreResult = getHighScore()
@@ -90,6 +92,8 @@ class ScoreViewController: UIViewController {
             scores.append(newScore) // save addition
         } catch let error as NSError  {
             print("Could not save \(error), \(error.userInfo)")
+        } catch {
+            print("Could not save")
         }
     }
     

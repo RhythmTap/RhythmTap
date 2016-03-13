@@ -22,7 +22,6 @@ class LoadingViewController: UIViewController, AudioAnalyzerDelegate {
     // View actions
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func viewWillAppear(animated: Bool) {
