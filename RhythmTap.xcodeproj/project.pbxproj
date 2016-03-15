@@ -63,7 +63,6 @@
 		5339154FFC28424780FDF91C /* ScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
 		533919F4807B5FA82C4E4BA3 /* Taps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Taps.swift; sourceTree = "<group>"; };
 		53391B5037BF43DBA5EB73C4 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		53391B9B597556C05BC47031 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		53391C744705456D1867C839 /* LevelViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelViewCell.swift; sourceTree = "<group>"; };
 		53391CBABCDD69F81F5CA5EB /* DifficultyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DifficultyViewController.swift; sourceTree = "<group>"; };
 		53391DCFE22D79A8EEC47B28 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
@@ -79,7 +78,6 @@
 		D37932981C7B7FC1008B7B64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D379329D1C7B7FC1008B7B64 /* RhythmTapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RhythmTapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D37932A31C7B7FC1008B7B64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D37932A81C7B7FC1008B7B64 /* RhythmTapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RhythmTapUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D37932AC1C7B7FC1008B7B64 /* RhythmTapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RhythmTapUITests.swift; sourceTree = "<group>"; };
 		D37932AE1C7B7FC1008B7B64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D37C77741C8A8FB500972147 /* libSuperpoweredAudioIOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSuperpoweredAudioIOS.a; path = "Third Party/libSuperpoweredAudioIOS.a"; sourceTree = "<group>"; };
@@ -185,7 +183,6 @@
 			children = (
 				533911E85FEC60C4EDEE8828 /* GameViewController.swift */,
 				533919F4807B5FA82C4E4BA3 /* Taps.swift */,
-				53391B9B597556C05BC47031 /* AudioPlayer.swift */,
 			);
 			name = "Game View";
 			path = RhythmTap;
@@ -246,7 +243,6 @@
 			children = (
 				D37932861C7B7FC1008B7B64 /* RhythmTap.app */,
 				D379329D1C7B7FC1008B7B64 /* RhythmTapTests.xctest */,
-				D37932A81C7B7FC1008B7B64 /* RhythmTapUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -408,7 +404,6 @@
 			);
 			name = RhythmTapUITests;
 			productName = RhythmTapUITests;
-			productReference = D37932A81C7B7FC1008B7B64 /* RhythmTapUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */

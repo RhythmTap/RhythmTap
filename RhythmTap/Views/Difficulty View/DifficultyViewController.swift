@@ -6,7 +6,7 @@
 import UIKit
 import Foundation
 
-public enum Difficulty {
+enum Difficulty {
     case Easy
     case Intermediate
     case Hard

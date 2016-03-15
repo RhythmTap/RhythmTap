@@ -16,22 +16,25 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     @IBOutlet weak var counterLabel: UILabel!
     @IBOutlet weak var correctTaps: UILabel!
     @IBOutlet weak var countdownLabel: UILabel!
+    @IBOutlet weak var difficultyLabel: UILabel!
+    @IBOutlet weak var bpmLabel: UILabel!
     @IBOutlet weak var tapButton: UILabel!
     
     let correctTapCounter = Taps.init()
     let incorrectTapCounter = Taps.init()
     let trackDirectory = "Tracks/"
     
-    var elapsedTime: NSTimeInterval = 0.0
     var advancedAudioPlayer: AdvancedAudioPlayer!
     var audioAnalyzer: AudioAnalyzer!
+    var elapsedTime: NSTimeInterval = 0.0
     var startTime = NSTimeInterval()
     var timer:NSTimer = NSTimer()
     var countdownTimer:NSTimer = NSTimer()
     var countdown: Int = 3
     var songFinished: Bool = false
-    var accuracy:Float = 0.0
-    var taps:Int = 0
+    var accuracy: Float = 0.0
+    var taps: Int = 0
+    var difficulty: Difficulty!
 
     
     // MARK: View Handlers
@@ -39,6 +42,7 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
         super.viewDidLoad()
         setupAdvancedAudioPlayer()
         setupCountdownTimer()
+        setDifficultyLabel()
         tapButton.enabled = false
         self.navigationController?.navigationBarHidden = true
     }
@@ -50,9 +54,6 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
         songFinished = true
         self.performSegueWithIdentifier("showScore", sender: self)
     }
-
-    // This happens as soon as the advanced audio player passes a beat index
-
 
 
     // MARK: User Actions
@@ -68,20 +69,12 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
             incorrectTapCounter.increaseCount()
             counterLabel.text = String(incorrectTapCounter.getCount())
             incorrectResponse(sender)
-            
         }
         gameView.backgroundColor = randomColour()
     }
-    
-    func incorrectResponse(sender: UIButton) {
-        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))  // phone vibrate
-        let bounds = sender.bounds
-        // button jiggles
-        UIView.animateWithDuration(0.1, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 10, options: [], animations: {
-            sender.bounds = CGRect(x: bounds.origin.x - 20, y: bounds.origin.y, width: bounds.size.width + 60, height: bounds.size.height)
-            }, completion: nil)
-    }
-    
+
+
+    // MARK: Navigation
     //Deals with the transitions between views
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let dest = segue.destinationViewController as? ScoreViewController {
@@ -90,15 +83,45 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
             dest.tapAccuracy =  accuracy / Float(taps)
         }
     }
-    
-    // MARK: Interface
+
+
+    // MARK: Custom UI
     func randomColour() -> UIColor {
         let red = CGFloat(drand48())
         let blue = CGFloat(drand48())
         let green = CGFloat(drand48())
         return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
     }
+
+    func setDifficultyLabel() {
+        switch difficulty! {
+            // TODO: Make these colors look nicer
+            case .Easy:
+                difficultyLabel.text = "Easy"
+                difficultyLabel.textColor = UIColor.redColor()
+            case .Intermediate:
+                difficultyLabel.text = "Intermediate"
+                difficultyLabel.textColor = UIColor.redColor()
+            case .Hard:
+                difficultyLabel.text = "Hard"
+                difficultyLabel.textColor = UIColor.redColor()
+            case .Insane:
+                difficultyLabel.text = "Insane"
+                difficultyLabel.textColor = UIColor.redColor()
+        }
+    }
+
     
+    // MARK: User Feedback
+    func incorrectResponse(sender: UIButton) {
+        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))  // phone vibrate
+        let bounds = sender.bounds
+        // button jiggles
+        UIView.animateWithDuration(0.1, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 10, options: [], animations: {
+            sender.bounds = CGRect(x: bounds.origin.x - 20, y: bounds.origin.y, width: bounds.size.width + 60, height: bounds.size.height)
+        }, completion: nil)
+    }
+
     // Updates the beginning countdown every second
     func updateCountdown() {
         if countdown > 0 {  // if countdown still valid
@@ -117,10 +140,9 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
             countdownTimer.invalidate()
         }
     }
+
     
-    
-    
-    // MARK: Private Interface
+    // MARK: Audio and timing
     private func setupAdvancedAudioPlayer() {
         advancedAudioPlayer.delegate = self
     }
@@ -133,17 +155,34 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     
     
     // Returns true if the tap is valid and checks how accurate the tap was
-    private func checkTap() -> Bool {
+    func checkTap() -> Bool {
+
+        // Update the BPM label for dynamic BPMs
+        bpmLabel.text = String(advancedAudioPlayer.getCurrentBpm())
 
         let currentTapAccuracy = 100.0 - getOffBeatPercentage()
         accuracy += currentTapAccuracy
-        print(currentTapAccuracy)
 
+        var upperBoundTolerance: Float = 100.0;
+        var lowerBoundTolerance: Float = 0.0;
+        var tapTolerance: Float = 0
+
+        // Keep in mind that switch statements in Swift do not fall through, therefore, break is not required
+        switch difficulty! {
+            case Difficulty.Easy:
+                tapTolerance = 30;
+            case Difficulty.Intermediate:
+                tapTolerance = 20;
+            case Difficulty.Hard:
+                tapTolerance = 10;
+            case Difficulty.Insane:
+                tapTolerance = 5;
+        }
+        upperBoundTolerance -= tapTolerance
+        lowerBoundTolerance += tapTolerance
 
         // Multiply beat index by 100 because the beat index is a float. Modular arithmetic
         // requires integers
-        let upperBoundTolerance:Float = 90.0;
-        let lowerBoundTolerance:Float = 10.0;
         if (advancedAudioPlayer.getBeatIndex() * 100) % 100 >= upperBoundTolerance || (advancedAudioPlayer.getBeatIndex() * 100) % 100 <= lowerBoundTolerance {
             return true;
         }
