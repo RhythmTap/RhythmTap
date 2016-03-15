@@ -17,6 +17,8 @@ class LoadingViewController: UIViewController, AudioAnalyzerDelegate {
     let gameViewSegueIdentifier = "GameViewSegue"
     let trackDirectory = "Tracks/"
     let advancedAudioPlayer = AdvancedAudioPlayer()
+
+    var difficulty: Difficulty!
     
     
     // View actions
@@ -53,6 +55,7 @@ class LoadingViewController: UIViewController, AudioAnalyzerDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let gameViewController = segue.destinationViewController as! GameViewController
         gameViewController.advancedAudioPlayer = self.advancedAudioPlayer
+        gameViewController.difficulty = difficulty
     }
     
     

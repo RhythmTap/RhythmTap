@@ -7,15 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		533912F37E6EA7C844BA4F5E /* Taps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533919F4807B5FA82C4E4BA3 /* Taps.swift */; };
+		53391329CBB44C3B48214E6E /* LevelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53391C744705456D1867C839 /* LevelViewCell.swift */; };
+		5339158CAD74A3E43A7087A1 /* DifficultyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53391CBABCDD69F81F5CA5EB /* DifficultyViewController.swift */; };
+		53391A0F26FA14DA8582F1FD /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53391DCFE22D79A8EEC47B28 /* LoadingViewController.swift */; };
+		53391C8B70EF0AEFDC900AA3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53391B5037BF43DBA5EB73C4 /* HomeViewController.swift */; };
+		53391CB1746A97C0E242FED5 /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5339154FFC28424780FDF91C /* ScoreViewController.swift */; };
+		53391E01AAF00D7F74ECC612 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533911E85FEC60C4EDEE8828 /* GameViewController.swift */; };
+		53391F7012DD69CEE7C496C9 /* LevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5339102E146EBAE9EECA45F4 /* LevelViewController.swift */; };
 		D310609D1C9085BA0048A5C2 /* AdvancedAudioPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D310609C1C9085BA0048A5C2 /* AdvancedAudioPlayerTests.swift */; };
 		D310609F1C90873C0048A5C2 /* AudioAnalyzerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D310609E1C90873C0048A5C2 /* AudioAnalyzerTests.swift */; };
-		D31060A21C90D7E80048A5C2 /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31060A11C90D7E80048A5C2 /* ScoreViewController.swift */; };
-		D31060A61C90D99D0048A5C2 /* LevelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31060A41C90D99D0048A5C2 /* LevelViewCell.swift */; };
-		D31060A71C90D99D0048A5C2 /* LevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31060A51C90D99D0048A5C2 /* LevelViewController.swift */; };
-		D336D2881C8F370600C8BB36 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D336D2871C8F370600C8BB36 /* LoadingViewController.swift */; };
 		D34EB92F1C90725F009954BD /* AudioTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34EB92E1C90725F009954BD /* AudioTrack.swift */; };
 		D379328A1C7B7FC1008B7B64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37932891C7B7FC1008B7B64 /* AppDelegate.swift */; };
-		D379328C1C7B7FC1008B7B64 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D379328B1C7B7FC1008B7B64 /* HomeViewController.swift */; };
 		D37932921C7B7FC1008B7B64 /* RhythmTap.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D37932901C7B7FC1008B7B64 /* RhythmTap.xcdatamodeld */; };
 		D37932941C7B7FC1008B7B64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D37932931C7B7FC1008B7B64 /* Assets.xcassets */; };
 		D37932971C7B7FC1008B7B64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D37932951C7B7FC1008B7B64 /* LaunchScreen.storyboard */; };
@@ -30,7 +33,6 @@
 		D3BB538D1C8BAABA005DD54B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3BB538C1C8BAABA005DD54B /* CoreGraphics.framework */; };
 		D3BB538F1C8BAABF005DD54B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3BB538E1C8BAABF005DD54B /* UIKit.framework */; };
 		D3BB53911C8BADD0005DD54B /* SuperpoweredIOSAudioIO.mm in Sources */ = {isa = PBXBuildFile; fileRef = D3BB53901C8BADD0005DD54B /* SuperpoweredIOSAudioIO.mm */; };
-		D3BED0071C7F66450047C2C5 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BED0061C7F66450047C2C5 /* AudioPlayer.swift */; };
 		D3BED0121C7F7AE50047C2C5 /* Tracks in Resources */ = {isa = PBXBuildFile; fileRef = D3BED0111C7F7AE50047C2C5 /* Tracks */; };
 		D3C058D51C8CD3BA00308BF9 /* AudioAnalyzer.mm in Sources */ = {isa = PBXBuildFile; fileRef = D3C058D41C8CD3BA00308BF9 /* AudioAnalyzer.mm */; };
 		D3D8A8AE1C7B82720017E533 /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D8A8AD1C7B82720017E533 /* HomeViewControllerTests.swift */; };
@@ -59,24 +61,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5339102E146EBAE9EECA45F4 /* LevelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelViewController.swift; sourceTree = "<group>"; };
+		533911E85FEC60C4EDEE8828 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		5339154FFC28424780FDF91C /* ScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
+		533919F4807B5FA82C4E4BA3 /* Taps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Taps.swift; sourceTree = "<group>"; };
+		53391B5037BF43DBA5EB73C4 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		53391C744705456D1867C839 /* LevelViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelViewCell.swift; sourceTree = "<group>"; };
+		53391CBABCDD69F81F5CA5EB /* DifficultyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DifficultyViewController.swift; sourceTree = "<group>"; };
+		53391DCFE22D79A8EEC47B28 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		D310609C1C9085BA0048A5C2 /* AdvancedAudioPlayerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedAudioPlayerTests.swift; sourceTree = "<group>"; };
 		D310609E1C90873C0048A5C2 /* AudioAnalyzerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioAnalyzerTests.swift; sourceTree = "<group>"; };
-		D31060A11C90D7E80048A5C2 /* ScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
-		D31060A41C90D99D0048A5C2 /* LevelViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelViewCell.swift; sourceTree = "<group>"; };
-		D31060A51C90D99D0048A5C2 /* LevelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelViewController.swift; sourceTree = "<group>"; };
-		D336D2871C8F370600C8BB36 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		D34C09591C8E239E00B2BA00 /* AdvancedAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedAudioPlayer.h; sourceTree = "<group>"; };
 		D34EB92E1C90725F009954BD /* AudioTrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioTrack.swift; sourceTree = "<group>"; };
 		D37932861C7B7FC1008B7B64 /* RhythmTap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RhythmTap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D37932891C7B7FC1008B7B64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D379328B1C7B7FC1008B7B64 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D37932911C7B7FC1008B7B64 /* RhythmTap.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RhythmTap.xcdatamodel; sourceTree = "<group>"; };
 		D37932931C7B7FC1008B7B64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D37932961C7B7FC1008B7B64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D37932981C7B7FC1008B7B64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D379329D1C7B7FC1008B7B64 /* RhythmTapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RhythmTapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D37932A31C7B7FC1008B7B64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D37932A81C7B7FC1008B7B64 /* RhythmTapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RhythmTapUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D37932AC1C7B7FC1008B7B64 /* RhythmTapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RhythmTapUITests.swift; sourceTree = "<group>"; };
 		D37932AE1C7B7FC1008B7B64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D37C77741C8A8FB500972147 /* libSuperpoweredAudioIOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSuperpoweredAudioIOS.a; path = "Third Party/libSuperpoweredAudioIOS.a"; sourceTree = "<group>"; };
@@ -91,7 +95,6 @@
 		D3BB538C1C8BAABA005DD54B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D3BB538E1C8BAABF005DD54B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D3BB53901C8BADD0005DD54B /* SuperpoweredIOSAudioIO.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SuperpoweredIOSAudioIO.mm; path = "Third Party/SuperpoweredIOSAudioIO.mm"; sourceTree = "<group>"; };
-		D3BED0061C7F66450047C2C5 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		D3BED0111C7F7AE50047C2C5 /* Tracks */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Tracks; sourceTree = SOURCE_ROOT; };
 		D3C058D41C8CD3BA00308BF9 /* AudioAnalyzer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioAnalyzer.mm; sourceTree = "<group>"; };
 		D3C058D81C8CE7D100308BF9 /* AudioAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioAnalyzer.h; sourceTree = "<group>"; };
@@ -163,29 +166,72 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D31060A01C90D7D10048A5C2 /* Score View */ = {
+		533910951B6D4F2076B85A81 /* Home View */ = {
 			isa = PBXGroup;
 			children = (
-				D31060A11C90D7E80048A5C2 /* ScoreViewController.swift */,
+				53391B5037BF43DBA5EB73C4 /* HomeViewController.swift */,
+			);
+			name = "Home View";
+			path = RhythmTap;
+			sourceTree = SOURCE_ROOT;
+		};
+		533912242EE9E12B47D82DD5 /* Score View */ = {
+			isa = PBXGroup;
+			children = (
+				5339154FFC28424780FDF91C /* ScoreViewController.swift */,
 			);
 			name = "Score View";
-			sourceTree = "<group>";
+			path = RhythmTap;
+			sourceTree = SOURCE_ROOT;
 		};
-		D31060A31C90D98F0048A5C2 /* Level View */ = {
+		5339142F6D45C1B1FF598FD0 /* Game View */ = {
 			isa = PBXGroup;
 			children = (
-				D31060A41C90D99D0048A5C2 /* LevelViewCell.swift */,
-				D31060A51C90D99D0048A5C2 /* LevelViewController.swift */,
+				533911E85FEC60C4EDEE8828 /* GameViewController.swift */,
+				533919F4807B5FA82C4E4BA3 /* Taps.swift */,
+			);
+			name = "Game View";
+			path = RhythmTap;
+			sourceTree = SOURCE_ROOT;
+		};
+		5339148B7AA8DF453EB6FEBB /* Difficulty View */ = {
+			isa = PBXGroup;
+			children = (
+				53391CBABCDD69F81F5CA5EB /* DifficultyViewController.swift */,
+			);
+			path = "Difficulty View";
+			sourceTree = "<group>";
+		};
+		53391C3AC180AE2A6074BA40 /* Level View */ = {
+			isa = PBXGroup;
+			children = (
+				53391C744705456D1867C839 /* LevelViewCell.swift */,
+				5339102E146EBAE9EECA45F4 /* LevelViewController.swift */,
 			);
 			name = "Level View";
-			sourceTree = "<group>";
+			path = RhythmTap;
+			sourceTree = SOURCE_ROOT;
 		};
-		D336D2891C8F372800C8BB36 /* Loading View */ = {
+		53391CE0AC85CCD10FA6E1E7 /* Loading View */ = {
 			isa = PBXGroup;
 			children = (
-				D336D2871C8F370600C8BB36 /* LoadingViewController.swift */,
+				53391DCFE22D79A8EEC47B28 /* LoadingViewController.swift */,
 			);
 			name = "Loading View";
+			path = RhythmTap;
+			sourceTree = SOURCE_ROOT;
+		};
+		53391FABDC54D3607EF9DB92 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				533912242EE9E12B47D82DD5 /* Score View */,
+				53391C3AC180AE2A6074BA40 /* Level View */,
+				533910951B6D4F2076B85A81 /* Home View */,
+				53391CE0AC85CCD10FA6E1E7 /* Loading View */,
+				5339142F6D45C1B1FF598FD0 /* Game View */,
+				5339148B7AA8DF453EB6FEBB /* Difficulty View */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		D379327D1C7B7FC1008B7B64 = {
@@ -203,7 +249,6 @@
 			children = (
 				D37932861C7B7FC1008B7B64 /* RhythmTap.app */,
 				D379329D1C7B7FC1008B7B64 /* RhythmTapTests.xctest */,
-				D37932A81C7B7FC1008B7B64 /* RhythmTapUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -218,9 +263,6 @@
 				D37C77771C8A901000972147 /* Audio Processing */,
 				D37C77731C8A8C1400972147 /* Third Party */,
 				D3BED0111C7F7AE50047C2C5 /* Tracks */,
-				D336D2891C8F372800C8BB36 /* Loading View */,
-				D3BED0051C7F64810047C2C5 /* Home View */,
-				F3677B051C7B9BFC00AD7471 /* Game View */,
 				D37932891C7B7FC1008B7B64 /* AppDelegate.swift */,
 				F3163A8D1C7F8B21000F9884 /* Main.storyboard */,
 				F30A0E051C95E41000D2C13E /* TransitionManager.swift */,
@@ -228,6 +270,7 @@
 				D37932951C7B7FC1008B7B64 /* LaunchScreen.storyboard */,
 				D37932981C7B7FC1008B7B64 /* Info.plist */,
 				D37932901C7B7FC1008B7B64 /* RhythmTap.xcdatamodeld */,
+				53391FABDC54D3607EF9DB92 /* Views */,
 			);
 			path = RhythmTap;
 			sourceTree = "<group>";
@@ -404,7 +447,6 @@
 			);
 			name = RhythmTapUITests;
 			productName = RhythmTapUITests;
-			productReference = D37932A81C7B7FC1008B7B64 /* RhythmTapUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -487,21 +529,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3677B041C7B991E00AD7471 /* GameViewController.swift in Sources */,
-				D379328C1C7B7FC1008B7B64 /* HomeViewController.swift in Sources */,
 				D34EB92F1C90725F009954BD /* AudioTrack.swift in Sources */,
-				D31060A71C90D99D0048A5C2 /* LevelViewController.swift in Sources */,
-				D31060A61C90D99D0048A5C2 /* LevelViewCell.swift in Sources */,
-				F3677B071C7B9C1600AD7471 /* Taps.swift in Sources */,
 				F30A0E061C95E41000D2C13E /* TransitionManager.swift in Sources */,
 				D379328A1C7B7FC1008B7B64 /* AppDelegate.swift in Sources */,
 				D37932921C7B7FC1008B7B64 /* RhythmTap.xcdatamodeld in Sources */,
 				D37C777A1C8A912600972147 /* AdvancedAudioPlayer.mm in Sources */,
 				D3C058D51C8CD3BA00308BF9 /* AudioAnalyzer.mm in Sources */,
-				D336D2881C8F370600C8BB36 /* LoadingViewController.swift in Sources */,
 				D3BB53911C8BADD0005DD54B /* SuperpoweredIOSAudioIO.mm in Sources */,
-				D3BED0071C7F66450047C2C5 /* AudioPlayer.swift in Sources */,
-				D31060A21C90D7E80048A5C2 /* ScoreViewController.swift in Sources */,
+				53391CB1746A97C0E242FED5 /* ScoreViewController.swift in Sources */,
+				53391329CBB44C3B48214E6E /* LevelViewCell.swift in Sources */,
+				53391F7012DD69CEE7C496C9 /* LevelViewController.swift in Sources */,
+				53391C8B70EF0AEFDC900AA3 /* HomeViewController.swift in Sources */,
+				53391A0F26FA14DA8582F1FD /* LoadingViewController.swift in Sources */,
+				53391E01AAF00D7F74ECC612 /* GameViewController.swift in Sources */,
+				533912F37E6EA7C844BA4F5E /* Taps.swift in Sources */,
+				5339158CAD74A3E43A7087A1 /* DifficultyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
