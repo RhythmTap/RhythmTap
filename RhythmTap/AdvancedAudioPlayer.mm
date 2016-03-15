@@ -26,10 +26,8 @@
     float *stereoBuffer;
     float volume;
     double masterBpm;
-    double masterMsElapsedSinceLastBeat;
     unsigned int lastSamplerate;
-    int lengthSeconds;
-    int cachedPointCount;
+    unsigned int cachedPointCount;
 }
 
 /* Handle when the player finishes playing the track */
@@ -56,6 +54,7 @@ static void playerEventCallback(void *clientData, SuperpoweredAdvancedAudioPlaye
     }
 }
 
+
 /**** Constructor ****/
 - (id)init {
     self = [super init];
@@ -63,7 +62,6 @@ static void playerEventCallback(void *clientData, SuperpoweredAdvancedAudioPlaye
     
     self->volume = 1.0f;
     self->masterBpm = 0.0f;
-    self->masterMsElapsedSinceLastBeat = -1.0;
     self->lastSamplerate = 0;
     self->cachedPointCount = 0;
     
