@@ -59,18 +59,20 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     // MARK: User Actions
     @IBAction func onTap(sender: UIButton) {
         //Increments correct taps if user tapped on correct beat and the song isnt over
-        taps++
-        if checkTap() && !songFinished {
-            correctTapCounter.increaseCount()
-            correctTaps.text = String(correctTapCounter.getCount())
+        if countdown == 0 {
+            taps++
+            if checkTap() && !songFinished {
+                correctTapCounter.increaseCount()
+                correctTaps.text = String(correctTapCounter.getCount())
+            }
+                //If the user did not tap a correct tap, it was incorrect
+            else {
+                incorrectTapCounter.increaseCount()
+                counterLabel.text = String(incorrectTapCounter.getCount())
+                incorrectResponse(sender)
+            }
+            gameView.backgroundColor = randomColour()
         }
-        //If the user did not tap a correct tap, it was incorrect
-        else {
-            incorrectTapCounter.increaseCount()
-            counterLabel.text = String(incorrectTapCounter.getCount())
-            incorrectResponse(sender)
-        }
-        gameView.backgroundColor = randomColour()
     }
 
 
@@ -78,7 +80,7 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     //Deals with the transitions between views
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let dest = segue.destinationViewController as? ScoreViewController {
-            dest.correctTaps = Float(correctTaps.text!)!
+            dest.correctTaps = Float(correctTapCounter.getCount())
             dest.incorrectTaps = Float(counterLabel.text!)!
             dest.tapAccuracy =  accuracy / Float(taps)
         }
