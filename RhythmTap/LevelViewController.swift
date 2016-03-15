@@ -89,6 +89,7 @@ class LevelViewController: UICollectionViewController, UICollectionViewDelegateF
     
     override func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
         selectedSong = indexPath.item
+        print(selectedSong)
         self.performSegueWithIdentifier("levelToGameSegue", sender: self)
     }
 }
