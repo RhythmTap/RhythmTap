@@ -50,11 +50,16 @@ class HomeViewController: UIViewController {
 
     // MARK: Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        self.transitionManager.presenting = false
         if segue.identifier == loadingViewSegueIdentifier {
             if let loadingViewController = segue.destinationViewController as? LoadingViewController {
                 loadingViewController.difficulty = difficulty
+                loadingViewController.transitioningDelegate = self.transitionManager
+                return
             }
         }
+        let toViewController = segue.destinationViewController as UIViewController
+        toViewController.transitioningDelegate = self.transitionManager
     }
 
 

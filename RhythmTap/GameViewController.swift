@@ -187,7 +187,6 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
             return true;
         }
         return false;
-
     }
 
     // Checks how offbeat your tap was
