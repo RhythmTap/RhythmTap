@@ -394,6 +394,9 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="test.png" translatesAutoresizingMaskIntoConstraints="NO" id="HCu-F6-yhq">
+                                <rect key="frame" x="180" y="236" width="240" height="258"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="41w-fd-Mx1">
                                 <rect key="frame" x="0.0" y="270" width="600" height="60"/>
                                 <color key="backgroundColor" red="0.59187277819999995" green="0.90424882309999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -416,15 +419,23 @@
                             <constraint firstItem="QQU-2i-WaJ" firstAttribute="trailing" secondItem="dcV-rq-GxS" secondAttribute="trailingMargin" constant="-30" id="Hg2-yF-xhn"/>
                             <constraint firstItem="41w-fd-Mx1" firstAttribute="leading" secondItem="dcV-rq-GxS" secondAttribute="leadingMargin" constant="-20" id="LX4-ep-Ox6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3cG-yu-5tX" secondAttribute="trailing" id="Off-NA-uke"/>
+                            <constraint firstItem="HCu-F6-yhq" firstAttribute="centerX" secondItem="dcV-rq-GxS" secondAttribute="centerX" id="Q9Z-lj-ERg"/>
+                            <constraint firstItem="HCu-F6-yhq" firstAttribute="centerY" secondItem="Nk6-h0-iAV" secondAttribute="centerY" id="Vcp-iQ-7r8"/>
                             <constraint firstItem="Nk6-h0-iAV" firstAttribute="centerY" secondItem="dcV-rq-GxS" secondAttribute="centerY" id="WiP-Sv-CHM"/>
                             <constraint firstItem="41w-fd-Mx1" firstAttribute="centerX" secondItem="dcV-rq-GxS" secondAttribute="centerX" id="d26-4b-6Da"/>
                             <constraint firstAttribute="trailingMargin" secondItem="QQU-2i-WaJ" secondAttribute="trailing" id="dXX-3O-JfN"/>
+                            <constraint firstItem="HCu-F6-yhq" firstAttribute="centerX" secondItem="Nk6-h0-iAV" secondAttribute="centerX" id="kcF-OH-7Y1"/>
+                            <constraint firstItem="HCu-F6-yhq" firstAttribute="centerY" secondItem="dcV-rq-GxS" secondAttribute="centerY" id="nKP-K8-Qos"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HCu-F6-yhq" secondAttribute="trailing" constant="160" id="r0Q-Wq-zf3"/>
                             <constraint firstItem="41w-fd-Mx1" firstAttribute="centerY" secondItem="dcV-rq-GxS" secondAttribute="centerY" id="vDL-Rv-AgJ"/>
                             <constraint firstItem="Nk6-h0-iAV" firstAttribute="top" secondItem="3cG-yu-5tX" secondAttribute="bottom" constant="-93" id="wGY-iv-M2h"/>
+                            <constraint firstItem="HCu-F6-yhq" firstAttribute="leading" secondItem="dcV-rq-GxS" secondAttribute="leadingMargin" constant="160" id="yOm-Om-hXK"/>
                             <constraint firstItem="Nk6-h0-iAV" firstAttribute="width" secondItem="dcV-rq-GxS" secondAttribute="width" id="z1t-U4-4NN"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="Vcp-iQ-7r8"/>
+                                <exclude reference="kcF-OH-7Y1"/>
                                 <exclude reference="Off-NA-uke"/>
                                 <exclude reference="dXX-3O-JfN"/>
                             </mask>
@@ -436,6 +447,7 @@
                         <outlet property="counterLabel" destination="dcI-mb-rJ9" id="BDB-Eo-eHL"/>
                         <outlet property="gameView" destination="dcV-rq-GxS" id="p59-U3-4nZ"/>
                         <outlet property="tapButton" destination="41w-fd-Mx1" id="rpQ-oU-eBM"/>
+                        <outlet property="testImage" destination="HCu-F6-yhq" id="V1Y-zI-KPd"/>
                         <segue destination="CfU-Ss-0d8" kind="show" identifier="showScore" id="YZn-kk-qFK"/>
                     </connections>
                 </viewController>
@@ -444,6 +456,9 @@
             <point key="canvasLocation" x="1725" y="487"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="test.png" width="600" height="1197"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="68v-4o-Ogo"/>
     </inferredMetricsTieBreakers>

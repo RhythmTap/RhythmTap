@@ -17,6 +17,7 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     @IBOutlet weak var correctTaps: UILabel!
     @IBOutlet weak var countdownLabel: UILabel!
     @IBOutlet weak var tapButton: UILabel!
+    @IBOutlet weak var testImage: UIImageView!
     
     let correctTapCounter = Taps.init()
     let incorrectTapCounter = Taps.init()
@@ -41,6 +42,8 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
         setupCountdownTimer()
         tapButton.enabled = false
         self.navigationController?.navigationBarHidden = true
+        testImage.image = testImage.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        testImage.tintColor = randomColour()
     }
     
     
@@ -70,7 +73,8 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
             incorrectResponse(sender)
             
         }
-        gameView.backgroundColor = randomColour()
+        testImage.tintColor = randomColour()
+        //gameView.backgroundColor = randomColour()
     }
     
     func incorrectResponse(sender: UIButton) {
