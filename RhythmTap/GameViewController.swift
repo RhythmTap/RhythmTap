@@ -51,7 +51,6 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
         testImage.image = stickmenManager.correctStickmen[0]
         testImage.image = testImage.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         testImage.tintColor = UIColor.blackColor()
-        testImage.backgroundColor = UIColor.redColor()
     }
     
     
@@ -66,13 +65,13 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     // MARK: User Actions
     @IBAction func onTap(sender: UIButton) {
         //Increments correct taps if user tapped on correct beat and the song isnt over
-        taps++
         if countdown == 0 {
+            taps++
             if checkTap() && !songFinished {
                 let random = Int(arc4random_uniform(UInt32(stickmenManager.correctStickmen.count)))
                 let stickman = stickmenManager.correctStickmen[random]
                 testImage.image = stickman
-                print(testImage.tintColor)
+                testImage.image = testImage.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
                 correctTapCounter.increaseCount()
                 correctTaps.text = String(correctTapCounter.getCount())
             }
