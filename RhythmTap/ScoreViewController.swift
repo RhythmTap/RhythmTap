@@ -106,7 +106,8 @@ class ScoreViewController: UIViewController {
         let scoreEntity =  NSEntityDescription.entityForName("Score", inManagedObjectContext:managedContext)  // get object containing score
         let newScore = NSManagedObject(entity: scoreEntity!, insertIntoManagedObjectContext: managedContext)  // create new row
         newScore.setValue(score, forKey: "highScore") // set high score
-        newScore.setValue(3, forKey: "level")   // set level
+        highScoreLabel.text = String(score)+"%"
+        newScore.setValue(1, forKey: "level")   // set level
         newScore.setValue("easy", forKey: "difficulty") // set difficulty
         
         //4
