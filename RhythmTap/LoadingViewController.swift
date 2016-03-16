@@ -19,6 +19,7 @@ class LoadingViewController: UIViewController, AudioAnalyzerDelegate {
     let advancedAudioPlayer = AdvancedAudioPlayer()
 
     var difficulty: Difficulty!
+    var songName: String = ""
     
     
     // View actions
@@ -61,7 +62,7 @@ class LoadingViewController: UIViewController, AudioAnalyzerDelegate {
     
     // MARK: Private Interface
     private func setupAdvancedAudioPlayer() {
-        let file = self.trackDirectory + "Easy"
+        let file = self.trackDirectory + songName
         let audioFormat = "wav"
         let audioTrack = AudioTrack(file: file, audioFormat: audioFormat)
         let audioAnalyzer = AudioAnalyzer(audioTrack)

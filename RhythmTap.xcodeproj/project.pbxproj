@@ -38,6 +38,20 @@
 		D3D8A8AE1C7B82720017E533 /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D8A8AD1C7B82720017E533 /* HomeViewControllerTests.swift */; };
 		F30A0E061C95E41000D2C13E /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30A0E051C95E41000D2C13E /* TransitionManager.swift */; };
 		F3163A8E1C7F8B21000F9884 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3163A8D1C7F8B21000F9884 /* Main.storyboard */; };
+		F3F3BBC21C988F8200371CA3 /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = F3F3BBB51C988F8200371CA3 /* 0.png */; };
+		F3F3BBC31C988F8200371CA3 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = F3F3BBB61C988F8200371CA3 /* 1.png */; };
+		F3F3BBC41C988F8200371CA3 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = F3F3BBB71C988F8200371CA3 /* 2.png */; };
+		F3F3BBC51C988F8200371CA3 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = F3F3BBB81C988F8200371CA3 /* 3.png */; };
+		F3F3BBC61C988F8200371CA3 /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = F3F3BBB91C988F8200371CA3 /* 4.png */; };
+		F3F3BBC71C988F8200371CA3 /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = F3F3BBBA1C988F8200371CA3 /* 5.png */; };
+		F3F3BBC81C988F8200371CA3 /* 6.png in Resources */ = {isa = PBXBuildFile; fileRef = F3F3BBBB1C988F8200371CA3 /* 6.png */; };
+		F3F3BBC91C988F8200371CA3 /* 7.png in Resources */ = {isa = PBXBuildFile; fileRef = F3F3BBBC1C988F8200371CA3 /* 7.png */; };
+		F3F3BBCA1C988F8200371CA3 /* 8.png in Resources */ = {isa = PBXBuildFile; fileRef = F3F3BBBD1C988F8200371CA3 /* 8.png */; };
+		F3F3BBCB1C988F8200371CA3 /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = F3F3BBBE1C988F8200371CA3 /* 9.png */; };
+		F3F3BBCC1C988F8200371CA3 /* 10.png in Resources */ = {isa = PBXBuildFile; fileRef = F3F3BBBF1C988F8200371CA3 /* 10.png */; };
+		F3F3BBCD1C988F8200371CA3 /* 11.png in Resources */ = {isa = PBXBuildFile; fileRef = F3F3BBC01C988F8200371CA3 /* 11.png */; };
+		F3F3BBCE1C988F8200371CA3 /* 12.png in Resources */ = {isa = PBXBuildFile; fileRef = F3F3BBC11C988F8200371CA3 /* 12.png */; };
+		F3F3BBD01C988FC800371CA3 /* StickmenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F3BBCF1C988FC800371CA3 /* StickmenManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +139,20 @@
 		D3DC7F221C8B462400DE3F09 /* SuperpoweredWhoosh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuperpoweredWhoosh.h; path = "Third Party/SuperpoweredWhoosh.h"; sourceTree = "<group>"; };
 		F30A0E051C95E41000D2C13E /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
 		F3163A8D1C7F8B21000F9884 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		F3F3BBB51C988F8200371CA3 /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 0.png; path = Images/0.png; sourceTree = SOURCE_ROOT; };
+		F3F3BBB61C988F8200371CA3 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1.png; path = Images/1.png; sourceTree = SOURCE_ROOT; };
+		F3F3BBB71C988F8200371CA3 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 2.png; path = Images/2.png; sourceTree = SOURCE_ROOT; };
+		F3F3BBB81C988F8200371CA3 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3.png; path = Images/3.png; sourceTree = SOURCE_ROOT; };
+		F3F3BBB91C988F8200371CA3 /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 4.png; path = Images/4.png; sourceTree = SOURCE_ROOT; };
+		F3F3BBBA1C988F8200371CA3 /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 5.png; path = Images/5.png; sourceTree = SOURCE_ROOT; };
+		F3F3BBBB1C988F8200371CA3 /* 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 6.png; path = Images/6.png; sourceTree = SOURCE_ROOT; };
+		F3F3BBBC1C988F8200371CA3 /* 7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 7.png; path = Images/7.png; sourceTree = SOURCE_ROOT; };
+		F3F3BBBD1C988F8200371CA3 /* 8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 8.png; path = Images/8.png; sourceTree = SOURCE_ROOT; };
+		F3F3BBBE1C988F8200371CA3 /* 9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 9.png; path = Images/9.png; sourceTree = SOURCE_ROOT; };
+		F3F3BBBF1C988F8200371CA3 /* 10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 10.png; path = Images/10.png; sourceTree = SOURCE_ROOT; };
+		F3F3BBC01C988F8200371CA3 /* 11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 11.png; path = Images/11.png; sourceTree = SOURCE_ROOT; };
+		F3F3BBC11C988F8200371CA3 /* 12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 12.png; path = Images/12.png; sourceTree = SOURCE_ROOT; };
+		F3F3BBCF1C988FC800371CA3 /* StickmenManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickmenManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,12 +278,14 @@
 		D37932881C7B7FC1008B7B64 /* RhythmTap */ = {
 			isa = PBXGroup;
 			children = (
+				F38208331C985F2400A6ECFA /* Images */,
 				D3BB53811C8BAA73005DD54B /* Frameworks */,
 				D37C77771C8A901000972147 /* Audio Processing */,
 				D37C77731C8A8C1400972147 /* Third Party */,
 				D3BED0111C7F7AE50047C2C5 /* Tracks */,
 				D37932891C7B7FC1008B7B64 /* AppDelegate.swift */,
 				F3163A8D1C7F8B21000F9884 /* Main.storyboard */,
+				F3F3BBCF1C988FC800371CA3 /* StickmenManager.swift */,
 				F30A0E051C95E41000D2C13E /* TransitionManager.swift */,
 				D37932931C7B7FC1008B7B64 /* Assets.xcassets */,
 				D37932951C7B7FC1008B7B64 /* LaunchScreen.storyboard */,
@@ -349,6 +379,34 @@
 				D3BB53821C8BAA90005DD54B /* CoreMedia.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F38208331C985F2400A6ECFA /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				F38208341C985F2B00A6ECFA /* Stickmen */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		F38208341C985F2B00A6ECFA /* Stickmen */ = {
+			isa = PBXGroup;
+			children = (
+				F3F3BBB51C988F8200371CA3 /* 0.png */,
+				F3F3BBB61C988F8200371CA3 /* 1.png */,
+				F3F3BBB71C988F8200371CA3 /* 2.png */,
+				F3F3BBB81C988F8200371CA3 /* 3.png */,
+				F3F3BBB91C988F8200371CA3 /* 4.png */,
+				F3F3BBBA1C988F8200371CA3 /* 5.png */,
+				F3F3BBBB1C988F8200371CA3 /* 6.png */,
+				F3F3BBBC1C988F8200371CA3 /* 7.png */,
+				F3F3BBBD1C988F8200371CA3 /* 8.png */,
+				F3F3BBBE1C988F8200371CA3 /* 9.png */,
+				F3F3BBBF1C988F8200371CA3 /* 10.png */,
+				F3F3BBC01C988F8200371CA3 /* 11.png */,
+				F3F3BBC11C988F8200371CA3 /* 12.png */,
+			);
+			name = Stickmen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -457,8 +515,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3F3BBCE1C988F8200371CA3 /* 12.png in Resources */,
+				F3F3BBC61C988F8200371CA3 /* 4.png in Resources */,
+				F3F3BBC91C988F8200371CA3 /* 7.png in Resources */,
+				F3F3BBC71C988F8200371CA3 /* 5.png in Resources */,
+				F3F3BBC41C988F8200371CA3 /* 2.png in Resources */,
+				F3F3BBC81C988F8200371CA3 /* 6.png in Resources */,
 				D37932971C7B7FC1008B7B64 /* LaunchScreen.storyboard in Resources */,
+				F3F3BBCD1C988F8200371CA3 /* 11.png in Resources */,
+				F3F3BBC31C988F8200371CA3 /* 1.png in Resources */,
 				F3163A8E1C7F8B21000F9884 /* Main.storyboard in Resources */,
+				F3F3BBC51C988F8200371CA3 /* 3.png in Resources */,
+				F3F3BBC21C988F8200371CA3 /* 0.png in Resources */,
+				F3F3BBCB1C988F8200371CA3 /* 9.png in Resources */,
+				F3F3BBCC1C988F8200371CA3 /* 10.png in Resources */,
+				F3F3BBCA1C988F8200371CA3 /* 8.png in Resources */,
 				D37932941C7B7FC1008B7B64 /* Assets.xcassets in Resources */,
 				D3BED0121C7F7AE50047C2C5 /* Tracks in Resources */,
 			);
@@ -492,6 +563,7 @@
 				D37C777A1C8A912600972147 /* AdvancedAudioPlayer.mm in Sources */,
 				D3C058D51C8CD3BA00308BF9 /* AudioAnalyzer.mm in Sources */,
 				D3BB53911C8BADD0005DD54B /* SuperpoweredIOSAudioIO.mm in Sources */,
+				F3F3BBD01C988FC800371CA3 /* StickmenManager.swift in Sources */,
 				53391CB1746A97C0E242FED5 /* ScoreViewController.swift in Sources */,
 				53391329CBB44C3B48214E6E /* LevelViewCell.swift in Sources */,
 				53391F7012DD69CEE7C496C9 /* LevelViewController.swift in Sources */,

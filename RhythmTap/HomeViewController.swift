@@ -58,6 +58,11 @@ class HomeViewController: UIViewController {
             }
             return
         }
+        if segue.identifier == "levelViewSegue" {
+            if let levelView = segue.destinationViewController as? LevelViewController {
+                levelView.difficulty = difficulty
+            }
+        }
         let toViewController = segue.destinationViewController as UIViewController
         toViewController.transitioningDelegate = self.transitionManager
     }
