@@ -19,6 +19,8 @@ class ScoreViewController: UIViewController {
     
     let transitionManager = TransitionManager()
 
+    @IBOutlet weak var showNewHighScoreLabel: UILabel!
+    @IBOutlet weak var highScoreLabel: UILabel!
     @IBOutlet weak var accuracyLabel: UILabel!
     @IBOutlet weak var correctTapsLabel: UILabel!
     @IBOutlet weak var incorrectTapsLabel: UILabel!
@@ -31,9 +33,10 @@ class ScoreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         homeButton.tag = 1
-        score = (correctTaps * 2) - incorrectTaps   // arbitrary scoring system
+        score = tapAccuracy
         
-        //Accuracy is currently not valid, need to have expected taps value. Placeholder for now
+        showNewHighScoreLabel.hidden = true
+        
         accuracyLabel.text = String(tapAccuracy) + "%"
         correctTapsLabel.text = String(Int(correctTaps))
         incorrectTapsLabel.text = String(Int(incorrectTaps))
@@ -55,6 +58,7 @@ class ScoreViewController: UIViewController {
 
         if String(scoreResult) == "" {  // if this level hasn't been played
             newLevelScore()
+            showNewHighScoreLabel.hidden = false
             print("New high score!" + String(score))
         }
         else {  // if this level has been played
@@ -62,9 +66,12 @@ class ScoreViewController: UIViewController {
             let scoreValue = scoreObject.valueForKey("highScore")   // get high score
             if Float(scoreValue! as! NSNumber) < score {
                 newHighScore(scoreObject) // establish new high score
+                showNewHighScoreLabel.hidden = false
+                highScoreLabel.text = String(score)+"%"
             }
             else {
-                print("High score: " + String(scoreValue))  // show current high score
+                print("High score: " + String(scoreValue!))  // show current high score
+                highScoreLabel.text = (String(scoreValue!))+"%"
             }
         }
     }
@@ -84,6 +91,7 @@ class ScoreViewController: UIViewController {
     // establishes a new high score for this level and difficulty
     func newHighScore(scoreObject: NSManagedObject) {
         print("New high score!" + String(score))
+        highScoreLabel.text = String(score)+"%"
         scoreObject.setValue(score, forKey: "highScore")    // set value
         do {
             try scoreObject.managedObjectContext?.save()    // save change
@@ -139,15 +147,5 @@ class ScoreViewController: UIViewController {
         let toViewController = segue.destinationViewController as UIViewController
         toViewController.transitioningDelegate = self.transitionManager
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

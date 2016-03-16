@@ -91,7 +91,7 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     //Deals with the transitions between views
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let dest = segue.destinationViewController as? ScoreViewController {
-            dest.correctTaps = Float(correctTaps.text!)!
+            dest.correctTaps = Float(correctTapCounter.getCount())
             dest.incorrectTaps = Float(counterLabel.text!)!
             dest.tapAccuracy =  accuracy / Float(taps)
         }

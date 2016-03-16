@@ -8,38 +8,70 @@
 
 import UIKit
 
-class LevelViewController: UICollectionViewController{
-
+class LevelViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout{
+    
+    var songNames : [String] = [String]()
+    var difficulty : Difficulty!
+    var selectedSong = -1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBarHidden = false
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let loadView = segue.destinationViewController as! LoadingViewController
+        if(selectedSong > -1) {
+            print(songNames[selectedSong])
+            loadView.songName = songNames[selectedSong]
+        }
+        loadView.difficulty = difficulty
     }
     
     //number of cells
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //TODO return the number of songs in the app
-        return 81
+        let fileManager = NSFileManager.defaultManager()
+        let enumerator:NSDirectoryEnumerator = fileManager.enumeratorAtPath(NSBundle.mainBundle().bundlePath + "/Tracks/")!
+        
+        var count = 0
+        
+        while let file = enumerator.nextObject() as! String? {
+            if(file.hasSuffix(".wav")) {
+                songNames.append(file.stringByReplacingOccurrencesOfString(".wav", withString: ""))
+                print(songNames[count])
+                count++
+            }
+        }
+        
+        return count
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSize(width: UIScreen.mainScreen().bounds.width/5, height: UIScreen.mainScreen().bounds.width/5);
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 30, left: 5, bottom: 10, right: 5)
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 3
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 3
     }
     
     //creating the data cells
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("LevelViewCell", forIndexPath: indexPath) as! LevelViewCell
+        
+        cell.levelNumber.text = String(indexPath.item + 1)
         
         //format the cell
         formatDataCell(cell, indexPath: indexPath);
@@ -56,6 +88,8 @@ class LevelViewController: UICollectionViewController{
     }
     
     override func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
-        //call segue to game view with selected level
+        selectedSong = indexPath.item
+        print(selectedSong)
+        self.performSegueWithIdentifier("levelToGameSegue", sender: self)
     }
 }
