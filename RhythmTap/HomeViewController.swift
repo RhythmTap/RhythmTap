@@ -55,8 +55,8 @@ class HomeViewController: UIViewController {
             if let loadingViewController = segue.destinationViewController as? LoadingViewController {
                 loadingViewController.difficulty = difficulty
                 loadingViewController.transitioningDelegate = self.transitionManager
-                return
             }
+            return
         }
         let toViewController = segue.destinationViewController as UIViewController
         toViewController.transitioningDelegate = self.transitionManager
