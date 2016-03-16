@@ -36,6 +36,7 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     var accuracy: Float = 0.0
     var taps: Int = 0
     var difficulty: Difficulty!
+    var stickmenManager: StickmenManager = StickmenManager.init()
 
     
     // MARK: View Handlers
@@ -46,8 +47,10 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
         setDifficultyLabel()
         tapButton.enabled = false
         self.navigationController?.navigationBarHidden = true
+        
+        testImage.image = stickmenManager.correctStickmen[0]
         testImage.image = testImage.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-        testImage.tintColor = randomColour()
+        testImage.tintColor = UIColor.blackColor()
     }
     
     
@@ -64,6 +67,10 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
         //Increments correct taps if user tapped on correct beat and the song isnt over
         taps++
         if checkTap() && !songFinished {
+            let random = Int(arc4random_uniform(UInt32(stickmenManager.correctStickmen.count)))
+            let stickman = stickmenManager.correctStickmen[random]
+            testImage.image = stickman
+            testImage.image = testImage.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
             correctTapCounter.increaseCount()
             correctTaps.text = String(correctTapCounter.getCount())
         }
@@ -74,7 +81,6 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
             incorrectResponse(sender)
         }
         testImage.tintColor = randomColour()
-        //gameView.backgroundColor = randomColour()
     }
 
 
