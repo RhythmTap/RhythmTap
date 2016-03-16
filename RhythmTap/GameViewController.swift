@@ -51,6 +51,7 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
         testImage.image = stickmenManager.correctStickmen[0]
         testImage.image = testImage.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         testImage.tintColor = UIColor.blackColor()
+        testImage.backgroundColor = UIColor.redColor()
     }
     
     
@@ -66,19 +67,21 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     @IBAction func onTap(sender: UIButton) {
         //Increments correct taps if user tapped on correct beat and the song isnt over
         taps++
-        if checkTap() && !songFinished {
-            let random = Int(arc4random_uniform(UInt32(stickmenManager.correctStickmen.count)))
-            let stickman = stickmenManager.correctStickmen[random]
-            testImage.image = stickman
-            testImage.image = testImage.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-            correctTapCounter.increaseCount()
-            correctTaps.text = String(correctTapCounter.getCount())
-        }
-        //If the user did not tap a correct tap, it was incorrect
-        else {
-            incorrectTapCounter.increaseCount()
-            counterLabel.text = String(incorrectTapCounter.getCount())
-            incorrectResponse(sender)
+        if countdown == 0 {
+            if checkTap() && !songFinished {
+                let random = Int(arc4random_uniform(UInt32(stickmenManager.correctStickmen.count)))
+                let stickman = stickmenManager.correctStickmen[random]
+                testImage.image = stickman
+                print(testImage.tintColor)
+                correctTapCounter.increaseCount()
+                correctTaps.text = String(correctTapCounter.getCount())
+            }
+                //If the user did not tap a correct tap, it was incorrect
+            else {
+                incorrectTapCounter.increaseCount()
+                counterLabel.text = String(incorrectTapCounter.getCount())
+                incorrectResponse(sender)
+            }
         }
         testImage.tintColor = randomColour()
     }
