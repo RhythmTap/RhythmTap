@@ -141,8 +141,7 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
             countdown--
             if countdown == 0 {
                 countdownLabel.text = "Go!" // on the last one, go
-            }
-            else {
+            } else {
                 countdownLabel.text = String(countdown) // update countdown
             }
         }
