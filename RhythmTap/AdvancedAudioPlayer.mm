@@ -182,6 +182,11 @@ static void playerEventCallback(void *clientData, SuperpoweredAdvancedAudioPlaye
     return player->currentBpm;
 }
 
+/* Returns the song's initial bpm */
+- (double)getBpm {
+    return player->bpm;
+}
+
 /* Which beat has just happened (1 [1.0f-1.999f], 2 [2.0f-2.999f], 3 [3.0f-3.99f], 4 [4.0f-4.99f]). A value of 0 means "don't know". */
 - (float)getBeatIndex {
     return player->beatIndex;
@@ -192,6 +197,10 @@ static void playerEventCallback(void *clientData, SuperpoweredAdvancedAudioPlaye
     return player->firstBeatMs;
 }
 
+/* Returns the song duration in seconds */
+- (unsigned int)getDurationSeconds {
+    return player->durationSeconds;
+}
 
 /* Developer Diagnostics */
 - (void) logBeats {

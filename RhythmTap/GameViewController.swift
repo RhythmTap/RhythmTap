@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DynamicColor
 import AudioToolbox
 
 class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
@@ -24,6 +25,7 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     let correctTapCounter = Taps.init()
     let incorrectTapCounter = Taps.init()
     let trackDirectory = "Tracks/"
+    let showScoreSegue = "showScore"
     
     var advancedAudioPlayer: AdvancedAudioPlayer!
     var audioAnalyzer: AudioAnalyzer!
@@ -33,9 +35,12 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     var countdownTimer:NSTimer = NSTimer()
     var countdown: Int = 3
     var songFinished: Bool = false
+    var didFinishTrackSuccessfully: Bool = false
     var accuracy: Float = 0.0
-    var taps: Int = 0
+    var taps: UInt = 0
     var difficulty: Difficulty!
+    var totalTaps: UInt!
+    var tapsFailState: UInt!
     var stickmenManager: StickmenManager = StickmenManager.init()
 
     
@@ -44,7 +49,8 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
         super.viewDidLoad()
         setupAdvancedAudioPlayer()
         setupCountdownTimer()
-        setDifficultyLabel()
+        setTotalTaps()
+        setDifficulty()
         tapButton.enabled = false
         self.navigationController?.navigationBarHidden = true
         
@@ -58,7 +64,8 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     // This happens as soon as the track finishes playing
     func onTrackFinish() {
         songFinished = true
-        self.performSegueWithIdentifier("showScore", sender: self)
+        didFinishTrackSuccessfully = true
+        self.performSegueWithIdentifier(showScoreSegue, sender: self)
     }
 
 
@@ -81,6 +88,11 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
                 counterLabel.text = String(incorrectTapCounter.getCount())
                 incorrectResponse(sender)
             }
+
+            if incorrectTapCounter.getCount() >= tapsFailState {
+                advancedAudioPlayer.pauseAudio()
+                self.performSegueWithIdentifier(showScoreSegue, sender: self)
+            }
         }
         testImage.tintColor = randomColour()
     }
@@ -93,6 +105,7 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
             dest.correctTaps = Float(correctTapCounter.getCount())
             dest.incorrectTaps = Float(counterLabel.text!)!
             dest.tapAccuracy =  accuracy / Float(taps)
+            dest.didFinishTrackSuccessfully = didFinishTrackSuccessfully
         }
     }
 
@@ -105,23 +118,38 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
         return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
     }
 
-    func setDifficultyLabel() {
+    func setDifficulty() {
         switch difficulty! {
-            // TODO: Make these colors look nicer
             case .Easy:
                 difficultyLabel.text = "Easy"
-                difficultyLabel.textColor = UIColor.redColor()
+                difficultyLabel.textColor = DifficultyViewController.EasyColor
+                tapsFailState = UInt(Double(totalTaps) * 0.75)
             case .Intermediate:
                 difficultyLabel.text = "Intermediate"
-                difficultyLabel.textColor = UIColor.redColor()
+                difficultyLabel.textColor = DifficultyViewController.IntermediateColor
+                tapsFailState = UInt(Double(totalTaps) * 0.50)
             case .Hard:
                 difficultyLabel.text = "Hard"
-                difficultyLabel.textColor = UIColor.redColor()
+                difficultyLabel.textColor = DifficultyViewController.HardColor
+                tapsFailState = UInt(Double(totalTaps) * 0.25)
             case .Insane:
                 difficultyLabel.text = "Insane"
-                difficultyLabel.textColor = UIColor.redColor()
+                difficultyLabel.textColor = DifficultyViewController.InsaneColor
+                tapsFailState = UInt(Double(totalTaps) * 0.10)
         }
     }
+
+
+    // MARK: Helpers
+    private func secondsToMinutes(seconds: UInt32) -> Double {
+        return Double(seconds) / 60.0;
+    }
+
+    private func setTotalTaps() {
+        let minutes = secondsToMinutes(advancedAudioPlayer.getDurationSeconds())
+        totalTaps = UInt(minutes * advancedAudioPlayer.getBpm())
+    }
+
 
     
     // MARK: User Feedback

@@ -50,8 +50,14 @@
 /* The actual bpm of the track (as bpm changes with the current tempo)*/
 - (double)getCurrentBpm;
 
+/* Returns the song's initial bpm */
+- (double)getBpm;
+
 /* Tells where the first beat (the beatgrid) begins. Must be correct for syncing. */
 - (double)getFirstBeatMs;
+
+/* Returns the song duration in seconds */
+- (unsigned int)getDurationSeconds;
 
 /* Which beat has just happened (1 [1.0f-1.999f], 2 [2.0f-2.999f], 3 [3.0f-3.99f], 4 [4.0f-4.99f]). A value of 0 means "don't know". */
 - (float)getBeatIndex;

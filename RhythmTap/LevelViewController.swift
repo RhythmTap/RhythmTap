@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LevelViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout{
+class LevelViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     var songNames : [String] = [String]()
     var difficulty : Difficulty!

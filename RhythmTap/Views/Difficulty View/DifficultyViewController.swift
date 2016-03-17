@@ -4,6 +4,7 @@
 //
 
 import UIKit
+import DynamicColor
 import Foundation
 
 enum Difficulty {
@@ -14,6 +15,12 @@ enum Difficulty {
 }
 
 class DifficultyViewController : UIViewController {
+
+    static let EasyColor = UIColor(hexString: "#66ffff")
+    static let IntermediateColor = UIColor(hexString: "#ffff66")
+    static let HardColor = UIColor(hexString: "#ff944d")
+    static let InsaneColor = UIColor(hexString: "#ff3333")
+
 
     // MARK: Properties
     @IBOutlet weak var easyButton: UIButton!
@@ -69,9 +76,13 @@ class DifficultyViewController : UIViewController {
     // MARK: Helpers
     private func decorateButtons() {
         easyButton.layer.cornerRadius = 5
+        easyButton.layer.backgroundColor = DifficultyViewController.EasyColor.CGColor
         intermediateButton.layer.cornerRadius = 5
+        intermediateButton.layer.backgroundColor = DifficultyViewController.IntermediateColor.CGColor
         hardButton.layer.cornerRadius = 5
+        hardButton.layer.backgroundColor = DifficultyViewController.HardColor.CGColor
         insaneButton.layer.cornerRadius = 5
+        insaneButton.layer.backgroundColor = DifficultyViewController.InsaneColor.CGColor
     }
 
     private func animateSegueTransition(sender: UIButton) {

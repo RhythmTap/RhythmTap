@@ -9,16 +9,23 @@
 import UIKit
 import Foundation
 import CoreData
+import DynamicColor
 
 class ScoreViewController: UIViewController {
     
     var correctTaps: Float = 0
     var incorrectTaps: Float = 0
+    var didFinishTrackSuccessfully: Bool = false
     var tapAccuracy: Float!
     var score: Float!
     
     let transitionManager = TransitionManager()
+    let failText = "Oh no! You failed the rhythm!"
+    let successText = "Congratulations! You have endured the rhythm!"
+    let failTextColor = UIColor(hexString: "#ff3333")
+    let successTextColor = UIColor(hexString: "#66ff66")
 
+    @IBOutlet weak var gameStateLabel: UILabel!
     @IBOutlet weak var showNewHighScoreLabel: UILabel!
     @IBOutlet weak var highScoreLabel: UILabel!
     @IBOutlet weak var accuracyLabel: UILabel!
@@ -32,6 +39,8 @@ class ScoreViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setFinishedTrackStatus()
+        decorateButtons()
         homeButton.tag = 1
         score = tapAccuracy
         
@@ -149,4 +158,20 @@ class ScoreViewController: UIViewController {
         toViewController.transitioningDelegate = self.transitionManager
     }
 
+
+    // MARK: Helpers
+    private func setFinishedTrackStatus() {
+        if !didFinishTrackSuccessfully {
+            gameStateLabel.text = failText
+            gameStateLabel.textColor = failTextColor
+            return
+        }
+        gameStateLabel.text = successText
+        gameStateLabel.font = gameStateLabel.font.fontWithSize(15)
+        gameStateLabel.textColor = successTextColor
+    }
+
+    private func decorateButtons() {
+        homeButton.layer.cornerRadius = 5
+    }
 }

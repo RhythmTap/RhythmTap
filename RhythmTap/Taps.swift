@@ -10,7 +10,7 @@ import Foundation
 
 class Taps {
     
-    private var count: Int!
+    private var count: UInt!
     
     init() {
         count = 0
@@ -20,7 +20,7 @@ class Taps {
         count = count + 1
     }
     
-    func getCount() -> Int {
+    func getCount() -> UInt {
         return count
     }
     
