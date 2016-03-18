@@ -516,7 +516,7 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oIT-lz-Ayg">
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oIT-lz-Ayg">
                                 <rect key="frame" x="20" y="101" width="59" height="21"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BPM: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FPV-xs-Abb">
@@ -591,18 +591,24 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uWh-Mk-80O">
-                                <rect key="frame" x="157" y="258" width="100" height="221"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uWh-Mk-80O">
+                                <rect key="frame" x="157" y="258" width="101" height="221"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0.png" translatesAutoresizingMaskIntoConstraints="NO" id="HCu-F6-yhq">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="200"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="0.png" translatesAutoresizingMaskIntoConstraints="NO" id="HCu-F6-yhq">
+                                        <rect key="frame" x="0.0" y="0.0" width="101" height="200"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="8Tr-9P-Fgb"/>
                                             <constraint firstAttribute="height" constant="200" id="tSF-TC-XgJ"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="8Tr-9P-Fgb"/>
+                                                <exclude reference="tSF-TC-XgJ"/>
+                                            </mask>
+                                        </variation>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59o-pT-Vh2">
-                                        <rect key="frame" x="0.0" y="200" width="100" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tap!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59o-pT-Vh2">
+                                        <rect key="frame" x="0.0" y="200" width="101" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -667,8 +673,8 @@
                         <outlet property="counterLabel" destination="dcI-mb-rJ9" id="BDB-Eo-eHL"/>
                         <outlet property="difficultyLabel" destination="bOk-yB-eed" id="1mH-S9-UcV"/>
                         <outlet property="gameView" destination="dcV-rq-GxS" id="p59-U3-4nZ"/>
+                        <outlet property="stickman" destination="HCu-F6-yhq" id="UK3-Sh-FBw"/>
                         <outlet property="tapButton" destination="41w-fd-Mx1" id="rpQ-oU-eBM"/>
-                        <outlet property="testImage" destination="HCu-F6-yhq" id="V1Y-zI-KPd"/>
                         <segue destination="CfU-Ss-0d8" kind="show" identifier="showScore" id="YZn-kk-qFK"/>
                     </connections>
                 </viewController>
@@ -696,7 +702,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="0.png" width="600" height="1194"/>
+        <image name="0.png" width="101" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="68v-4o-Ogo"/>

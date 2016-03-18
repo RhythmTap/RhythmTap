@@ -19,7 +19,7 @@ class LoadingViewController: UIViewController, AudioAnalyzerDelegate {
     let advancedAudioPlayer = AdvancedAudioPlayer()
 
     var difficulty: Difficulty!
-    var songName: String = ""
+    var songName: String = "Easy"
     
     
     // View actions

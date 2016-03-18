@@ -462,6 +462,7 @@
 				D37932841C7B7FC1008B7B64 /* Resources */,
 				FBDC873E67F84DD56D019B3D /* 📦 Embed Pods Frameworks */,
 				91B9BEC2CB0C146BF844C6A3 /* 📦 Copy Pods Resources */,
+				DCFB0948C7C10FC87229659A /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -688,6 +689,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DCFB0948C7C10FC87229659A /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RhythmTap/Pods-RhythmTap-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F7F675CA948395CAA30B235D /* 📦 Copy Pods Resources */ = {

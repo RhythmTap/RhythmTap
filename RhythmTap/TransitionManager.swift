@@ -57,7 +57,7 @@ class TransitionManager: NSObject, UIViewControllerAnimatedTransitioning, UIView
     
     // when presenting a ViewController
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        //self.presenting = true
+        self.presenting = true
         return self
     }
     

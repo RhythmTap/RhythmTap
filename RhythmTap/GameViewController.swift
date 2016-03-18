@@ -20,7 +20,7 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     @IBOutlet weak var difficultyLabel: UILabel!
     @IBOutlet weak var bpmLabel: UILabel!
     @IBOutlet weak var tapButton: UILabel!
-    @IBOutlet weak var testImage: UIImageView!
+    @IBOutlet weak var stickman: UIImageView!
     
     let correctTapCounter = Taps.init()
     let incorrectTapCounter = Taps.init()
@@ -54,9 +54,9 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
         tapButton.enabled = false
         self.navigationController?.navigationBarHidden = true
         
-        testImage.image = stickmenManager.correctStickmen[0]
-        testImage.image = testImage.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-        testImage.tintColor = UIColor.blackColor()
+        stickman.image = stickmenManager.correctStickmen[0]
+        stickman.image = stickman.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        stickman.tintColor = UIColor.blackColor()
     }
     
     
@@ -76,9 +76,9 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
             taps++
             if checkTap() && !songFinished {
                 let random = Int(arc4random_uniform(UInt32(stickmenManager.correctStickmen.count)))
-                let stickman = stickmenManager.correctStickmen[random]
-                testImage.image = stickman
-                testImage.image = testImage.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+                let newStickman = stickmenManager.correctStickmen[random]
+                stickman.image = newStickman
+                stickman.image = stickman.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
                 correctTapCounter.increaseCount()
                 correctTaps.text = String(correctTapCounter.getCount())
             }
@@ -94,7 +94,7 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
                 self.performSegueWithIdentifier(showScoreSegue, sender: self)
             }
         }
-        testImage.tintColor = randomColour()
+        stickman.tintColor = randomColour()
     }
 
 
@@ -109,7 +109,6 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
         }
     }
 
-
     // MARK: Custom UI
     func randomColour() -> UIColor {
         let red = CGFloat(drand48())
@@ -117,7 +116,7 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
         let green = CGFloat(drand48())
         return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
     }
-
+    
     func setDifficulty() {
         switch difficulty! {
             case .Easy:
