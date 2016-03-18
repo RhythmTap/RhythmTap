@@ -22,7 +22,7 @@ class ScoreViewController: UIViewController {
     let transitionManager = TransitionManager()
     let failText = "Oh no! You failed the rhythm!"
     let successText = "Congratulations! You have endured the rhythm!"
-    let failTextColor = UIColor(hexString: "#ff3333")
+    let failTextColor = UIColor(hexString: "#ff6666")
     let successTextColor = UIColor(hexString: "#66ff66")
 
     @IBOutlet weak var gameStateLabel: UILabel!
@@ -33,6 +33,7 @@ class ScoreViewController: UIViewController {
     @IBOutlet weak var incorrectTapsLabel: UILabel!
     @IBOutlet weak var homeButton: UIButton!
     @IBOutlet weak var redoButton: UIButton!
+    @IBOutlet weak var nextLevelButton: UIButton!
     
     let managedContext = (UIApplication.sharedApplication().delegate as!
         AppDelegate).managedObjectContext
@@ -174,5 +175,7 @@ class ScoreViewController: UIViewController {
 
     private func decorateButtons() {
         homeButton.layer.cornerRadius = 5
+        redoButton.layer.cornerRadius = 5
+        nextLevelButton.layer.cornerRadius = 5
     }
 }

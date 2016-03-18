@@ -494,6 +494,7 @@
                         <outlet property="highScoreLabel" destination="WCW-yC-6hK" id="6js-Ud-wbd"/>
                         <outlet property="homeButton" destination="P0U-HE-hM7" id="qOu-jb-H2z"/>
                         <outlet property="incorrectTapsLabel" destination="kid-iS-4CT" id="trb-RW-hYc"/>
+                        <outlet property="nextLevelButton" destination="yDQ-SY-8VR" id="qBn-mz-ubt"/>
                         <outlet property="redoButton" destination="eRk-r9-mbF" id="LcC-OQ-OXh"/>
                         <outlet property="showNewHighScoreLabel" destination="PHP-eh-EHS" id="JZ8-TW-0xY"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="backToHome" id="68v-4o-Ogo"/>
