@@ -32,6 +32,7 @@ class ScoreViewController: UIViewController {
     @IBOutlet weak var correctTapsLabel: UILabel!
     @IBOutlet weak var incorrectTapsLabel: UILabel!
     @IBOutlet weak var homeButton: UIButton!
+    @IBOutlet weak var redoButton: UIButton!
     
     let managedContext = (UIApplication.sharedApplication().delegate as!
         AppDelegate).managedObjectContext
