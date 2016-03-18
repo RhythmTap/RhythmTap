@@ -89,12 +89,16 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
                 incorrectResponse(sender)
             }
 
-            if incorrectTapCounter.getCount() >= tapsFailState {
-                advancedAudioPlayer.pauseAudio()
-                self.performSegueWithIdentifier(showScoreSegue, sender: self)
-            }
+            checkFailState()
         }
         testImage.tintColor = randomColour()
+    }
+
+    func checkFailState() {
+        if incorrectTapCounter.getCount() >= tapsFailState {
+            advancedAudioPlayer.pauseAudio()
+            self.performSegueWithIdentifier(showScoreSegue, sender: self)
+        }
     }
 
 
