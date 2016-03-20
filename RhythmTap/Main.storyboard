@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oeI-Ms-Bkp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oeI-Ms-Bkp">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -634,10 +634,10 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uWh-Mk-80O">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uWh-Mk-80O">
                                 <rect key="frame" x="157" y="258" width="101" height="221"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="0.png" translatesAutoresizingMaskIntoConstraints="NO" id="HCu-F6-yhq">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0.png" translatesAutoresizingMaskIntoConstraints="NO" id="HCu-F6-yhq">
                                         <rect key="frame" x="0.0" y="0.0" width="101" height="200"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="8Tr-9P-Fgb"/>
@@ -650,7 +650,7 @@
                                             </mask>
                                         </variation>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tap!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59o-pT-Vh2">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59o-pT-Vh2">
                                         <rect key="frame" x="0.0" y="200" width="101" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -717,7 +717,7 @@
                         <outlet property="difficultyLabel" destination="bOk-yB-eed" id="1mH-S9-UcV"/>
                         <outlet property="gameView" destination="dcV-rq-GxS" id="p59-U3-4nZ"/>
                         <outlet property="stickman" destination="HCu-F6-yhq" id="UK3-Sh-FBw"/>
-                        <outlet property="tapButton" destination="41w-fd-Mx1" id="rpQ-oU-eBM"/>
+                        <outlet property="tapButton" destination="Nk6-h0-iAV" id="Ags-r5-jDc"/>
                         <segue destination="CfU-Ss-0d8" kind="show" identifier="showScore" id="YZn-kk-qFK"/>
                     </connections>
                 </viewController>

@@ -26,7 +26,7 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     let incorrectTapCounter = Taps.init()
     let trackDirectory = "Tracks/"
     let showScoreSegue = "showScore"
-    
+
     var advancedAudioPlayer: AdvancedAudioPlayer!
     var audioAnalyzer: AudioAnalyzer!
     var elapsedTime: NSTimeInterval = 0.0
@@ -81,12 +81,18 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
                 stickman.image = stickman.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
                 correctTapCounter.increaseCount()
                 correctTaps.text = String(correctTapCounter.getCount())
+                stickman.tintColor = randomColour().saturatedColor()
             }
                 //If the user did not tap a correct tap, it was incorrect
             else {
+                let random = Int(arc4random_uniform(UInt32(stickmenManager.incorrectStickmen.count)))
+                let newStickman = stickmenManager.incorrectStickmen[random]
+                stickman.image = newStickman
+                stickman.image = stickman.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
                 incorrectTapCounter.increaseCount()
+                stickman.tintColor = UIColor.blackColor()
                 counterLabel.text = String(incorrectTapCounter.getCount())
-                incorrectResponse(sender)
+                incorrectResponse(stickman)
             }
 
             if incorrectTapCounter.getCount() >= tapsFailState {
@@ -94,7 +100,6 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
                 self.performSegueWithIdentifier(showScoreSegue, sender: self)
             }
         }
-        stickman.tintColor = randomColour()
     }
 
 
@@ -149,15 +154,14 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
         totalTaps = UInt(minutes * advancedAudioPlayer.getBpm())
     }
 
-
     
     // MARK: User Feedback
-    func incorrectResponse(sender: UIButton) {
+    func incorrectResponse(sender: UIImageView) {
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))  // phone vibrate
         let bounds = sender.bounds
         // button jiggles
-        UIView.animateWithDuration(0.1, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 10, options: [], animations: {
-            sender.bounds = CGRect(x: bounds.origin.x - 20, y: bounds.origin.y, width: bounds.size.width + 60, height: bounds.size.height)
+        UIView.animateWithDuration(0.1, delay: 0.0, usingSpringWithDamping: 0.1, initialSpringVelocity: 10, options: [], animations: {
+            sender.bounds = CGRect(x: bounds.origin.x - 26, y: bounds.origin.y, width: bounds.size.width - 60, height: bounds.size.height)
         }, completion: nil)
     }
 
