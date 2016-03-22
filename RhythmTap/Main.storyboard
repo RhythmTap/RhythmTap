@@ -15,7 +15,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="d2b-EZ-osw">
-                            <size key="itemSize" width="50" height="50"/>
+                            <size key="itemSize" width="75" height="75"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -28,22 +28,23 @@
                                     <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vwC-fE-8wL">
-                                            <rect key="frame" x="4" y="14" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H2d-h8-qTg" customClass="LevelButton" customModule="RhythmTap" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+                                            <color key="backgroundColor" red="0.59187277819999995" green="0.90424882309999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="75" id="ZoJ-CW-SeD"/>
+                                                <constraint firstAttribute="width" constant="75" id="fYR-se-GAR"/>
+                                            </constraints>
+                                            <state key="normal" title="Button">
+                                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <constraints>
-                                    <constraint firstItem="vwC-fE-8wL" firstAttribute="centerX" secondItem="UzA-of-zPf" secondAttribute="centerX" id="3av-c3-U05"/>
-                                    <constraint firstItem="vwC-fE-8wL" firstAttribute="centerY" secondItem="UzA-of-zPf" secondAttribute="centerY" id="Ua2-eb-3jL"/>
-                                </constraints>
                                 <size key="customSize" width="75" height="75"/>
                                 <connections>
-                                    <outlet property="levelNumber" destination="vwC-fE-8wL" id="NfY-73-4Pn"/>
+                                    <outlet property="levelSelect" destination="H2d-h8-qTg" id="srs-5d-7ca"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -410,6 +411,9 @@
                                         <state key="normal" title="Redo Level">
                                             <color key="titleColor" red="0.61144834609999998" green="0.63385416670000005" blue="0.62127327320000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="azz-Rn-kOc" kind="show" identifier="RedoLevel" id="hK6-NM-Zgm"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -427,6 +431,9 @@
                                         <state key="normal" title="Next Level">
                                             <color key="titleColor" red="0.61144834609999998" green="0.63385416670000005" blue="0.62127327320000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="azz-Rn-kOc" kind="show" identifier="NextLevel" id="ESj-3o-2iW"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -502,7 +509,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PwF-K7-I7e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1818" y="1295"/>
+            <point key="canvasLocation" x="1612" y="1049"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="f6a-9j-QRN">
@@ -634,10 +641,10 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uWh-Mk-80O">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uWh-Mk-80O">
                                 <rect key="frame" x="157" y="258" width="101" height="221"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="0.png" translatesAutoresizingMaskIntoConstraints="NO" id="HCu-F6-yhq">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0.png" translatesAutoresizingMaskIntoConstraints="NO" id="HCu-F6-yhq">
                                         <rect key="frame" x="0.0" y="0.0" width="101" height="200"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="8Tr-9P-Fgb"/>
@@ -650,7 +657,7 @@
                                             </mask>
                                         </variation>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tap!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59o-pT-Vh2">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59o-pT-Vh2">
                                         <rect key="frame" x="0.0" y="200" width="101" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -717,7 +724,7 @@
                         <outlet property="difficultyLabel" destination="bOk-yB-eed" id="1mH-S9-UcV"/>
                         <outlet property="gameView" destination="dcV-rq-GxS" id="p59-U3-4nZ"/>
                         <outlet property="stickman" destination="HCu-F6-yhq" id="UK3-Sh-FBw"/>
-                        <outlet property="tapButton" destination="41w-fd-Mx1" id="rpQ-oU-eBM"/>
+                        <outlet property="tapButton" destination="Nk6-h0-iAV" id="Ags-r5-jDc"/>
                         <segue destination="CfU-Ss-0d8" kind="show" identifier="showScore" id="YZn-kk-qFK"/>
                     </connections>
                 </viewController>
@@ -748,7 +755,7 @@
         <image name="0.png" width="101" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="68v-4o-Ogo"/>
         <segue reference="472-Hl-omj"/>
+        <segue reference="68v-4o-Ogo"/>
     </inferredMetricsTieBreakers>
 </document>

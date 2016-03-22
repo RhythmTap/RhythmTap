@@ -57,6 +57,7 @@ class LoadingViewController: UIViewController, AudioAnalyzerDelegate {
         let gameViewController = segue.destinationViewController as! GameViewController
         gameViewController.advancedAudioPlayer = self.advancedAudioPlayer
         gameViewController.difficulty = difficulty
+        gameViewController.songName = songName
     }
     
     

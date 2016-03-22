@@ -26,7 +26,7 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     let incorrectTapCounter = Taps.init()
     let trackDirectory = "Tracks/"
     let showScoreSegue = "showScore"
-    
+
     var advancedAudioPlayer: AdvancedAudioPlayer!
     var audioAnalyzer: AudioAnalyzer!
     var elapsedTime: NSTimeInterval = 0.0
@@ -41,6 +41,7 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     var difficulty: Difficulty!
     var totalTaps: UInt!
     var tapsFailState: UInt!
+    var songName: String!
     var stickmenManager: StickmenManager = StickmenManager.init()
 
     
@@ -81,17 +82,22 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
                 stickman.image = stickman.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
                 correctTapCounter.increaseCount()
                 correctTaps.text = String(correctTapCounter.getCount())
+                stickman.tintColor = randomColour().saturatedColor()
             }
                 //If the user did not tap a correct tap, it was incorrect
             else {
+                let random = Int(arc4random_uniform(UInt32(stickmenManager.incorrectStickmen.count)))
+                let newStickman = stickmenManager.incorrectStickmen[random]
+                stickman.image = newStickman
+                stickman.image = stickman.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
                 incorrectTapCounter.increaseCount()
+                stickman.tintColor = UIColor.blackColor()
                 counterLabel.text = String(incorrectTapCounter.getCount())
-                incorrectResponse(sender)
+                incorrectResponse(stickman)
             }
 
             checkFailState()
         }
-        stickman.tintColor = randomColour()
     }
 
     func checkFailState() {
@@ -106,6 +112,8 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     //Deals with the transitions between views
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let dest = segue.destinationViewController as? ScoreViewController {
+            dest.songName = songName
+            dest.difficulty = difficulty
             dest.correctTaps = Float(correctTapCounter.getCount())
             dest.incorrectTaps = Float(counterLabel.text!)!
             dest.tapAccuracy =  accuracy / Float(taps)
@@ -153,15 +161,14 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
         totalTaps = UInt(minutes * advancedAudioPlayer.getBpm())
     }
 
-
     
     // MARK: User Feedback
-    func incorrectResponse(sender: UIButton) {
+    func incorrectResponse(sender: UIImageView) {
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))  // phone vibrate
         let bounds = sender.bounds
         // button jiggles
-        UIView.animateWithDuration(0.1, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 10, options: [], animations: {
-            sender.bounds = CGRect(x: bounds.origin.x - 20, y: bounds.origin.y, width: bounds.size.width + 60, height: bounds.size.height)
+        UIView.animateWithDuration(0.1, delay: 0.0, usingSpringWithDamping: 0.1, initialSpringVelocity: 10, options: [], animations: {
+            sender.bounds = CGRect(x: bounds.origin.x - 26, y: bounds.origin.y, width: bounds.size.width - 60, height: bounds.size.height)
         }, completion: nil)
     }
 
