@@ -18,6 +18,9 @@ class ScoreViewController: UIViewController {
     var didFinishTrackSuccessfully: Bool = false
     var tapAccuracy: Float!
     var score: Float!
+    var difficulty: Difficulty!
+    var songName: String!
+    var songNames : [String] = [String]()
     
     let transitionManager = TransitionManager()
     let failText = "Oh no! You failed the rhythm!"
@@ -51,6 +54,18 @@ class ScoreViewController: UIViewController {
         accuracyLabel.text = String(tapAccuracy) + "%"
         correctTapsLabel.text = String(Int(correctTaps))
         incorrectTapsLabel.text = String(Int(incorrectTaps))
+        
+        let fileManager = NSFileManager.defaultManager()
+        let enumerator:NSDirectoryEnumerator = fileManager.enumeratorAtPath(NSBundle.mainBundle().bundlePath + "/Tracks/")!
+        var count = 0
+        
+        while let file = enumerator.nextObject() as! String? {
+            if(file.hasSuffix(".wav")) {
+                songNames.append(file.stringByReplacingOccurrencesOfString(".wav", withString: ""))
+                print(songNames[count])
+                count++
+            }
+        }
         
         let fetchRequest = NSFetchRequest(entityName: "Score")  // get entity
         do {
@@ -92,6 +107,7 @@ class ScoreViewController: UIViewController {
         if sender.tag == 1 {
             segueName = "backToHome"
         }
+        
         
         let bounds = sender.bounds
         UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 10, options: [], animations: {
@@ -155,9 +171,32 @@ class ScoreViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        self.transitionManager.presenting = false
-        let toViewController = segue.destinationViewController as UIViewController
-        toViewController.transitioningDelegate = self.transitionManager
+        if segue.identifier == "backToHome" {
+            self.transitionManager.presenting = false
+            let toViewController = segue.destinationViewController as UIViewController
+            toViewController.transitioningDelegate = self.transitionManager
+        }
+        else if segue.identifier == "RedoLevel" {
+            let dest = segue.destinationViewController as? LoadingViewController
+            dest?.songName = songName
+            dest?.difficulty = difficulty
+        }
+        else if segue.identifier == "NextLevel" {
+            let dest = segue.destinationViewController as? LoadingViewController
+            var indexOfSong = songNames.indexOf(songName)
+            let numSongs = songNames.count
+            
+            if indexOfSong!+1 < numSongs {
+                dest?.songName = songNames[indexOfSong!+1]
+                dest?.difficulty = difficulty
+            }
+            else {
+                indexOfSong = 0
+                dest?.songName = songNames[indexOfSong!]
+                dest?.difficulty = difficulty
+            }
+        }
+        
     }
 
 

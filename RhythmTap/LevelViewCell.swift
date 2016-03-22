@@ -10,6 +10,7 @@ import UIKit
 
 class LevelViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var levelNumber: UILabel!
+    @IBOutlet weak var levelSelect: LevelButton!
+    
     
 }

@@ -55,7 +55,7 @@ class LevelViewController: UICollectionViewController, UICollectionViewDelegateF
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 30, left: 5, bottom: 10, right: 5)
+        return UIEdgeInsets(top: 60, left: 5, bottom: 10, right: 5)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
@@ -71,10 +71,13 @@ class LevelViewController: UICollectionViewController, UICollectionViewDelegateF
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("LevelViewCell", forIndexPath: indexPath) as! LevelViewCell
         
-        cell.levelNumber.text = String(indexPath.item + 1)
+        cell.levelSelect.setTitle( String(indexPath.item + 1), forState: UIControlState.Normal)
+        cell.levelSelect.songNum = indexPath.item
         
         //format the cell
         formatDataCell(cell, indexPath: indexPath);
+        
+        cell.levelSelect.addTarget(self, action: "levelSelect:", forControlEvents: UIControlEvents.TouchUpInside)
         
         return cell;
     }
@@ -88,7 +91,10 @@ class LevelViewController: UICollectionViewController, UICollectionViewDelegateF
     }
     
     override func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
-        selectedSong = indexPath.item
+    }
+    
+    func levelSelect (sender : LevelButton!) {
+        selectedSong = sender.songNum
         print(selectedSong)
         self.performSegueWithIdentifier("levelToGameSegue", sender: self)
     }

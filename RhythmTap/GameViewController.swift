@@ -41,6 +41,7 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     var difficulty: Difficulty!
     var totalTaps: UInt!
     var tapsFailState: UInt!
+    var songName: String!
     var stickmenManager: StickmenManager = StickmenManager.init()
 
     
@@ -107,6 +108,8 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     //Deals with the transitions between views
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let dest = segue.destinationViewController as? ScoreViewController {
+            dest.songName = songName
+            dest.difficulty = difficulty
             dest.correctTaps = Float(correctTapCounter.getCount())
             dest.incorrectTaps = Float(counterLabel.text!)!
             dest.tapAccuracy =  accuracy / Float(taps)
