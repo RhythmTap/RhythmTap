@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oeI-Ms-Bkp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oeI-Ms-Bkp">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -151,7 +151,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="173" y="445"/>
+            <point key="canvasLocation" x="239" y="585"/>
         </scene>
         <!--Difficulty View Controller-->
         <scene sceneID="USb-Xl-dLr">
@@ -259,7 +259,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qel-hJ-8Q4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="630" y="1255"/>
+            <point key="canvasLocation" x="780" y="1393"/>
         </scene>
         <!--Loading View Controller-->
         <scene sceneID="VPD-uJ-7d7">
@@ -301,7 +301,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tHT-rF-Xk1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="987" y="374"/>
+            <point key="canvasLocation" x="1032" y="577"/>
         </scene>
         <!--Score View Controller-->
         <scene sceneID="2dr-bN-vBF">
@@ -412,7 +412,7 @@
                                             <color key="titleColor" red="0.61144834609999998" green="0.63385416670000005" blue="0.62127327320000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="azz-Rn-kOc" kind="show" identifier="RedoLevel" id="hK6-NM-Zgm"/>
+                                            <action selector="onRedoLevel:" destination="CfU-Ss-0d8" eventType="touchUpInside" id="ZmL-G8-CVr"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -432,7 +432,7 @@
                                             <color key="titleColor" red="0.61144834609999998" green="0.63385416670000005" blue="0.62127327320000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="azz-Rn-kOc" kind="show" identifier="NextLevel" id="ESj-3o-2iW"/>
+                                            <action selector="onNextLevel:" destination="CfU-Ss-0d8" eventType="touchUpInside" id="tzG-Yt-sjg"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -455,7 +455,7 @@
                                                     <color key="titleColor" red="0.61144834609999998" green="0.63385416670000005" blue="0.62127327320000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="shake:" destination="CfU-Ss-0d8" eventType="touchUpInside" id="QKR-22-gEy"/>
+                                                    <action selector="onHome:" destination="CfU-Ss-0d8" eventType="touchUpInside" id="02q-wb-xC2"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -504,7 +504,9 @@
                         <outlet property="nextLevelButton" destination="yDQ-SY-8VR" id="qBn-mz-ubt"/>
                         <outlet property="redoButton" destination="eRk-r9-mbF" id="LcC-OQ-OXh"/>
                         <outlet property="showNewHighScoreLabel" destination="PHP-eh-EHS" id="JZ8-TW-0xY"/>
-                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="backToHome" id="68v-4o-Ogo"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="homeViewSegue" id="68v-4o-Ogo"/>
+                        <segue destination="azz-Rn-kOc" kind="presentation" identifier="nextLevelSegue" id="vgJ-65-l40"/>
+                        <segue destination="azz-Rn-kOc" kind="presentation" identifier="redoLevelSegue" id="jF2-Qx-CYy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PwF-K7-I7e" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -730,7 +732,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LVa-ao-U3y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1605" y="99"/>
+            <point key="canvasLocation" x="1612" y="-437"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gog-08-car">
@@ -748,14 +750,14 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bGq-jA-wWO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-201" y="1255"/>
+            <point key="canvasLocation" x="-243" y="1393"/>
         </scene>
     </scenes>
     <resources>
         <image name="0.png" width="101" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="472-Hl-omj"/>
         <segue reference="68v-4o-Ogo"/>
+        <segue reference="jF2-Qx-CYy"/>
     </inferredMetricsTieBreakers>
 </document>

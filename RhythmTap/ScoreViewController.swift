@@ -27,6 +27,9 @@ class ScoreViewController: UIViewController {
     let successText = "Congratulations! You have endured the rhythm!"
     let failTextColor = UIColor(hexString: "#ff6666")
     let successTextColor = UIColor(hexString: "#66ff66")
+    let redoLevelSegueIdentifier = "redoLevelSegue"
+    let nextLevelSegueIdentifier = "nextLevelSegue"
+    let homeViewSegueIdentifier = "homeViewSegue"
 
     @IBOutlet weak var gameStateLabel: UILabel!
     @IBOutlet weak var showNewHighScoreLabel: UILabel!
@@ -102,17 +105,21 @@ class ScoreViewController: UIViewController {
         }
     }
 
-    @IBAction func shake(sender: UIButton) {
-        var segueName = ""
-        if sender.tag == 1 {
-            segueName = "backToHome"
-        }
-        
-        
-        let bounds = sender.bounds
-        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 10, options: [], animations: {
-            sender.bounds = CGRect(x: bounds.origin.x - 20, y: bounds.origin.y, width: bounds.size.width + 60, height: bounds.size.height)
-            }, completion: {(finished: Bool) -> Void in self.performSegueWithIdentifier(segueName, sender: sender)})
+    // MARK: User Interaction
+    @IBAction func onRedoLevel(sender: UIButton) {
+        let segueIdentifier = self.redoLevelSegueIdentifier;
+        animateSegueTransition(sender, segueIdentifier: segueIdentifier)
+    }
+    
+    @IBAction func onNextLevel(sender: UIButton) {
+        let segueIdentifier = self.nextLevelSegueIdentifier;
+        animateSegueTransition(sender, segueIdentifier: segueIdentifier)
+    }
+
+    
+    @IBAction func onHome(sender: UIButton) {
+        let segueIdentifier = self.homeViewSegueIdentifier;
+        animateSegueTransition(sender, segueIdentifier: segueIdentifier)
     }
     
     // establishes a new high score for this level and difficulty
@@ -164,24 +171,21 @@ class ScoreViewController: UIViewController {
             return ""
         }
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+
+
+    // MARK: Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "backToHome" {
+        if segue.identifier == self.homeViewSegueIdentifier {
             self.transitionManager.presenting = false
             let toViewController = segue.destinationViewController as UIViewController
             toViewController.transitioningDelegate = self.transitionManager
         }
-        else if segue.identifier == "RedoLevel" {
+        else if segue.identifier == self.redoLevelSegueIdentifier {
             let dest = segue.destinationViewController as? LoadingViewController
             dest?.songName = songName
             dest?.difficulty = difficulty
         }
-        else if segue.identifier == "NextLevel" {
+        else if segue.identifier == self.nextLevelSegueIdentifier {
             let dest = segue.destinationViewController as? LoadingViewController
             var indexOfSong = songNames.indexOf(songName)
             let numSongs = songNames.count
@@ -197,6 +201,15 @@ class ScoreViewController: UIViewController {
             }
         }
         
+    }
+
+
+    // MARK: Animation
+    private func animateSegueTransition(sender: UIButton, segueIdentifier: String) {
+        let bounds = sender.bounds
+        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 10, options: [], animations: {
+            sender.bounds = CGRect(x: bounds.origin.x - 20, y: bounds.origin.y, width: bounds.size.width + 60, height: bounds.size.height)
+        }, completion: {(finished: Bool) -> Void in self.performSegueWithIdentifier(segueIdentifier, sender: sender)})
     }
 
 
@@ -217,4 +230,5 @@ class ScoreViewController: UIViewController {
         redoButton.layer.cornerRadius = 5
         nextLevelButton.layer.cornerRadius = 5
     }
+
 }
