@@ -27,6 +27,7 @@ class ScoreViewController: UIViewController {
     let successText = "Congratulations! You have endured the rhythm!"
     let failTextColor = UIColor(hexString: "#ff6666")
     let successTextColor = UIColor(hexString: "#66ff66")
+    let changeDifficultySegueIdentifier = "changeDifficultySegue"
     let redoLevelSegueIdentifier = "redoLevelSegue"
     let nextLevelSegueIdentifier = "nextLevelSegue"
     let homeViewSegueIdentifier = "homeViewSegue"
@@ -37,6 +38,7 @@ class ScoreViewController: UIViewController {
     @IBOutlet weak var accuracyLabel: UILabel!
     @IBOutlet weak var correctTapsLabel: UILabel!
     @IBOutlet weak var incorrectTapsLabel: UILabel!
+    @IBOutlet weak var changeDifficultyButton: UIButton!
     @IBOutlet weak var homeButton: UIButton!
     @IBOutlet weak var redoButton: UIButton!
     @IBOutlet weak var nextLevelButton: UIButton!
@@ -106,20 +108,20 @@ class ScoreViewController: UIViewController {
     }
 
     // MARK: User Interaction
+    @IBAction func onChangeDifficulty(sender: UIButton) {
+        animateSegueTransition(sender, segueIdentifier: self.changeDifficultySegueIdentifier)
+    }
+    
     @IBAction func onRedoLevel(sender: UIButton) {
-        let segueIdentifier = self.redoLevelSegueIdentifier;
-        animateSegueTransition(sender, segueIdentifier: segueIdentifier)
+        animateSegueTransition(sender, segueIdentifier: self.redoLevelSegueIdentifier)
     }
     
     @IBAction func onNextLevel(sender: UIButton) {
-        let segueIdentifier = self.nextLevelSegueIdentifier;
-        animateSegueTransition(sender, segueIdentifier: segueIdentifier)
+        animateSegueTransition(sender, segueIdentifier: self.nextLevelSegueIdentifier)
     }
 
-    
     @IBAction func onHome(sender: UIButton) {
-        let segueIdentifier = self.homeViewSegueIdentifier;
-        animateSegueTransition(sender, segueIdentifier: segueIdentifier)
+        animateSegueTransition(sender, segueIdentifier: self.homeViewSegueIdentifier)
     }
     
     // establishes a new high score for this level and difficulty
@@ -176,16 +178,16 @@ class ScoreViewController: UIViewController {
     // MARK: Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == self.homeViewSegueIdentifier {
-            self.transitionManager.presenting = false
-            let toViewController = segue.destinationViewController as UIViewController
-            toViewController.transitioningDelegate = self.transitionManager
-        }
-        else if segue.identifier == self.redoLevelSegueIdentifier {
+            if let homeViewController = segue.destinationViewController as? HomeViewController {
+                homeViewController.songName = songName
+                self.transitionManager.presenting = false
+                homeViewController.transitioningDelegate = self.transitionManager
+            }
+        } else if segue.identifier == self.redoLevelSegueIdentifier {
             let dest = segue.destinationViewController as? LoadingViewController
             dest?.songName = songName
             dest?.difficulty = difficulty
-        }
-        else if segue.identifier == self.nextLevelSegueIdentifier {
+        } else if segue.identifier == self.nextLevelSegueIdentifier {
             let dest = segue.destinationViewController as? LoadingViewController
             var indexOfSong = songNames.indexOf(songName)
             let numSongs = songNames.count
@@ -198,6 +200,10 @@ class ScoreViewController: UIViewController {
                 indexOfSong = 0
                 dest?.songName = songNames[indexOfSong!]
                 dest?.difficulty = difficulty
+            }
+        } else if segue.identifier == self.changeDifficultySegueIdentifier {
+            if let difficultyViewController = segue.destinationViewController as? DifficultyViewController {
+                difficultyViewController.songName = songName
             }
         }
         

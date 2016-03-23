@@ -14,20 +14,23 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var levelButton: UIButton!
     @IBOutlet weak var rhythmTap: UILabel!
-    @IBOutlet weak var difficultyButton: UIButton!
-    
+
     let transitionManager = TransitionManager()
     let loadingViewSegueIdentifier = "loadingViewSegue"
     let chooseLevelSegueIdentifier = "levelViewSegue"
-    let chooseDifficultySegueIdentifier = "difficultyViewSegue"
+    let difficulty = Difficulty.Easy
+    let defaultSongName = "Easy"
 
-    var difficulty: Difficulty!
+    var songName: String!
+
 
     // MARK: View handling
     override func viewDidLoad() {
         super.viewDidLoad()
         decorateButtons()
-        loadDefaultDifficulty()
+        if songName == nil {
+            songName = defaultSongName
+        }
     }
 
 
@@ -42,11 +45,6 @@ class HomeViewController: UIViewController {
         animateSegueTransition(segueName, sender: sender as! UIButton)
     }
     
-    @IBAction func chooseDifficulty(sender: AnyObject) {
-        let segueName = chooseDifficultySegueIdentifier
-        animateSegueTransition(segueName, sender: sender as! UIButton)
-    }
-    
 
     // MARK: Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -54,11 +52,12 @@ class HomeViewController: UIViewController {
         if segue.identifier == loadingViewSegueIdentifier {
             if let loadingViewController = segue.destinationViewController as? LoadingViewController {
                 loadingViewController.difficulty = difficulty
+                loadingViewController.songName = songName
                 loadingViewController.transitioningDelegate = self.transitionManager
             }
             return
         }
-        if segue.identifier == "levelViewSegue" {
+        if segue.identifier == self.chooseLevelSegueIdentifier {
             if let levelView = segue.destinationViewController as? LevelViewController {
                 levelView.difficulty = difficulty
             }
@@ -72,14 +71,8 @@ class HomeViewController: UIViewController {
     private func decorateButtons() {
         startButton.layer.cornerRadius = 5
         levelButton.layer.cornerRadius = 5
-        difficultyButton.layer.cornerRadius = 5
     }
 
-    private func loadDefaultDifficulty() {
-        if difficulty == nil {
-            difficulty = Difficulty.Easy
-        }
-    }
 
     private func animateSegueTransition(segueName: String, sender: UIButton) {
         let bounds = sender.bounds

@@ -13,7 +13,10 @@ class LevelViewController: UICollectionViewController, UICollectionViewDelegateF
     var songNames : [String] = [String]()
     var difficulty : Difficulty!
     var selectedSong = -1
-    
+
+    let difficultyViewSegueIdentifier = "difficultyViewSegue"
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBarHidden = false
@@ -24,12 +27,13 @@ class LevelViewController: UICollectionViewController, UICollectionViewDelegateF
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let loadView = segue.destinationViewController as! LoadingViewController
-        if(selectedSong > -1) {
-            print(songNames[selectedSong])
-            loadView.songName = songNames[selectedSong]
+        if segue.identifier == self.difficultyViewSegueIdentifier {
+            if let difficultyView = segue.destinationViewController as? DifficultyViewController {
+                if(selectedSong > -1) {
+                    difficultyView.songName = songNames[selectedSong]
+                }
+            }
         }
-        loadView.difficulty = difficulty
     }
     
     //number of cells
@@ -95,7 +99,6 @@ class LevelViewController: UICollectionViewController, UICollectionViewDelegateF
     
     func levelSelect (sender : LevelButton!) {
         selectedSong = sender.songNum
-        print(selectedSong)
-        self.performSegueWithIdentifier("levelToGameSegue", sender: self)
+        self.performSegueWithIdentifier(self.difficultyViewSegueIdentifier, sender: self)
     }
 }

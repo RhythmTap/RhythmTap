@@ -28,9 +28,10 @@ class DifficultyViewController : UIViewController {
     @IBOutlet weak var hardButton: UIButton!
     @IBOutlet weak var insaneButton: UIButton!
 
-    let homeViewSegueIdentifier = "homeViewSegue"
+    let loadingViewSegueIdentifier = "loadingViewSegue"
 
     var difficulty: Difficulty!
+    var songName: String!
 
 
     // MARK: View overrides
@@ -65,9 +66,10 @@ class DifficultyViewController : UIViewController {
 
     // MARK: Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == homeViewSegueIdentifier {
-            if let homeViewController = segue.destinationViewController as? HomeViewController {
-                homeViewController.difficulty = difficulty
+        if segue.identifier == loadingViewSegueIdentifier {
+            if let loadingViewController = segue.destinationViewController as? LoadingViewController {
+                loadingViewController.difficulty = difficulty
+                loadingViewController.songName = songName
             }
         }
     }
@@ -89,6 +91,6 @@ class DifficultyViewController : UIViewController {
         let bounds = sender.bounds
         UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 10, options: [], animations: {
             sender.bounds = CGRect(x: bounds.origin.x - 20, y: bounds.origin.y, width: bounds.size.width + 60, height: bounds.size.height)
-        }, completion: {(finished: Bool) -> Void in self.performSegueWithIdentifier(self.homeViewSegueIdentifier, sender: sender)})
+        }, completion: {(finished: Bool) -> Void in self.performSegueWithIdentifier(self.loadingViewSegueIdentifier, sender: sender)})
     }
 }
