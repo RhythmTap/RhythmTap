@@ -47,7 +47,7 @@ class LevelViewController: UICollectionViewController, UICollectionViewDelegateF
             if(file.hasSuffix(".wav")) {
                 songNames.append(file.stringByReplacingOccurrencesOfString(".wav", withString: ""))
                 print(songNames[count])
-                count++
+                count += 1
             }
         }
         
@@ -88,10 +88,10 @@ class LevelViewController: UICollectionViewController, UICollectionViewDelegateF
     
     //formatting cell initially
     func formatDataCell(cell: LevelViewCell, indexPath: NSIndexPath) {
-        cell.layer.borderWidth = 2;
-        cell.layer.borderColor = UIColor.blackColor().CGColor;
+        cell.layer.borderWidth = 5;
+        cell.layer.borderColor = UIColor.clearColor().CGColor;
         cell.layer.masksToBounds = true;
-        cell.layer.cornerRadius = 2;
+        cell.layer.cornerRadius = 5;
     }
     
     override func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {

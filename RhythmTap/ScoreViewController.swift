@@ -68,7 +68,7 @@ class ScoreViewController: UIViewController {
             if(file.hasSuffix(".wav")) {
                 songNames.append(file.stringByReplacingOccurrencesOfString(".wav", withString: ""))
                 print(songNames[count])
-                count++
+                count += 1
             }
         }
         

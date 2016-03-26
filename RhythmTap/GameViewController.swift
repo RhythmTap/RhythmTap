@@ -74,7 +74,7 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     @IBAction func onTap(sender: UIButton) {
         //Increments correct taps if user tapped on correct beat and the song isnt over
         if countdown == 0 {
-            taps++
+            taps += 1
             if checkTap() && !songFinished {
                 let random = Int(arc4random_uniform(UInt32(stickmenManager.correctStickmen.count)))
                 let newStickman = stickmenManager.correctStickmen[random]
@@ -166,16 +166,19 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     func incorrectResponse(sender: UIImageView) {
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))  // phone vibrate
         let bounds = sender.bounds
+        
         // button jiggles
         UIView.animateWithDuration(0.1, delay: 0.0, usingSpringWithDamping: 0.1, initialSpringVelocity: 10, options: [], animations: {
             sender.bounds = CGRect(x: bounds.origin.x - 26, y: bounds.origin.y, width: bounds.size.width - 60, height: bounds.size.height)
         }, completion: nil)
+        
+        sender.bounds = bounds  // stop shrinking image
     }
 
     // Updates the beginning countdown every second
     func updateCountdown() {
         if countdown > 0 {  // if countdown still valid
-            countdown--
+            countdown -= 1
             if countdown == 0 {
                 countdownLabel.text = "Go!" // on the last one, go
             } else {

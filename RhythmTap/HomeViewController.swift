@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Foundation
+import CoreData
 
 class HomeViewController: UIViewController {
 
@@ -23,6 +25,9 @@ class HomeViewController: UIViewController {
 
     var songName: String!
 
+    let managedContext = (UIApplication.sharedApplication().delegate as!
+        AppDelegate).managedObjectContext
+    var scores = [NSManagedObject]()
 
     // MARK: View handling
     override func viewDidLoad() {
@@ -31,6 +36,20 @@ class HomeViewController: UIViewController {
         if songName == nil {
             songName = defaultSongName
         }
+        
+        let fetchRequest = NSFetchRequest(entityName: "Score")  // get entity
+        do {
+            // fetch scores into results
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "level", ascending: false)]
+            fetchRequest.fetchLimit = 1
+            let results = try managedContext.executeFetchRequest(fetchRequest)
+            scores = results as! [NSManagedObject]
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        } catch {
+            print("Failed to fetch request")
+        }
+        print("Highest level played: " + String(scores[0].valueForKey("level")!))
     }
 
 
@@ -45,6 +64,21 @@ class HomeViewController: UIViewController {
         animateSegueTransition(segueName, sender: sender as! UIButton)
     }
     
+    func getLastLevel() -> AnyObject {
+        let entries : NSArray = scores
+        // search for the value
+        let predicate = NSPredicate(format: "level = max(level)")
+        print("Here1!")
+        // filter results accordingly
+        var searchScores = entries.filteredArrayUsingPredicate(predicate)
+        print("Here2!")
+        if searchScores.count != 0 {    // if there exists a score, update
+            return searchScores[0]
+        }
+        else {  // otherwise, return nothing
+            return ""
+        }
+    }
 
     // MARK: Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
