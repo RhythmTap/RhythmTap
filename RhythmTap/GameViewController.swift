@@ -133,19 +133,19 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
         switch difficulty! {
             case .Easy:
                 difficultyLabel.text = "Easy"
-                difficultyLabel.textColor = DifficultyViewController.EasyColor
+                difficultyLabel.backgroundColor = DifficultyViewController.EasyColor
                 tapsFailState = UInt(Double(totalTaps) * 0.75)
             case .Intermediate:
                 difficultyLabel.text = "Intermediate"
-                difficultyLabel.textColor = DifficultyViewController.IntermediateColor
+                difficultyLabel.backgroundColor = DifficultyViewController.IntermediateColor
                 tapsFailState = UInt(Double(totalTaps) * 0.50)
             case .Hard:
                 difficultyLabel.text = "Hard"
-                difficultyLabel.textColor = DifficultyViewController.HardColor
+                difficultyLabel.backgroundColor = DifficultyViewController.HardColor
                 tapsFailState = UInt(Double(totalTaps) * 0.25)
             case .Insane:
                 difficultyLabel.text = "Insane"
-                difficultyLabel.textColor = DifficultyViewController.InsaneColor
+                difficultyLabel.backgroundColor = DifficultyViewController.InsaneColor
                 tapsFailState = UInt(Double(totalTaps) * 0.10)
         }
     }

@@ -22,6 +22,9 @@ class ScoreViewController: UIViewController {
     var songName: String!
     var songNames : [String] = [String]()
     
+    var level: NSNumber = 1;
+    var levelDifficulty: String = "Easy"
+    
     let transitionManager = TransitionManager()
     let failText = "Oh no! You failed the rhythm!"
     let successText = "Congratulations! You have endured the rhythm!"
@@ -94,6 +97,7 @@ class ScoreViewController: UIViewController {
         }
         else {  // if this level has been played
             let scoreObject = scoreResult as! NSManagedObject
+            print(scoreObject)
             let scoreValue = scoreObject.valueForKey("highScore")   // get high score
             if Float(scoreValue! as! NSNumber) < score {
                 newHighScore(scoreObject) // establish new high score
@@ -143,8 +147,8 @@ class ScoreViewController: UIViewController {
         let newScore = NSManagedObject(entity: scoreEntity!, insertIntoManagedObjectContext: managedContext)  // create new row
         newScore.setValue(score, forKey: "highScore") // set high score
         highScoreLabel.text = String(score)+"%"
-        newScore.setValue(1, forKey: "level")   // set level
-        newScore.setValue("easy", forKey: "difficulty") // set difficulty
+        newScore.setValue(level, forKey: "level")   // set level
+        newScore.setValue(levelDifficulty, forKey: "difficulty") // set difficulty
         
         //4
         do {
@@ -162,7 +166,7 @@ class ScoreViewController: UIViewController {
         let entries : NSArray = scores
         
         // search for the value
-        let predicate = NSPredicate(format: "level = %i AND difficulty = %@", 1, "easy")
+        let predicate = NSPredicate(format: "level = %i AND difficulty = %@", level, levelDifficulty)
         
         // filter results accordingly
         var searchScores = entries.filteredArrayUsingPredicate(predicate)

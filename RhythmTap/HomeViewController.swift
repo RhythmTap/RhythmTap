@@ -49,7 +49,9 @@ class HomeViewController: UIViewController {
         } catch {
             print("Failed to fetch request")
         }
-        print("Highest level played: " + String(scores[0].valueForKey("level")!))
+        if scores.count > 0 {
+            print("Highest level played: " + String(scores[0].valueForKey("level")!))
+        }
     }
 
 
