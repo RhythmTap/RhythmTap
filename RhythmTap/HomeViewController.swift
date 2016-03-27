@@ -22,8 +22,11 @@ class HomeViewController: UIViewController {
     let chooseLevelSegueIdentifier = "levelViewSegue"
     let difficulty = Difficulty.Easy
     let defaultSongName = "Easy"
+    
+    var level: Int!
 
     var songName: String!
+    var songNames : [String] = [String]()
 
     let managedContext = (UIApplication.sharedApplication().delegate as!
         AppDelegate).managedObjectContext
@@ -33,8 +36,15 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         decorateButtons()
-        if songName == nil {
-            songName = defaultSongName
+        let fileManager = NSFileManager.defaultManager()
+        let enumerator:NSDirectoryEnumerator = fileManager.enumeratorAtPath(NSBundle.mainBundle().bundlePath + "/Tracks/")!
+        var count = 0
+        
+        while let file = enumerator.nextObject() as! String? {
+            if(file.hasSuffix(".wav")) {
+                songNames.append(file.stringByReplacingOccurrencesOfString(".wav", withString: ""))
+                count += 1
+            }
         }
         
         let fetchRequest = NSFetchRequest(entityName: "Score")  // get entity
@@ -51,7 +61,19 @@ class HomeViewController: UIViewController {
         }
         if scores.count > 0 {
             print("Highest level played: " + String(scores[0].valueForKey("level")!))
+            level = scores[0].valueForKey("level") as! Int
+            if level >= songNames.count {
+                level = 1
+            }
+            else {
+                level = level + 1
+            }
         }
+        else {
+            level = 1
+        }
+        print(level)
+        songName = songNames[level - 1]
     }
 
 
@@ -64,22 +86,6 @@ class HomeViewController: UIViewController {
     @IBAction func chooseLevel(sender: AnyObject) {
         let segueName = chooseLevelSegueIdentifier
         animateSegueTransition(segueName, sender: sender as! UIButton)
-    }
-    
-    func getLastLevel() -> AnyObject {
-        let entries : NSArray = scores
-        // search for the value
-        let predicate = NSPredicate(format: "level = max(level)")
-        print("Here1!")
-        // filter results accordingly
-        var searchScores = entries.filteredArrayUsingPredicate(predicate)
-        print("Here2!")
-        if searchScores.count != 0 {    // if there exists a score, update
-            return searchScores[0]
-        }
-        else {  // otherwise, return nothing
-            return ""
-        }
     }
 
     // MARK: Navigation

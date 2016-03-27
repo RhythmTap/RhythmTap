@@ -22,8 +22,7 @@ class ScoreViewController: UIViewController {
     var songName: String!
     var songNames : [String] = [String]()
     
-    var level: NSNumber = 1;
-    var levelDifficulty: String = "Easy"
+    var level: Int!
     
     let transitionManager = TransitionManager()
     let failText = "Oh no! You failed the rhythm!"
@@ -70,7 +69,6 @@ class ScoreViewController: UIViewController {
         while let file = enumerator.nextObject() as! String? {
             if(file.hasSuffix(".wav")) {
                 songNames.append(file.stringByReplacingOccurrencesOfString(".wav", withString: ""))
-                print(songNames[count])
                 count += 1
             }
         }
@@ -97,7 +95,6 @@ class ScoreViewController: UIViewController {
         }
         else {  // if this level has been played
             let scoreObject = scoreResult as! NSManagedObject
-            print(scoreObject)
             let scoreValue = scoreObject.valueForKey("highScore")   // get high score
             if Float(scoreValue! as! NSNumber) < score {
                 newHighScore(scoreObject) // establish new high score
@@ -130,7 +127,7 @@ class ScoreViewController: UIViewController {
     
     // establishes a new high score for this level and difficulty
     func newHighScore(scoreObject: NSManagedObject) {
-        print("New high score!" + String(score))
+        print("New high score! Level " + String(level) + ", difficulty " + String(difficulty) + ", score " + String(score))
         highScoreLabel.text = String(score)+"%"
         scoreObject.setValue(score, forKey: "highScore")    // set value
         do {
@@ -148,7 +145,7 @@ class ScoreViewController: UIViewController {
         newScore.setValue(score, forKey: "highScore") // set high score
         highScoreLabel.text = String(score)+"%"
         newScore.setValue(level, forKey: "level")   // set level
-        newScore.setValue(levelDifficulty, forKey: "difficulty") // set difficulty
+        newScore.setValue(String(difficulty), forKey: "difficulty") // set difficulty
         
         //4
         do {
@@ -164,9 +161,11 @@ class ScoreViewController: UIViewController {
     
     func getHighScore() -> AnyObject {
         let entries : NSArray = scores
+
+        level = songNames.indexOf(songName)! + 1
         
         // search for the value
-        let predicate = NSPredicate(format: "level = %i AND difficulty = %@", level, levelDifficulty)
+        let predicate = NSPredicate(format: "level = %i AND difficulty = %@", level, String(difficulty))
         
         // filter results accordingly
         var searchScores = entries.filteredArrayUsingPredicate(predicate)
