@@ -10,12 +10,10 @@ import UIKit
 
 class LevelViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    var songNames : [String] = [String]()
     var difficulty : Difficulty!
     var selectedSong = -1
 
     let difficultyViewSegueIdentifier = "difficultyViewSegue"
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +28,7 @@ class LevelViewController: UICollectionViewController, UICollectionViewDelegateF
         if segue.identifier == self.difficultyViewSegueIdentifier {
             if let difficultyView = segue.destinationViewController as? DifficultyViewController {
                 if(selectedSong > -1) {
-                    difficultyView.songName = songNames[selectedSong]
+                    difficultyView.songName = Globals.songNames[selectedSong]
                 }
             }
         }
@@ -38,20 +36,7 @@ class LevelViewController: UICollectionViewController, UICollectionViewDelegateF
     
     //number of cells
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let fileManager = NSFileManager.defaultManager()
-        let enumerator:NSDirectoryEnumerator = fileManager.enumeratorAtPath(NSBundle.mainBundle().bundlePath + "/Tracks/")!
-        
-        var count = 0
-        
-        while let file = enumerator.nextObject() as! String? {
-            if(file.hasSuffix(".wav")) {
-                songNames.append(file.stringByReplacingOccurrencesOfString(".wav", withString: ""))
-                print(songNames[count])
-                count += 1
-            }
-        }
-        
-        return count
+        return Globals.songNames.count
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {

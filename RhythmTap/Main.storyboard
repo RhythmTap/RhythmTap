@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ZJI-ci-QWm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ZJI-ci-QWm">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Level View Controller-->
+        <!--Choose Your Level-->
         <scene sceneID="k0P-Ep-5hZ">
             <objects>
                 <collectionViewController id="pbO-2h-FRj" customClass="LevelViewController" customModule="RhythmTap" customModuleProvider="target" sceneMemberID="viewController">
@@ -81,7 +81,7 @@
                             <outlet property="delegate" destination="pbO-2h-FRj" id="6dw-oe-aQ5"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="D60-vE-111"/>
+                    <navigationItem key="navigationItem" title="Choose Your Level" id="D60-vE-111"/>
                     <connections>
                         <segue destination="VUd-bW-EPJ" kind="show" identifier="difficultyViewSegue" id="pxO-GM-y4p"/>
                     </connections>
@@ -648,8 +648,8 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uWh-Mk-80O">
-                                <rect key="frame" x="157" y="258" width="101" height="236"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="uWh-Mk-80O">
+                                <rect key="frame" x="157" y="258" width="101" height="247"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0.png" translatesAutoresizingMaskIntoConstraints="NO" id="HCu-F6-yhq">
                                         <rect key="frame" x="0.0" y="0.0" width="101" height="200"/>
@@ -664,9 +664,9 @@
                                             </mask>
                                         </variation>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59o-pT-Vh2">
-                                        <rect key="frame" x="0.0" y="200" width="101" height="36"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tap!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59o-pT-Vh2">
+                                        <rect key="frame" x="0.0" y="208" width="101" height="39"/>
+                                        <fontDescription key="fontDescription" name="Futura-CondensedExtraBold" family="Futura" pointSize="30"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -732,6 +732,7 @@
                         <outlet property="gameView" destination="dcV-rq-GxS" id="p59-U3-4nZ"/>
                         <outlet property="stickman" destination="HCu-F6-yhq" id="UK3-Sh-FBw"/>
                         <outlet property="tapButton" destination="Nk6-h0-iAV" id="Ags-r5-jDc"/>
+                        <outlet property="tapLabel" destination="59o-pT-Vh2" id="tsT-hW-AHO"/>
                         <segue destination="CfU-Ss-0d8" kind="presentation" identifier="showScore" id="Mo6-kE-Rwb"/>
                     </connections>
                 </viewController>
@@ -762,7 +763,7 @@
         <image name="0.png" width="101" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="pxO-GM-y4p"/>
         <segue reference="vgJ-65-l40"/>
-        <segue reference="eUd-Se-wmi"/>
     </inferredMetricsTieBreakers>
 </document>

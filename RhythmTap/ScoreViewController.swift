@@ -22,7 +22,6 @@ class ScoreViewController: UIViewController {
     var songName: String!
     var expectedCorrectTaps: UInt!
     var expectedIncorrectTaps: UInt!
-    var songNames : [String] = [String]()
     
     var level: Int!
     
@@ -63,17 +62,6 @@ class ScoreViewController: UIViewController {
         accuracyLabel.text = String(tapAccuracy) + "%"
         correctTapsLabel.text = String(Int(correctTaps)) + "/" + String(expectedCorrectTaps)
         incorrectTapsLabel.text = String(Int(incorrectTaps)) + "/" + String(expectedIncorrectTaps)
-        
-        let fileManager = NSFileManager.defaultManager()
-        let enumerator:NSDirectoryEnumerator = fileManager.enumeratorAtPath(NSBundle.mainBundle().bundlePath + "/Tracks/")!
-        var count = 0
-        
-        while let file = enumerator.nextObject() as! String? {
-            if(file.hasSuffix(".wav")) {
-                songNames.append(file.stringByReplacingOccurrencesOfString(".wav", withString: ""))
-                count += 1
-            }
-        }
         
         let fetchRequest = NSFetchRequest(entityName: "Score")  // get entity
         do {
@@ -164,7 +152,7 @@ class ScoreViewController: UIViewController {
     func getHighScore() -> AnyObject {
         let entries : NSArray = scores
 
-        level = songNames.indexOf(songName)! + 1
+        level = Globals.songNames.indexOf(songName)! + 1
         
         // search for the value
         let predicate = NSPredicate(format: "level = %i AND difficulty = %@", level, String(difficulty))
@@ -194,16 +182,16 @@ class ScoreViewController: UIViewController {
             dest?.difficulty = difficulty
         } else if segue.identifier == self.nextLevelSegueIdentifier {
             let dest = segue.destinationViewController as? LoadingViewController
-            var indexOfSong = songNames.indexOf(songName)
-            let numSongs = songNames.count
+            var indexOfSong = Globals.songNames.indexOf(songName)
+            let numSongs = Globals.songNames.count
             
             if indexOfSong!+1 < numSongs {
-                dest?.songName = songNames[indexOfSong!+1]
+                dest?.songName = Globals.songNames[indexOfSong!+1]
                 dest?.difficulty = difficulty
             }
             else {
                 indexOfSong = 0
-                dest?.songName = songNames[indexOfSong!]
+                dest?.songName = Globals.songNames[indexOfSong!]
                 dest?.difficulty = difficulty
             }
         } else if segue.identifier == self.changeDifficultySegueIdentifier {

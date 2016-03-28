@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0C25169C50AFD5FCE45B2B7D /* libPods-RhythmTapTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D9A2823741118953396E15D /* libPods-RhythmTapTests.a */; };
+		131729061CA976A900075B0F /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131729051CA976A900075B0F /* Globals.swift */; };
 		138E949D1CA197D700AE6CBA /* LevelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138E949C1CA197D700AE6CBA /* LevelButton.swift */; };
 		152C828ACAC5114527C9301E /* Pods_RhythmTap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E46A09D8CC0A0B6D596C7338 /* Pods_RhythmTap.framework */; };
 		533912F37E6EA7C844BA4F5E /* Taps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533919F4807B5FA82C4E4BA3 /* Taps.swift */; };
@@ -79,6 +80,7 @@
 
 /* Begin PBXFileReference section */
 		0ABF5C00F18A3BDDBB3AE4DD /* Pods-RhythmTapUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RhythmTapUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RhythmTapUITests/Pods-RhythmTapUITests.release.xcconfig"; sourceTree = "<group>"; };
+		131729051CA976A900075B0F /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		138E949C1CA197D700AE6CBA /* LevelButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelButton.swift; sourceTree = "<group>"; };
 		3159A686D8B72C9E603DF89B /* Pods-RhythmTapUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RhythmTapUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RhythmTapUITests/Pods-RhythmTapUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		439BE9BD6F3D027E822AB09F /* Pods-RhythmTap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RhythmTap.release.xcconfig"; path = "Pods/Target Support Files/Pods-RhythmTap/Pods-RhythmTap.release.xcconfig"; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 				D37932951C7B7FC1008B7B64 /* LaunchScreen.storyboard */,
 				D37932981C7B7FC1008B7B64 /* Info.plist */,
 				D37932901C7B7FC1008B7B64 /* RhythmTap.xcdatamodeld */,
+				131729051CA976A900075B0F /* Globals.swift */,
 				53391FABDC54D3607EF9DB92 /* Views */,
 			);
 			path = RhythmTap;
@@ -762,6 +765,7 @@
 				D37C777A1C8A912600972147 /* AdvancedAudioPlayer.mm in Sources */,
 				D3C058D51C8CD3BA00308BF9 /* AudioAnalyzer.mm in Sources */,
 				D3BB53911C8BADD0005DD54B /* SuperpoweredIOSAudioIO.mm in Sources */,
+				131729061CA976A900075B0F /* Globals.swift in Sources */,
 				F3F3BBD01C988FC800371CA3 /* StickmenManager.swift in Sources */,
 				53391CB1746A97C0E242FED5 /* ScoreViewController.swift in Sources */,
 				53391329CBB44C3B48214E6E /* LevelViewCell.swift in Sources */,

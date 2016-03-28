@@ -21,6 +21,7 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     @IBOutlet weak var bpmLabel: UILabel!
     @IBOutlet weak var tapButton: UILabel!
     @IBOutlet weak var stickman: UIImageView!
+    @IBOutlet weak var tapLabel: UILabel!
     
     let correctTapCounter = Taps.init()
     let incorrectTapCounter = Taps.init()
@@ -77,6 +78,7 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
         //Increments correct taps if user tapped on correct beat and the song isnt over
         if countdown == 0 {
             taps += 1
+            changeTapLabel(taps);
             if checkTap() && !songFinished {
                 let isTapCorrect = true
                 stickmanDance(isTapCorrect)
@@ -90,6 +92,17 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
             }
             checkFailState()
         }
+    }
+    
+    func changeTapLabel(taps: UInt) {
+        tapLabel.textColor = randomColour()
+        if taps % 2 == 0 {
+            tapLabel.transform = CGAffineTransformMakeRotation(CGFloat((M_PI_4)/2))
+        }
+        else {
+            tapLabel.transform = CGAffineTransformMakeRotation(CGFloat((-M_PI_4))/2)
+        }
+       
     }
 
     func stickmanDance(isTapCorrect: Bool) {

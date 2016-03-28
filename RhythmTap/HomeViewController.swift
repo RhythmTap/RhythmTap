@@ -35,6 +35,7 @@ class HomeViewController: UIViewController {
     // MARK: View handling
     override func viewDidLoad() {
         super.viewDidLoad()
+        Globals.loadSongs()
         decorateButtons()
         let fileManager = NSFileManager.defaultManager()
         let enumerator:NSDirectoryEnumerator = fileManager.enumeratorAtPath(NSBundle.mainBundle().bundlePath + "/Tracks/")!
