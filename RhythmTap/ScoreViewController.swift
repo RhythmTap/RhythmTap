@@ -20,6 +20,8 @@ class ScoreViewController: UIViewController {
     var score: Float!
     var difficulty: Difficulty!
     var songName: String!
+    var expectedCorrectTaps: UInt!
+    var expectedIncorrectTaps: UInt!
     var songNames : [String] = [String]()
     
     var level: Int!
@@ -59,8 +61,8 @@ class ScoreViewController: UIViewController {
         showNewHighScoreLabel.hidden = true
         
         accuracyLabel.text = String(tapAccuracy) + "%"
-        correctTapsLabel.text = String(Int(correctTaps))
-        incorrectTapsLabel.text = String(Int(incorrectTaps))
+        correctTapsLabel.text = String(Int(correctTaps)) + "/" + String(expectedCorrectTaps)
+        incorrectTapsLabel.text = String(Int(incorrectTaps)) + "/" + String(expectedIncorrectTaps)
         
         let fileManager = NSFileManager.defaultManager()
         let enumerator:NSDirectoryEnumerator = fileManager.enumeratorAtPath(NSBundle.mainBundle().bundlePath + "/Tracks/")!
@@ -238,6 +240,7 @@ class ScoreViewController: UIViewController {
         homeButton.layer.cornerRadius = 5
         redoButton.layer.cornerRadius = 5
         nextLevelButton.layer.cornerRadius = 5
+        changeDifficultyButton.layer.cornerRadius = 5
     }
 
 }

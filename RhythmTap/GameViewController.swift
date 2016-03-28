@@ -39,8 +39,8 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     var accuracy: Float = 0.0
     var taps: UInt = 0
     var difficulty: Difficulty!
-    var totalTaps: UInt!
-    var tapsFailState: UInt!
+    var totalCorrectTaps: UInt!
+    var totalIncorrectTaps: UInt!
     var songName: String!
     var stickmenManager: StickmenManager = StickmenManager.init()
 
@@ -65,7 +65,9 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     // This happens as soon as the track finishes playing
     func onTrackFinish() {
         songFinished = true
-        didFinishTrackSuccessfully = true
+        if (correctTapCounter.getCount() >= totalCorrectTaps / 2) {
+            didFinishTrackSuccessfully = true
+        }
         self.performSegueWithIdentifier(showScoreSegue, sender: self)
     }
 
@@ -76,33 +78,49 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
         if countdown == 0 {
             taps += 1
             if checkTap() && !songFinished {
-                let random = Int(arc4random_uniform(UInt32(stickmenManager.correctStickmen.count)))
-                let newStickman = stickmenManager.correctStickmen[random]
-                stickman.image = newStickman
-                stickman.image = stickman.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-                correctTapCounter.increaseCount()
-                correctTaps.text = String(correctTapCounter.getCount())
-                stickman.tintColor = randomColour().saturatedColor()
+                let isTapCorrect = true
+                stickmanDance(isTapCorrect)
+                incrementCorrectTapCounter()
             }
                 //If the user did not tap a correct tap, it was incorrect
             else {
-                let random = Int(arc4random_uniform(UInt32(stickmenManager.incorrectStickmen.count)))
-                let newStickman = stickmenManager.incorrectStickmen[random]
-                stickman.image = newStickman
-                stickman.image = stickman.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-                incorrectTapCounter.increaseCount()
-                stickman.tintColor = UIColor.blackColor()
-                counterLabel.text = String(incorrectTapCounter.getCount())
-                incorrectResponse(stickman)
+                let isTapCorrect = false
+                stickmanDance(isTapCorrect)
+                incrementIncorrectTapCounter()
             }
-
             checkFailState()
         }
     }
 
+    func stickmanDance(isTapCorrect: Bool) {
+        var random = Int(arc4random_uniform(UInt32(stickmenManager.correctStickmen.count)))
+        var newStickman = stickmenManager.correctStickmen[random]
+        stickman.tintColor = randomColour().saturatedColor()
+        if (!isTapCorrect) {
+            random = Int(arc4random_uniform(UInt32(stickmenManager.incorrectStickmen.count)))
+            newStickman = stickmenManager.incorrectStickmen[random]
+            stickman.tintColor = UIColor.blackColor()
+            incorrectResponse(stickman)
+        }
+        stickman.image = newStickman
+        stickman.image = stickman.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+    }
+
+    func incrementCorrectTapCounter() {
+        correctTapCounter.increaseCount()
+        correctTaps.text = String(correctTapCounter.getCount()) + "/" + String(totalCorrectTaps)
+    }
+
+    func incrementIncorrectTapCounter() {
+        incorrectTapCounter.increaseCount()
+        counterLabel.text = String(incorrectTapCounter.getCount()) + "/" + String(totalIncorrectTaps)
+    }
+
     func checkFailState() {
-        if incorrectTapCounter.getCount() >= tapsFailState {
-            advancedAudioPlayer.pauseAudio()
+        if incorrectTapCounter.getCount() >= totalIncorrectTaps {
+            self.performSegueWithIdentifier(showScoreSegue, sender: self)
+        } else if correctTapCounter.getCount() >= totalCorrectTaps {
+            didFinishTrackSuccessfully = true
             self.performSegueWithIdentifier(showScoreSegue, sender: self)
         }
     }
@@ -111,12 +129,21 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     // MARK: Navigation
     //Deals with the transitions between views
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+
+        if (accuracy > 0) {
+            accuracy = accuracy / Float(taps)
+        }
+        advancedAudioPlayer.pauseAudio()
+
+
         if let dest = segue.destinationViewController as? ScoreViewController {
             dest.songName = songName
             dest.difficulty = difficulty
             dest.correctTaps = Float(correctTapCounter.getCount())
-            dest.incorrectTaps = Float(counterLabel.text!)!
-            dest.tapAccuracy =  accuracy / Float(taps)
+            dest.incorrectTaps = Float(incorrectTapCounter.getCount())
+            dest.tapAccuracy = accuracy
+            dest.expectedCorrectTaps = totalCorrectTaps
+            dest.expectedIncorrectTaps = totalIncorrectTaps
             dest.didFinishTrackSuccessfully = didFinishTrackSuccessfully
         }
     }
@@ -128,25 +155,25 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
         let green = CGFloat(drand48())
         return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
     }
-    
+
     func setDifficulty() {
         switch difficulty! {
             case .Easy:
                 difficultyLabel.text = "Easy"
                 difficultyLabel.backgroundColor = DifficultyViewController.EasyColor
-                tapsFailState = UInt(Double(totalTaps) * 0.75)
+                totalIncorrectTaps = UInt(Double(totalCorrectTaps) * 0.75)
             case .Intermediate:
                 difficultyLabel.text = "Intermediate"
                 difficultyLabel.backgroundColor = DifficultyViewController.IntermediateColor
-                tapsFailState = UInt(Double(totalTaps) * 0.50)
+                totalIncorrectTaps = UInt(Double(totalCorrectTaps) * 0.50)
             case .Hard:
                 difficultyLabel.text = "Hard"
                 difficultyLabel.backgroundColor = DifficultyViewController.HardColor
-                tapsFailState = UInt(Double(totalTaps) * 0.25)
+                totalIncorrectTaps = UInt(Double(totalCorrectTaps) * 0.25)
             case .Insane:
                 difficultyLabel.text = "Insane"
                 difficultyLabel.backgroundColor = DifficultyViewController.InsaneColor
-                tapsFailState = UInt(Double(totalTaps) * 0.10)
+                totalIncorrectTaps = UInt(Double(totalCorrectTaps) * 0.10)
         }
     }
 
@@ -158,20 +185,20 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
 
     private func setTotalTaps() {
         let minutes = secondsToMinutes(advancedAudioPlayer.getDurationSeconds())
-        totalTaps = UInt(minutes * advancedAudioPlayer.getBpm())
+        totalCorrectTaps = UInt(minutes * advancedAudioPlayer.getBpm())
     }
 
-    
+
     // MARK: User Feedback
     func incorrectResponse(sender: UIImageView) {
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))  // phone vibrate
         let bounds = sender.bounds
-        
+
         // button jiggles
         UIView.animateWithDuration(0.1, delay: 0.0, usingSpringWithDamping: 0.1, initialSpringVelocity: 10, options: [], animations: {
             sender.bounds = CGRect(x: bounds.origin.x - 26, y: bounds.origin.y, width: bounds.size.width - 60, height: bounds.size.height)
         }, completion: nil)
-        
+
         sender.bounds = bounds  // stop shrinking image
     }
 
@@ -193,24 +220,24 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
         }
     }
 
-    
+
     // MARK: Audio and timing
     private func setupAdvancedAudioPlayer() {
         advancedAudioPlayer.delegate = self
     }
-    
+
     private func setupCountdownTimer() {
         countdownTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "updateCountdown", userInfo: nil, repeats: true)
         countdownLabel.text = String(countdown)
         counterLabel.text = String(correctTapCounter.getCount())
     }
-    
-    
+
+
     // Returns true if the tap is valid and checks how accurate the tap was
     func checkTap() -> Bool {
 
         // Update the BPM label for dynamic BPMs
-        bpmLabel.text = String(advancedAudioPlayer.getCurrentBpm())
+        bpmLabel.text = String(format: "%.3f", advancedAudioPlayer.getCurrentBpm())
 
         let currentTapAccuracy = 100.0 - getOffBeatPercentage()
         accuracy += currentTapAccuracy
@@ -250,5 +277,5 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
         }
         return offBeat * 2
     }
-    
+
 }
