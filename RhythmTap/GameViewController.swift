@@ -49,13 +49,49 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     // MARK: View Handlers
     override func viewDidLoad() {
         super.viewDidLoad()
+        tapButton.enabled = false
+        self.navigationController?.navigationBarHidden = true
         setupAdvancedAudioPlayer()
         setupCountdownTimer()
         setTotalTaps()
         setDifficulty()
-        tapButton.enabled = false
-        self.navigationController?.navigationBarHidden = true
-        
+        loadStickMan()
+    }
+
+    // MARK: Loading
+    func setupCountdownTimer() {
+        countdownTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "updateCountdown", userInfo: nil, repeats: true)
+        countdownLabel.text = String(countdown)
+        counterLabel.text = String(correctTapCounter.getCount())
+    }
+
+    func setTotalTaps() {
+        let minutes = secondsToMinutes(advancedAudioPlayer.getDurationSeconds())
+        totalCorrectTaps = UInt(minutes * advancedAudioPlayer.getBpm())
+    }
+
+    func setDifficulty() {
+        switch difficulty! {
+        case .Easy:
+            difficultyLabel.text = "Easy"
+            difficultyLabel.backgroundColor = DifficultyViewController.EasyColor
+            totalIncorrectTaps = UInt(Double(totalCorrectTaps) * 0.75)
+        case .Intermediate:
+            difficultyLabel.text = "Intermediate"
+            difficultyLabel.backgroundColor = DifficultyViewController.IntermediateColor
+            totalIncorrectTaps = UInt(Double(totalCorrectTaps) * 0.50)
+        case .Hard:
+            difficultyLabel.text = "Hard"
+            difficultyLabel.backgroundColor = DifficultyViewController.HardColor
+            totalIncorrectTaps = UInt(Double(totalCorrectTaps) * 0.25)
+        case .Insane:
+            difficultyLabel.text = "Insane"
+            difficultyLabel.backgroundColor = DifficultyViewController.InsaneColor
+            totalIncorrectTaps = UInt(Double(totalCorrectTaps) * 0.10)
+        }
+    }
+
+    func loadStickMan() {
         stickman.image = stickmenManager.correctStickmen[0]
         stickman.image = stickman.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         stickman.tintColor = UIColor.blackColor()
@@ -169,26 +205,7 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
         return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
     }
 
-    func setDifficulty() {
-        switch difficulty! {
-            case .Easy:
-                difficultyLabel.text = "Easy"
-                difficultyLabel.backgroundColor = DifficultyViewController.EasyColor
-                totalIncorrectTaps = UInt(Double(totalCorrectTaps) * 0.75)
-            case .Intermediate:
-                difficultyLabel.text = "Intermediate"
-                difficultyLabel.backgroundColor = DifficultyViewController.IntermediateColor
-                totalIncorrectTaps = UInt(Double(totalCorrectTaps) * 0.50)
-            case .Hard:
-                difficultyLabel.text = "Hard"
-                difficultyLabel.backgroundColor = DifficultyViewController.HardColor
-                totalIncorrectTaps = UInt(Double(totalCorrectTaps) * 0.25)
-            case .Insane:
-                difficultyLabel.text = "Insane"
-                difficultyLabel.backgroundColor = DifficultyViewController.InsaneColor
-                totalIncorrectTaps = UInt(Double(totalCorrectTaps) * 0.10)
-        }
-    }
+
 
 
     // MARK: Helpers
@@ -196,10 +213,7 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
         return Double(seconds) / 60.0;
     }
 
-    private func setTotalTaps() {
-        let minutes = secondsToMinutes(advancedAudioPlayer.getDurationSeconds())
-        totalCorrectTaps = UInt(minutes * advancedAudioPlayer.getBpm())
-    }
+
 
 
     // MARK: User Feedback
@@ -237,12 +251,6 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     // MARK: Audio and timing
     private func setupAdvancedAudioPlayer() {
         advancedAudioPlayer.delegate = self
-    }
-
-    private func setupCountdownTimer() {
-        countdownTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "updateCountdown", userInfo: nil, repeats: true)
-        countdownLabel.text = String(countdown)
-        counterLabel.text = String(correctTapCounter.getCount())
     }
 
 
