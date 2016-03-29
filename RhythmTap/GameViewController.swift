@@ -59,10 +59,18 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     }
 
     // MARK: Loading
+    func setupAdvancedAudioPlayer() {
+        advancedAudioPlayer.delegate = self
+    }
+
     func setupCountdownTimer() {
         countdownTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "updateCountdown", userInfo: nil, repeats: true)
         countdownLabel.text = String(countdown)
         counterLabel.text = String(correctTapCounter.getCount())
+    }
+
+    func secondsToMinutes(seconds: UInt32) -> Double {
+        return Double(seconds) / 60.0;
     }
 
     func setTotalTaps() {
@@ -116,18 +124,24 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
             taps += 1
             changeTapLabel(taps);
             if checkTap() && !songFinished {
-                let isTapCorrect = true
-                stickmanDance(isTapCorrect)
-                incrementCorrectTapCounter()
-            }
-                //If the user did not tap a correct tap, it was incorrect
-            else {
-                let isTapCorrect = false
-                stickmanDance(isTapCorrect)
-                incrementIncorrectTapCounter()
+                performCorrectTap()
+            } else {
+                performIncorrectTap()
             }
             checkFailState()
         }
+    }
+
+    func performCorrectTap() {
+        let isTapCorrect = true
+        stickmanDance(isTapCorrect)
+        incrementCorrectTapCounter()
+    }
+
+    func performIncorrectTap() {
+        let isTapCorrect = false
+        stickmanDance(isTapCorrect)
+        incrementIncorrectTapCounter()
     }
     
     func changeTapLabel(taps: UInt) {
@@ -174,17 +188,18 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
         }
     }
 
-
-    // MARK: Navigation
-    //Deals with the transitions between views
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-
+    func stopAudioPlayer() {
         if (accuracy > 0) {
             accuracy = accuracy / Float(taps)
         }
         advancedAudioPlayer.pauseAudio()
+    }
 
 
+    // MARK: Navigation
+    //Deals with the transitions between views
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        stopAudioPlayer()
         if let dest = segue.destinationViewController as? ScoreViewController {
             dest.songName = songName
             dest.difficulty = difficulty
@@ -197,6 +212,7 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
         }
     }
 
+
     // MARK: Custom UI
     func randomColour() -> UIColor {
         let red = CGFloat(drand48())
@@ -204,16 +220,6 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
         let green = CGFloat(drand48())
         return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
     }
-
-
-
-
-    // MARK: Helpers
-    private func secondsToMinutes(seconds: UInt32) -> Double {
-        return Double(seconds) / 60.0;
-    }
-
-
 
 
     // MARK: User Feedback
@@ -231,66 +237,73 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
 
     // Updates the beginning countdown every second
     func updateCountdown() {
-        if countdown > 0 {  // if countdown still valid
+        if countdown > 0 {
+            // if countdown still valid
             countdown -= 1
             if countdown == 0 {
                 countdownLabel.text = "Go!" // on the last one, go
-            } else {
-                countdownLabel.text = String(countdown) // update countdown
+                return
             }
+            countdownLabel.text = String(countdown) // update countdown
+            return
         }
-        else {   // play music, hide label when finished counting down
-            countdownLabel.hidden = true
-            tapButton.enabled = true
-            self.advancedAudioPlayer.playAudio()
-            countdownTimer.invalidate()
-        }
+        playAudioAndHideLabel()
     }
 
+    func playAudioAndHideLabel() {
+        countdownLabel.hidden = true
+        tapButton.enabled = true
+        self.advancedAudioPlayer.playAudio()
+        countdownTimer.invalidate()
+    }
 
     // MARK: Audio and timing
-    private func setupAdvancedAudioPlayer() {
-        advancedAudioPlayer.delegate = self
+    struct Tolerance {
+        var upperBound: Float = 100.0
+        var lowerBound: Float = 0.0
     }
-
 
     // Returns true if the tap is valid and checks how accurate the tap was
     func checkTap() -> Bool {
 
         // Update the BPM label for dynamic BPMs
         bpmLabel.text = String(format: "%.3f", advancedAudioPlayer.getCurrentBpm())
-
         let currentTapAccuracy = 100.0 - getOffBeatPercentage()
         accuracy += currentTapAccuracy
-
-        var upperBoundTolerance: Float = 100.0;
-        var lowerBoundTolerance: Float = 0.0;
-        var tapTolerance: Float = 0
-
-        // Keep in mind that switch statements in Swift do not fall through, therefore, break is not required
-        switch difficulty! {
-            case Difficulty.Easy:
-                tapTolerance = 30;
-            case Difficulty.Intermediate:
-                tapTolerance = 20;
-            case Difficulty.Hard:
-                tapTolerance = 10;
-            case Difficulty.Insane:
-                tapTolerance = 5;
-        }
-        upperBoundTolerance -= tapTolerance
-        lowerBoundTolerance += tapTolerance
+        let tolerance = computeCorrectTapTolerance()
 
         // Multiply beat index by 100 because the beat index is a float. Modular arithmetic
         // requires integers
-        if (advancedAudioPlayer.getBeatIndex() * 100) % 100 >= upperBoundTolerance || (advancedAudioPlayer.getBeatIndex() * 100) % 100 <= lowerBoundTolerance {
+        if (advancedAudioPlayer.getBeatIndex() * 100) % 100 >= tolerance.upperBound || (advancedAudioPlayer.getBeatIndex() * 100) % 100 <= tolerance.lowerBound {
             return true;
         }
         return false;
+
+    }
+
+    // Returns true if the
+    func computeCorrectTapTolerance() -> Tolerance {
+        var upperBound: Float = 100.0
+        var lowerBound: Float = 0.0
+        var tapTolerance: Float = 0
+        // Keep in mind that switch statements in Swift do not fall through, therefore, break is not required
+        switch difficulty! {
+        case Difficulty.Easy:
+            tapTolerance = 30;
+        case Difficulty.Intermediate:
+            tapTolerance = 20;
+        case Difficulty.Hard:
+            tapTolerance = 10;
+        case Difficulty.Insane:
+            tapTolerance = 5;
+        }
+        upperBound -= tapTolerance
+        lowerBound += tapTolerance
+        return Tolerance(upperBound: upperBound, lowerBound: lowerBound)
     }
 
     // Checks how offbeat your tap was
-    private func getOffBeatPercentage() -> Float {
+    func getOffBeatPercentage() -> Float {
         var offBeat:Float = (advancedAudioPlayer.getBeatIndex() * 100) % 100
         if offBeat >= 50 {
             offBeat = (100 - offBeat) * 2
