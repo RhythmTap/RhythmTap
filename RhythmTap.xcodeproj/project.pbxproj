@@ -43,8 +43,12 @@
 		D3D8A8AE1C7B82720017E533 /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D8A8AD1C7B82720017E533 /* HomeViewControllerTests.swift */; };
 		F30A0E061C95E41000D2C13E /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30A0E051C95E41000D2C13E /* TransitionManager.swift */; };
 		F3163A8E1C7F8B21000F9884 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3163A8D1C7F8B21000F9884 /* Main.storyboard */; };
-		F337FA781C9F025800C0E8F4 /* 13.png in Resources */ = {isa = PBXBuildFile; fileRef = F337FA761C9F025800C0E8F4 /* 13.png */; };
-		F337FA791C9F025800C0E8F4 /* 14.png in Resources */ = {isa = PBXBuildFile; fileRef = F337FA771C9F025800C0E8F4 /* 14.png */; };
+		F3BE2B3D1CA99C8000B1CC13 /* 13.png in Resources */ = {isa = PBXBuildFile; fileRef = F3BE2B3B1CA99C8000B1CC13 /* 13.png */; };
+		F3BE2B3E1CA99C8000B1CC13 /* 14.png in Resources */ = {isa = PBXBuildFile; fileRef = F3BE2B3C1CA99C8000B1CC13 /* 14.png */; };
+		F3BE2B411CA99CBB00B1CC13 /* next.png in Resources */ = {isa = PBXBuildFile; fileRef = F3BE2B3F1CA99CBB00B1CC13 /* next.png */; };
+		F3BE2B421CA99CBB00B1CC13 /* redo.png in Resources */ = {isa = PBXBuildFile; fileRef = F3BE2B401CA99CBB00B1CC13 /* redo.png */; };
+		F3BE2B451CA99EB400B1CC13 /* change.png in Resources */ = {isa = PBXBuildFile; fileRef = F3BE2B431CA99EB400B1CC13 /* change.png */; };
+		F3BE2B461CA99EB400B1CC13 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = F3BE2B441CA99EB400B1CC13 /* home.png */; };
 		F3F3BBC21C988F8200371CA3 /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = F3F3BBB51C988F8200371CA3 /* 0.png */; };
 		F3F3BBC31C988F8200371CA3 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = F3F3BBB61C988F8200371CA3 /* 1.png */; };
 		F3F3BBC41C988F8200371CA3 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = F3F3BBB71C988F8200371CA3 /* 2.png */; };
@@ -157,8 +161,12 @@
 		E46A09D8CC0A0B6D596C7338 /* Pods_RhythmTap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RhythmTap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F30A0E051C95E41000D2C13E /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
 		F3163A8D1C7F8B21000F9884 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		F337FA761C9F025800C0E8F4 /* 13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 13.png; sourceTree = "<group>"; };
-		F337FA771C9F025800C0E8F4 /* 14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 14.png; sourceTree = "<group>"; };
+		F3BE2B3B1CA99C8000B1CC13 /* 13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 13.png; path = Images/13.png; sourceTree = SOURCE_ROOT; };
+		F3BE2B3C1CA99C8000B1CC13 /* 14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 14.png; path = Images/14.png; sourceTree = SOURCE_ROOT; };
+		F3BE2B3F1CA99CBB00B1CC13 /* next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = next.png; path = Images/next.png; sourceTree = SOURCE_ROOT; };
+		F3BE2B401CA99CBB00B1CC13 /* redo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = redo.png; path = Images/redo.png; sourceTree = SOURCE_ROOT; };
+		F3BE2B431CA99EB400B1CC13 /* change.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = change.png; path = Images/change.png; sourceTree = SOURCE_ROOT; };
+		F3BE2B441CA99EB400B1CC13 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = home.png; path = Images/home.png; sourceTree = SOURCE_ROOT; };
 		F3F3BBB51C988F8200371CA3 /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 0.png; path = Images/0.png; sourceTree = SOURCE_ROOT; };
 		F3F3BBB61C988F8200371CA3 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1.png; path = Images/1.png; sourceTree = SOURCE_ROOT; };
 		F3F3BBB71C988F8200371CA3 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 2.png; path = Images/2.png; sourceTree = SOURCE_ROOT; };
@@ -434,6 +442,7 @@
 		F38208331C985F2400A6ECFA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F3BE2B361CA99C3A00B1CC13 /* Icons */,
 				F38208341C985F2B00A6ECFA /* Stickmen */,
 			);
 			name = Images;
@@ -442,8 +451,6 @@
 		F38208341C985F2B00A6ECFA /* Stickmen */ = {
 			isa = PBXGroup;
 			children = (
-				F337FA761C9F025800C0E8F4 /* 13.png */,
-				F337FA771C9F025800C0E8F4 /* 14.png */,
 				F3F3BBB51C988F8200371CA3 /* 0.png */,
 				F3F3BBB61C988F8200371CA3 /* 1.png */,
 				F3F3BBB71C988F8200371CA3 /* 2.png */,
@@ -457,8 +464,21 @@
 				F3F3BBBF1C988F8200371CA3 /* 10.png */,
 				F3F3BBC01C988F8200371CA3 /* 11.png */,
 				F3F3BBC11C988F8200371CA3 /* 12.png */,
+				F3BE2B3B1CA99C8000B1CC13 /* 13.png */,
+				F3BE2B3C1CA99C8000B1CC13 /* 14.png */,
 			);
 			name = Stickmen;
+			sourceTree = "<group>";
+		};
+		F3BE2B361CA99C3A00B1CC13 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				F3BE2B3F1CA99CBB00B1CC13 /* next.png */,
+				F3BE2B401CA99CBB00B1CC13 /* redo.png */,
+				F3BE2B431CA99EB400B1CC13 /* change.png */,
+				F3BE2B441CA99EB400B1CC13 /* home.png */,
+			);
+			name = Icons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -576,22 +596,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F337FA791C9F025800C0E8F4 /* 14.png in Resources */,
 				F3F3BBCE1C988F8200371CA3 /* 12.png in Resources */,
 				F3F3BBC61C988F8200371CA3 /* 4.png in Resources */,
 				F3F3BBC91C988F8200371CA3 /* 7.png in Resources */,
 				F3F3BBC71C988F8200371CA3 /* 5.png in Resources */,
+				F3BE2B3D1CA99C8000B1CC13 /* 13.png in Resources */,
+				F3BE2B421CA99CBB00B1CC13 /* redo.png in Resources */,
 				F3F3BBC41C988F8200371CA3 /* 2.png in Resources */,
+				F3BE2B411CA99CBB00B1CC13 /* next.png in Resources */,
 				F3F3BBC81C988F8200371CA3 /* 6.png in Resources */,
 				D37932971C7B7FC1008B7B64 /* LaunchScreen.storyboard in Resources */,
 				F3F3BBCD1C988F8200371CA3 /* 11.png in Resources */,
+				F3BE2B451CA99EB400B1CC13 /* change.png in Resources */,
 				F3F3BBC31C988F8200371CA3 /* 1.png in Resources */,
 				F3163A8E1C7F8B21000F9884 /* Main.storyboard in Resources */,
 				F3F3BBC51C988F8200371CA3 /* 3.png in Resources */,
-				F337FA781C9F025800C0E8F4 /* 13.png in Resources */,
 				F3F3BBC21C988F8200371CA3 /* 0.png in Resources */,
 				F3F3BBCB1C988F8200371CA3 /* 9.png in Resources */,
+				F3BE2B3E1CA99C8000B1CC13 /* 14.png in Resources */,
 				F3F3BBCC1C988F8200371CA3 /* 10.png in Resources */,
+				F3BE2B461CA99EB400B1CC13 /* home.png in Resources */,
 				F3F3BBCA1C988F8200371CA3 /* 8.png in Resources */,
 				D37932941C7B7FC1008B7B64 /* Assets.xcassets in Resources */,
 				D3BED0121C7F7AE50047C2C5 /* Tracks in Resources */,
