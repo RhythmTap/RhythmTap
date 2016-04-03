@@ -31,7 +31,7 @@ class DifficultyViewController : UIViewController {
     let loadingViewSegueIdentifier = "loadingViewSegue"
 
     var difficulty: Difficulty!
-    var songName: String!
+    var currentTrack: AudioTrack!
 
 
     // MARK: View overrides
@@ -69,7 +69,7 @@ class DifficultyViewController : UIViewController {
         if segue.identifier == loadingViewSegueIdentifier {
             if let loadingViewController = segue.destinationViewController as? LoadingViewController {
                 loadingViewController.difficulty = difficulty
-                loadingViewController.songName = songName
+                loadingViewController.currentTrack = currentTrack
             }
         }
     }

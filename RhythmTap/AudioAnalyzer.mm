@@ -49,7 +49,7 @@
     /* Used to extract metadata */
     decoder = new SuperpoweredDecoder();
     
-    NSLog(@"AudioTrack: %@ %@", audioTrack.file, audioTrack.audioFormat);
+    NSLog(@"AudioTrack: %@ %@", audioTrack.songName, audioTrack.audioFormat);
     
     bool isAudioFileOpened = [self open:audioTrack];
     if (!isAudioFileOpened) {

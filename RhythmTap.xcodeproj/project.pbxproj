@@ -16,6 +16,7 @@
 		5339158CAD74A3E43A7087A1 /* DifficultyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53391CBABCDD69F81F5CA5EB /* DifficultyViewController.swift */; };
 		53391A0F26FA14DA8582F1FD /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53391DCFE22D79A8EEC47B28 /* LoadingViewController.swift */; };
 		53391C8B70EF0AEFDC900AA3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53391B5037BF43DBA5EB73C4 /* HomeViewController.swift */; };
+		53391C96BFBA68CA383AFD5D /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533919C59AE9918DB1F59BE2 /* Config.swift */; };
 		53391CB1746A97C0E242FED5 /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5339154FFC28424780FDF91C /* ScoreViewController.swift */; };
 		53391E01AAF00D7F74ECC612 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533911E85FEC60C4EDEE8828 /* GameViewController.swift */; };
 		53391F7012DD69CEE7C496C9 /* LevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5339102E146EBAE9EECA45F4 /* LevelViewController.swift */; };
@@ -92,6 +93,7 @@
 		5339102E146EBAE9EECA45F4 /* LevelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelViewController.swift; sourceTree = "<group>"; };
 		533911E85FEC60C4EDEE8828 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		5339154FFC28424780FDF91C /* ScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
+		533919C59AE9918DB1F59BE2 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		533919F4807B5FA82C4E4BA3 /* Taps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Taps.swift; sourceTree = "<group>"; };
 		53391B5037BF43DBA5EB73C4 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		53391C744705456D1867C839 /* LevelViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelViewCell.swift; sourceTree = "<group>"; };
@@ -337,6 +339,7 @@
 				D37932901C7B7FC1008B7B64 /* RhythmTap.xcdatamodeld */,
 				131729051CA976A900075B0F /* Globals.swift */,
 				53391FABDC54D3607EF9DB92 /* Views */,
+				533919C59AE9918DB1F59BE2 /* Config.swift */,
 			);
 			path = RhythmTap;
 			sourceTree = "<group>";
@@ -646,7 +649,7 @@
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "\uD83D\uDCE6 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -661,7 +664,7 @@
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "\uD83D\uDCE6 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -676,7 +679,7 @@
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "\uD83D\uDCE6 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -691,7 +694,7 @@
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "\uD83D\uDCE6 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -706,7 +709,7 @@
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "\uD83D\uDCE6 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -721,7 +724,7 @@
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "\uD83D\uDCE6 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -751,7 +754,7 @@
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "\uD83D\uDCE6 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -766,7 +769,7 @@
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "\uD83D\uDCE6 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -799,6 +802,7 @@
 				53391E01AAF00D7F74ECC612 /* GameViewController.swift in Sources */,
 				533912F37E6EA7C844BA4F5E /* Taps.swift in Sources */,
 				5339158CAD74A3E43A7087A1 /* DifficultyViewController.swift in Sources */,
+				53391C96BFBA68CA383AFD5D /* Config.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

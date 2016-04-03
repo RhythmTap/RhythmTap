@@ -21,7 +21,7 @@ class SwiftAudioAnalyzerTests: XCTestCase {
         super.setUp()
         let file = "Tracks/Easy"
         let audioFormat = "wav"
-        self.audioTrack = AudioTrack(file: file, audioFormat: audioFormat)
+        self.audioTrack = AudioTrack(songName: file, audioFormat: audioFormat)
         self.analyzer = AudioAnalyzer(audioTrack)
     }
     

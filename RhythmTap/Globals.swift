@@ -9,8 +9,8 @@
 import Foundation
 
 class Globals {
-    
-    static var songNames : [String] = [String]()
+
+    static var tracks: [AudioTrack] = [AudioTrack]()
     private static var isLoaded: Bool = false
     
     static func loadSongs() {
@@ -18,21 +18,13 @@ class Globals {
             let fileManager = NSFileManager.defaultManager()
             let enumerator:NSDirectoryEnumerator = fileManager.enumeratorAtPath(NSBundle.mainBundle().bundlePath + "/Tracks/")!
         
-            var count = 0
-        
             while let file = enumerator.nextObject() as! String? {
-                if(file.hasSuffix(".wav")) {
-                    songNames.append(file.stringByReplacingOccurrencesOfString(".wav", withString: ""))
-                    print(songNames[count])            }
-                else if(file.hasSuffix(".mp3")) {
-                    songNames.append(file.stringByReplacingOccurrencesOfString(".mp3", withString: ""))
-                    print(songNames[count])
-                }
-                else {
-                    songNames.append(file)
-                    print(songNames[count])
-                }
-                count += 1
+                let stringTokens = file.componentsSeparatedByString(".")
+                let songName = Config.TrackDirectory + stringTokens[0]
+                let format = stringTokens[1]
+                let audioTrack = AudioTrack(songName: songName, audioFormat: format)
+                tracks.append(audioTrack)
+                print(audioTrack.songName)
             }
         }
         isLoaded = true

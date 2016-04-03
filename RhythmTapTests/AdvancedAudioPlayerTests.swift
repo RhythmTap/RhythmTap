@@ -19,7 +19,7 @@ class AdvancedAudioPlayerTests: XCTestCase, AudioAnalyzerDelegate {
         super.setUp()
         let file = "Tracks/Easy"
         let audioFormat = "wav"
-        self.audioTrack = AudioTrack(file: file, audioFormat: audioFormat)
+        self.audioTrack = AudioTrack(songName: file, audioFormat: audioFormat)
     }
     
     override func tearDown() {

@@ -42,7 +42,7 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     var difficulty: Difficulty!
     var totalCorrectTaps: UInt!
     var totalIncorrectTaps: UInt!
-    var songName: String!
+    var currentTrack: AudioTrack!
     var stickmenManager: StickmenManager = StickmenManager.init()
 
     
@@ -201,7 +201,7 @@ class GameViewController: UIViewController, AdvancedAudioPlayerDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         stopAudioPlayer()
         if let dest = segue.destinationViewController as? ScoreViewController {
-            dest.songName = songName
+            dest.currentTrack = currentTrack
             dest.difficulty = difficulty
             dest.correctTaps = Float(correctTapCounter.getCount())
             dest.incorrectTaps = Float(incorrectTapCounter.getCount())

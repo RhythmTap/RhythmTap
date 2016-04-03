@@ -11,24 +11,24 @@ import Foundation
 @objc public class AudioTrack : NSObject {
     
     // MARK: Properties
-    var file: String!
+    var songName: String!
     var audioFormat: String!
     
     override init() {
-        self.file = "";
+        self.songName = "";
         self.audioFormat = "";
     }
     
-    init(file: String, audioFormat: String) {
-        self.file = file
+    init(songName: String, audioFormat: String) {
+        self.songName = songName
         self.audioFormat = audioFormat
     }
     
     func getFullBundlePath() -> String {
-        if let fullpathToFile = NSBundle.mainBundle().pathForResource(file, ofType:audioFormat) {
+        if let fullpathToFile = NSBundle.mainBundle().pathForResource(songName, ofType:audioFormat) {
             return fullpathToFile
         }
-        return "Could not find " + file + "." + audioFormat + " in main bundle"
+        return "Could not find " + songName + "." + audioFormat + " in main bundle"
     }
-    
+
 }

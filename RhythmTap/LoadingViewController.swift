@@ -13,13 +13,12 @@ class LoadingViewController: UIViewController, AudioAnalyzerDelegate {
     
     // MARK: Properties
     @IBOutlet weak var progressBar: UIProgressView!
-    
+
     let gameViewSegueIdentifier = "GameViewSegue"
-    let trackDirectory = "Tracks/"
     let advancedAudioPlayer = AdvancedAudioPlayer()
 
     var difficulty: Difficulty!
-    var songName: String!
+    var currentTrack: AudioTrack!
     
     
     // View actions
@@ -57,18 +56,20 @@ class LoadingViewController: UIViewController, AudioAnalyzerDelegate {
         let gameViewController = segue.destinationViewController as! GameViewController
         gameViewController.advancedAudioPlayer = self.advancedAudioPlayer
         gameViewController.difficulty = difficulty
-        gameViewController.songName = songName
+        gameViewController.currentTrack = currentTrack
     }
     
     
     // MARK: Private Interface
     private func setupAdvancedAudioPlayer() {
-        let file = self.trackDirectory + songName
-        let audioFormat = "wav"
-        let audioTrack = AudioTrack(file: file, audioFormat: audioFormat)
-        let audioAnalyzer = AudioAnalyzer(audioTrack)
+//        let file = self.trackDirectory + currentTrack
+//        let audioFormat = "wav"
+//        let audioTrack = AudioTrack(file: file, audioFormat: audioFormat)
+//        let audioAnalyzer = AudioAnalyzer(audioTrack)
+
+        let audioAnalyzer = AudioAnalyzer(currentTrack)
         audioAnalyzer.delegate = self
-        advancedAudioPlayer.prepareAudioPlayer(self, audioTrackToPrepare: audioTrack)
+        advancedAudioPlayer.prepareAudioPlayer(self, audioTrackToPrepare: currentTrack)
     }
     
     private func updateProgressBar(progress: Float) {

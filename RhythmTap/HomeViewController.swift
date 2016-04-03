@@ -21,12 +21,11 @@ class HomeViewController: UIViewController {
     let loadingViewSegueIdentifier = "loadingViewSegue"
     let chooseLevelSegueIdentifier = "levelViewSegue"
     let difficulty = Difficulty.Easy
-    let defaultSongName = "Easy"
-    
+
     var level: Int!
 
-    var songName: String!
-    var songNames : [String] = [String]()
+    var currentTrack: AudioTrack!
+    var tracks: [AudioTrack] = [AudioTrack]()
 
     let managedContext = (UIApplication.sharedApplication().delegate as!
         AppDelegate).managedObjectContext
@@ -37,17 +36,11 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         Globals.loadSongs()
         decorateButtons()
-        let fileManager = NSFileManager.defaultManager()
-        let enumerator:NSDirectoryEnumerator = fileManager.enumeratorAtPath(NSBundle.mainBundle().bundlePath + "/Tracks/")!
-        var count = 0
-        
-        while let file = enumerator.nextObject() as! String? {
-            if(file.hasSuffix(".wav")) {
-                songNames.append(file.stringByReplacingOccurrencesOfString(".wav", withString: ""))
-                count += 1
-            }
-        }
-        
+        loadTrackNames()
+        fetchRequestStuff()
+    }
+
+    func fetchRequestStuff() {
         let fetchRequest = NSFetchRequest(entityName: "Score")  // get entity
         do {
             // fetch scores into results
@@ -63,7 +56,7 @@ class HomeViewController: UIViewController {
         if scores.count > 0 {
             print("Highest level played: " + String(scores[0].valueForKey("level")!))
             level = scores[0].valueForKey("level") as! Int
-            if level >= songNames.count {
+            if level >= tracks.count {
                 level = 1
             }
             else {
@@ -74,9 +67,23 @@ class HomeViewController: UIViewController {
             level = 1
         }
         print(level)
-        songName = songNames[level - 1]
+        currentTrack = tracks[level - 1]
     }
 
+    func loadTrackNames() {
+        let fileManager = NSFileManager.defaultManager()
+        let enumerator:NSDirectoryEnumerator = fileManager.enumeratorAtPath(NSBundle.mainBundle().bundlePath + "/" + Config.TrackDirectory)!
+        var count = 0
+
+        while let file = enumerator.nextObject() as! String? {
+            let stringTokens = file.componentsSeparatedByString(".")
+            let songName = Config.TrackDirectory + stringTokens[0]
+            let audioFormat = stringTokens[1]
+            let audioTrack = AudioTrack(songName: songName, audioFormat: audioFormat)
+            tracks.append(audioTrack)
+            count += 1
+        }
+    }
 
     // MARK: User actions
     @IBAction func startGame(sender: AnyObject) {
@@ -95,7 +102,7 @@ class HomeViewController: UIViewController {
         if segue.identifier == loadingViewSegueIdentifier {
             if let loadingViewController = segue.destinationViewController as? LoadingViewController {
                 loadingViewController.difficulty = difficulty
-                loadingViewController.songName = songName
+                loadingViewController.currentTrack = currentTrack
                 loadingViewController.transitioningDelegate = self.transitionManager
             }
             return

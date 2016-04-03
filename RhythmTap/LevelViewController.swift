@@ -28,7 +28,7 @@ class LevelViewController: UICollectionViewController, UICollectionViewDelegateF
         if segue.identifier == self.difficultyViewSegueIdentifier {
             if let difficultyView = segue.destinationViewController as? DifficultyViewController {
                 if(selectedSong > -1) {
-                    difficultyView.songName = Globals.songNames[selectedSong]
+                    difficultyView.currentTrack = Globals.tracks[selectedSong]
                 }
             }
         }
@@ -36,7 +36,7 @@ class LevelViewController: UICollectionViewController, UICollectionViewDelegateF
     
     //number of cells
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Globals.songNames.count
+        return Globals.tracks.count
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
