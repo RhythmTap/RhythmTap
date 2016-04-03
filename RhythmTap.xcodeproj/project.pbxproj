@@ -491,12 +491,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D37932B11C7B7FC1008B7B64 /* Build configuration list for PBXNativeTarget "RhythmTap" */;
 			buildPhases = (
-				2A91BA9CB54F5095128CB903 /* 📦 Check Pods Manifest.lock */,
+				2A91BA9CB54F5095128CB903 /* uD83DuDCE6 Check Pods Manifest.lock */,
 				D37932821C7B7FC1008B7B64 /* Sources */,
 				D37932831C7B7FC1008B7B64 /* Frameworks */,
 				D37932841C7B7FC1008B7B64 /* Resources */,
-				FBDC873E67F84DD56D019B3D /* 📦 Embed Pods Frameworks */,
-				91B9BEC2CB0C146BF844C6A3 /* 📦 Copy Pods Resources */,
+				FBDC873E67F84DD56D019B3D /* uD83DuDCE6 Embed Pods Frameworks */,
+				91B9BEC2CB0C146BF844C6A3 /* uD83DuDCE6 Copy Pods Resources */,
 				DCFB0948C7C10FC87229659A /* Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -512,12 +512,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D37932B41C7B7FC1008B7B64 /* Build configuration list for PBXNativeTarget "RhythmTapTests" */;
 			buildPhases = (
-				A82366D049212F9769E5C0E8 /* 📦 Check Pods Manifest.lock */,
+				A82366D049212F9769E5C0E8 /* uD83DuDCE6 Check Pods Manifest.lock */,
 				D37932991C7B7FC1008B7B64 /* Sources */,
 				D379329A1C7B7FC1008B7B64 /* Frameworks */,
 				D379329B1C7B7FC1008B7B64 /* Resources */,
-				0720BD9BBC2E65D48C3048A8 /* 📦 Embed Pods Frameworks */,
-				27D3C245D76067904E31E3B5 /* 📦 Copy Pods Resources */,
+				0720BD9BBC2E65D48C3048A8 /* uD83DuDCE6 Embed Pods Frameworks */,
+				27D3C245D76067904E31E3B5 /* uD83DuDCE6 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -533,11 +533,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D37932B71C7B7FC1008B7B64 /* Build configuration list for PBXNativeTarget "RhythmTapUITests" */;
 			buildPhases = (
-				5212B8665DAD249DAFD41CD7 /* 📦 Check Pods Manifest.lock */,
+				5212B8665DAD249DAFD41CD7 /* uD83DuDCE6 Check Pods Manifest.lock */,
 				D37932A41C7B7FC1008B7B64 /* Sources */,
 				D37932A51C7B7FC1008B7B64 /* Frameworks */,
 				D37932A61C7B7FC1008B7B64 /* Resources */,
-				F7F675CA948395CAA30B235D /* 📦 Copy Pods Resources */,
+				F7F675CA948395CAA30B235D /* uD83DuDCE6 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -560,7 +560,7 @@
 				TargetAttributes = {
 					D37932851C7B7FC1008B7B64 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 435W846854;
+						DevelopmentTeam = G7WA36L2D9;
 					};
 					D379329C1C7B7FC1008B7B64 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -642,14 +642,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0720BD9BBC2E65D48C3048A8 /* 📦 Embed Pods Frameworks */ = {
+		0720BD9BBC2E65D48C3048A8 /* uD83DuDCE6 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "\uD83D\uDCE6 Embed Pods Frameworks";
+			name = "uD83DuDCE6 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -657,14 +657,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RhythmTapTests/Pods-RhythmTapTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		27D3C245D76067904E31E3B5 /* 📦 Copy Pods Resources */ = {
+		27D3C245D76067904E31E3B5 /* uD83DuDCE6 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "\uD83D\uDCE6 Copy Pods Resources";
+			name = "uD83DuDCE6 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -672,14 +672,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RhythmTapTests/Pods-RhythmTapTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		2A91BA9CB54F5095128CB903 /* 📦 Check Pods Manifest.lock */ = {
+		2A91BA9CB54F5095128CB903 /* uD83DuDCE6 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "\uD83D\uDCE6 Check Pods Manifest.lock";
+			name = "uD83DuDCE6 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -687,14 +687,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		5212B8665DAD249DAFD41CD7 /* 📦 Check Pods Manifest.lock */ = {
+		5212B8665DAD249DAFD41CD7 /* uD83DuDCE6 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "\uD83D\uDCE6 Check Pods Manifest.lock";
+			name = "uD83DuDCE6 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -702,14 +702,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		91B9BEC2CB0C146BF844C6A3 /* 📦 Copy Pods Resources */ = {
+		91B9BEC2CB0C146BF844C6A3 /* uD83DuDCE6 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "\uD83D\uDCE6 Copy Pods Resources";
+			name = "uD83DuDCE6 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -717,14 +717,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RhythmTap/Pods-RhythmTap-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A82366D049212F9769E5C0E8 /* 📦 Check Pods Manifest.lock */ = {
+		A82366D049212F9769E5C0E8 /* uD83DuDCE6 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "\uD83D\uDCE6 Check Pods Manifest.lock";
+			name = "uD83DuDCE6 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -747,14 +747,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RhythmTap/Pods-RhythmTap-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F7F675CA948395CAA30B235D /* 📦 Copy Pods Resources */ = {
+		F7F675CA948395CAA30B235D /* uD83DuDCE6 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "\uD83D\uDCE6 Copy Pods Resources";
+			name = "uD83DuDCE6 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -762,14 +762,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RhythmTapUITests/Pods-RhythmTapUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FBDC873E67F84DD56D019B3D /* 📦 Embed Pods Frameworks */ = {
+		FBDC873E67F84DD56D019B3D /* uD83DuDCE6 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "\uD83D\uDCE6 Embed Pods Frameworks";
+			name = "uD83DuDCE6 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -953,7 +953,7 @@
 					"\"$(PROJECT_DIR)/Third Party\"",
 				);
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.itsbriany.RhythmTap;
+				PRODUCT_BUNDLE_IDENTIFIER = com.itsbriany.dev.RhythmTap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "RhythmTap/RhythmTap-Bridging-Header.h";
@@ -978,7 +978,7 @@
 					"\"$(PROJECT_DIR)/Third Party\"",
 				);
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.itsbriany.RhythmTap;
+				PRODUCT_BUNDLE_IDENTIFIER = com.itsbriany.dev.RhythmTap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "RhythmTap/RhythmTap-Bridging-Header.h";
