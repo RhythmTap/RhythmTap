@@ -182,7 +182,8 @@ class ScoreViewController: UIViewController {
             dest?.difficulty = difficulty
         } else if segue.identifier == self.nextLevelSegueIdentifier {
             let dest = segue.destinationViewController as? LoadingViewController
-            var indexOfSong = Globals.tracks.indexOf(currentTrack)
+            var indexOfSong = Globals.tracks.indexOf({$0.songName == currentTrack.songName &&
+                    $0.audioFormat == currentTrack.audioFormat})
             let numSongs = Globals.tracks.count
             
             if indexOfSong!+1 < numSongs {
